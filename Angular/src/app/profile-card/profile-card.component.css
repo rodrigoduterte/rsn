@@ -1,0 +1,14 @@
+.basicCenter{
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+    width: 33%;
+    margin: 0 auto;
+    
+}
+
+.defaultProPic{
+    width:100px;
+    height: 100px;
+    margin: 15px;
+}
