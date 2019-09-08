@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+<<<<<<< HEAD
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,19 @@ import { PostCardComponent } from './post-card/post-card.component';
   imports: [
     BrowserModule,
     AppRoutingModule
+=======
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule
+>>>>>>> Gael_Ngouana
   ],
   providers: [],
   bootstrap: [AppComponent]
