@@ -13,8 +13,8 @@ public class S3 {
 	
 	
 	private static String URL = "https://4guys.s3.us-east-2.amazonaws.com/";
-    private static AWSCredentials credentials = new BasicAWSCredentials("AKIAZ76OY2SM6LR3DGRA",
-            "9/11yTfqLfqhPjTIDQ1KRFWDztMN1h+lbL8aH27r");
+    private static AWSCredentials credentials = new BasicAWSCredentials("",
+           "");
     private static String bucketName ="4guys";
     private static Regions clientRegion = Regions.US_EAST_2;
     private static AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
