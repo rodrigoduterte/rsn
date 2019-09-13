@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
+=======
+>>>>>>> bfe0fda3e0268c4b89b8cbbc7721f921f6329aed
 
 @Component({
   selector: 'app-root',
@@ -7,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+<<<<<<< HEAD
   title = 'Spring Mvc Angular Tutorial';
 
   // Object to save the response returned from the service.
@@ -28,4 +32,7 @@ export class AppComponent {
       }
     );
   }
+=======
+  title = 'Project2SocialNetwork';
+>>>>>>> bfe0fda3e0268c4b89b8cbbc7721f921f6329aed
 }
