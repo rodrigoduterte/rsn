@@ -11,4 +11,5 @@
 <item elementID="=Spring/src\/test\/java" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=Spring/src\/test\/resources" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1568039942052_2" label="Window Working Set" name="Aggregate for window 1568039942051"/>
 </workingSetManager>

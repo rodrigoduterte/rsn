@@ -1,7 +1,5 @@
 INDEX VERSION 1.131
-C:\Users\vorga\Documents\228\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3124379547.index
-\Spring2\src\main\java
-C:\Users\vorga\Documents\228\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1336141535.index
-\Springmvcangular\src\main\java
 C:\Users\vorga\Documents\228\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1188400946.index
 \Spring\src\main\java
+C:\Users\vorga\Documents\228\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3124379547.index
+\Spring2\src\main\java
