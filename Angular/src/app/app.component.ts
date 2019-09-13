@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { HttpClient } from '@angular/common/http';
 >>>>>>> Gael_Ngouana
+=======
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
 
 @Component({
   selector: 'app-root',
@@ -10,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+<<<<<<< HEAD
 <<<<<<< HEAD
   title = 'Project2SocialNetwork';
 =======
@@ -35,4 +39,7 @@ export class AppComponent {
     );
   }
 >>>>>>> Gael_Ngouana
+=======
+  title = 'Project2SocialNetwork';
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
 }

@@ -12,16 +12,21 @@
  * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
  *
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Learn more in https://angular.io/guide/browser-support
 =======
  * Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html
 >>>>>>> Gael_Ngouana
+=======
+ * Learn more in https://angular.io/guide/browser-support
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
  */
 
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
 // import 'classlist.js';  // Run `npm install --save classlist.js`.
@@ -56,21 +61,33 @@ import 'core-js/es7/reflect';
 
 
 >>>>>>> Gael_Ngouana
+=======
+/** IE10 and IE11 requires the following for NgClass support on SVG elements */
+// import 'classlist.js';  // Run `npm install --save classlist.js`.
+
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
 /**
  * Web Animations `@angular/platform-browser/animations`
  * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
  * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
 <<<<<<< HEAD
+<<<<<<< HEAD
  */
 =======
  **/
 >>>>>>> Gael_Ngouana
+=======
+ */
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
 /**
  * By default, zone.js will patch all possible macroTask and DomEvents
  * user can disable parts of macroTask/DomEvents patch by setting following flags
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
  * because those flags need to be set before `zone.js` being loaded, and webpack
  * will put import in the top of bundle, so user need to create a separate file
  * in this directory (for example: zone-flags.ts), and put the following flags
@@ -92,6 +109,7 @@ import 'core-js/es7/reflect';
  *
  */
 
+<<<<<<< HEAD
 =======
  */
 
@@ -106,6 +124,8 @@ import 'core-js/es7/reflect';
 // (window as any).__Zone_enable_cross_context_check = true;
 
 >>>>>>> Gael_Ngouana
+=======
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
@@ -113,9 +133,12 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> Gael_Ngouana
+=======
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
