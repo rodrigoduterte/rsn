@@ -13,7 +13,13 @@ export class PostCardComponent implements OnInit {
   @Input()
   post: PostBean;
   
+  
+
+  
+
+  
   ngOnInit() {
+  
   }
 
 }

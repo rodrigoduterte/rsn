@@ -1,22 +1,102 @@
-
-
 <div class="registerationCard">
+        <img class="defaultProPic" src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg">
+    
+        <form [formGroup]="registrationForm" action="register.do" method="post" (ngSubmit)="onSubmit()">
+              <!-- {{registrationForm.value | json}}-->
+                
+            <h3>Registration</h3>
+            <div class="label">
+                <input [class.is-invalid]="registrationForm.get('username').invalid &&
+                                            registrationForm.get('username').touched" 
+                                            formControlName="username" type="text" name="username"  />
+                
+                    <div *ngIf="registrationForm.get('username').invalid && registrationForm.get('username').touched">
+                            <small *ngIf="registrationForm.get('username').errors?.required" class="text-danger">Required Field</small>
+                        <small *ngIf="registrationForm.get('username').errors?.minlength" class="text-danger">Minimum length of 4</small>
+                    </div>
+                
+                <br>
+                <input [class.is-invalid]="registrationForm.get('password').invalid &&
+                                             registrationForm.get('password').touched" 
+                                             formControlName="password" type="text" name="password"  />
+
+                    <div *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched">
+                        <small *ngIf="registrationForm.get('password').errors?.required" class="text-danger">Required Field</small>
+                        <small *ngIf="registrationForm.get('password').errors?.minlength" class="text-danger">Minimum length of 4</small>
+                    </div>
+                <br>
+
+                <input [class.is-invalid]="registrationForm.errors?.misMatch" formControlName="confirmPassword" type="text" name="confirmPassword"  />
+                        <div>
+                    <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords Do Not Match</small>
+                </div>
+                
+                <input [class.is-invalid]="registrationForm.get('firstName').invalid &&
+                                        registrationForm.get('firstName').touched" 
+                                        formControlName="firstName" type="text" name="firstname"  />
+
+                                        <div *ngIf="registrationForm.get('firstName').invalid && registrationForm.get('firstName').touched">
+                                                <small *ngIf="registrationForm.get('firstName').errors?.required" class="text-danger">Required Field</small>
+                                            </div>
+                <br>
+                <input [class.is-invalid]="registrationForm.get('lastName').invalid &&
+                                            registrationForm.get('lastName').touched" 
+                                            formControlName="lastName" type="text" name="lastname"  />
+
+                    <div *ngIf="registrationForm.get('lastName').invalid && registrationForm.get('lastName').touched">
+                            <small *ngIf="registrationForm.get('lastName').errors?.required" class="text-danger">Required Field</small>
+                        </div>  
+                <br>
+                <input [class.is-invalid]="registrationForm.get('email').invalid &&
+                                            registrationForm.get('email').touched"
+                                            formControlName="email" type="email" name="email"   />
+
+                                            <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">
+                                                    <small *ngIf="registrationForm.get('email').errors?.required" class="text-danger">Required Field</small>
+                                                </div>  
+                                            <br>
+            </div>
+            <button [disabled]="!registrationForm.valid || !registrationForm.get('email').touched" type="submit" value="Register">Register</button>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="registerationCard">
     <img class="defaultProPic" src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg">
     
-    <form action="register.do" method="post">
-        <input type="text" name="username" value="Username"/>
+    
+
+    <form #registrationForm="ngForm" action="register.do" method="post">
+            {{registrationForm.value | json}}
+            {{newProfile | json}}
+        <h3>Registration</h3>
+        <input type="text" name="username"   [(ngModel)]="newProfile._username" />
         <br>
-        <input type="text" name="password" value="Password"/>
+        <input type="text" name="password"  [(ngModel)]="newProfile._password" />
         <br>
-        <input type="text" name="firstname" value="First Name"/>
+        <input type="text" name="firstname"  [(ngModel)]="newProfile._firstName" />
         <br>
-        <input type="text" name="lastname" value="Last Name"/>
+        <input type="text" name="lastname"  [(ngModel)]="newProfile._lastName" />
         <br>
-        <input type="email" name="email" value="Email Address" />
+        <input type="email" name="email"  [(ngModel)]="newProfile._email" />
+        <br>
         <input type="submit" value="Register"/>
     </form>
 
 
-</div>
+</div> -->
 
 

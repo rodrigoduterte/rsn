@@ -1,4 +1,17 @@
 <div>
-<app-profile-card></app-profile-card>
+
+    <div class="padContainer">
+        <app-profile-card [profile]="profile"></app-profile-card>  <!-- the [profile] = "profile" loads the profile card with the passed in profile object in the TS-->
+    </div>
+
 <app-post></app-post>
+
+<div>
+<div *ngFor="let post of userPosts">
+        <app-post-card [post]="post"></app-post-card>
+    </div>
+</div>
+
+
+
 </div>
