@@ -2,6 +2,8 @@ package com.rsn.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rsn.entity.Profile;
@@ -31,17 +34,29 @@ public class ProfileController {
 	
 	@GetMapping(value="/user/all")
 	public List<Profile> getAllProfiles(){
+		System.out.println(System.getenv("db_url"));
+		System.out.println(profileRepo.selectAll());
 		return profileRepo.selectAll();
 	}
 	
-	@GetMapping(value="/user/all")    //  /user/all?n=
-	public List<Profile> getAllProfilesByFirstname(@RequestParam("n") String name){
-		return profileRepo.selectAllByName(name);
-	}
+//	@GetMapping(value="/user/all")    //  /user/all?n=
+//	public List<Profile> getAllProfilesByFirstname(@RequestParam("n") String name){
+//		return profileRepo.selectAllByName(name);
+//	}
 	
-	@PostMapping(value="/user/new")
-	public void insert(@RequestBody Profile user) {
-		profileRepo.insert(user);
+	//@PostMapping(value="/user/new")
+	@RequestMapping(value = "/user/new", 
+			method = RequestMethod.POST,consumes="application/json",
+			headers = "content-type=application/x-www-form-urlencoded")
+	public @ResponseBody boolean insert(@RequestBody Profile user) {
+	//public @ResponseBody String saveProfileJson(HttpServletRequest request){
+		System.out.println(user.getBio());
+//		if (profileRepo.insert(user) != null) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+		return true;
 	}
 	
 	@PostMapping(value="/user/in")
