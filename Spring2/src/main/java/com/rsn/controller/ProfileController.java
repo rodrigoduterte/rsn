@@ -30,12 +30,12 @@ public class ProfileController {
 	
 	
 	@GetMapping(value="/user/all")
-	public List<Profile> getAllEmployees(){
+	public List<Profile> getAllProfiles(){
 		return profileRepo.selectAll();
 	}
 	
 	@GetMapping(value="/user/all")    //  /user/all?n=
-	public List<Profile> getAllEmployeesByFirstname(@RequestParam("n") String name){
+	public List<Profile> getAllProfilesByFirstname(@RequestParam("n") String name){
 		return profileRepo.selectAllByName(name);
 	}
 	
