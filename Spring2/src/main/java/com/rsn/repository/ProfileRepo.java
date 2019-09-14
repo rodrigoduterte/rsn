@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.rsn.entity.Post;
 import com.rsn.entity.Profile;
 
 @Repository("profileRepo")
@@ -21,20 +20,8 @@ public class ProfileRepo {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void clear() {
-		sessionFactory.getCurrentSession().clear();
-	}
-	
-	public void close() {
-		sessionFactory.getCurrentSession().close();
-	}
-	
-	public void evict(Profile profile) {
-		sessionFactory.getCurrentSession().evict(profile);
-	}
-	
-	public void insert(Profile profile) {
-		sessionFactory.getCurrentSession().save(profile);
+	public Integer insert(Profile profile) {
+		return (Integer) sessionFactory.getCurrentSession().save(profile);
 	}
 	
 	public void update(Profile profile) {
@@ -56,7 +43,9 @@ public class ProfileRepo {
 	public List<Profile> selectAllByName(String name) {
 		return sessionFactory.getCurrentSession()
 				.createQuery
-				("from Profile u where (lower(u.firstName) like :n OR lower(u.middleName) like :n OR lower(u.lastName) like :n)", 
+				("from Profile p where (lower(p.firstName) like lower(:n) "
+						+ "OR lower(p.middleName) like lower(:n) "
+						+ "OR lower(p.lastName) like lower(:n))", 
 				Profile.class)
 				.setParameter("n", name)
 				.list();

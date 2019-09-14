@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.rsn.entity.Comment;
+import com.rsn.entity.Comments;
 import com.rsn.entity.CommentLikes;
 
 @Repository("commentRepo")
@@ -21,36 +21,24 @@ public class CommentRepo {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void clear() {
-		sessionFactory.getCurrentSession().clear();
-	}
-	
-	public void close() {
-		sessionFactory.getCurrentSession().close();
-	}
-	
-	public void evict(Comment comment) {
-		sessionFactory.getCurrentSession().evict(comment);
-	}
-	
-	public long insert(Comment comment) {
+	public long insert(Comments comment) {
 		return (long) sessionFactory.getCurrentSession().save(comment);
 	}
 	
-	public void update(Comment comment) {
+	public void update(Comments comment) {
 		sessionFactory.getCurrentSession().update(comment);
 	}
 	
-	public void delete(Comment comment) {
+	public void delete(Comments comment) {
 		sessionFactory.getCurrentSession().delete(comment);
 	}
 	
-	public Comment selectById(long id) {
-		return sessionFactory.getCurrentSession().get(Comment.class, id);
+	public Comments selectById(long id) {
+		return sessionFactory.getCurrentSession().get(Comments.class, id);
 	}
 	
-	public List<Comment> selectAll() {
-		return sessionFactory.getCurrentSession().createQuery("from Comment", Comment.class).list();
+	public List<Comments> selectAll() {
+		return sessionFactory.getCurrentSession().createQuery("from Comments", Comments.class).list();
 	}
 	
 	

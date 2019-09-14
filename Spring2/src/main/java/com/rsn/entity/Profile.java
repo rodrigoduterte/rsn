@@ -21,53 +21,53 @@ public class Profile {
     private int user_id;
 
     @Basic
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String username;
 
-    @Basic(optional = false)
+    @Basic
     @Column(nullable = false)
     private String email;
 
-    @Basic(optional = false)
+    @Basic
     @Column(nullable = false)
     private String firstName;
 
-    @Basic(optional = false)
+    @Basic
     private String middleName;
 
-    @Basic(optional = false)
+    @Basic
     @Column(nullable = false)
     private String lastName;
 
-    @Basic(optional = false)
+    @Basic
     @Column(nullable = false)
     private Date dob;
 
-    @Basic(optional = false)
+    @Basic
     @Column(nullable = false)
     private String password;
 
-    @Basic(optional = false)
+    @Basic
     private String favoriteColor;
 
-    @Basic(optional = false)
+    @Basic
     private String city;
 
-    @Basic(optional = false)
+    @Basic
     private String relationshipStatus;
 
-    @Basic(optional = false)
+    @Basic
     @Column(nullable = false)
     private String gender;
 
-    @Basic(optional = false)
+    @Basic
     @Column(nullable = false)
     private String bio;
 
-    @Basic(optional = false)
-    private String picture;
+    @Basic
+    private String photo;
 
-    @Basic(optional = false)
+    @Basic
     private String occupation;
 
     public Profile() {
@@ -75,7 +75,7 @@ public class Profile {
     
     public Profile(String username, String email, String firstName, String middleName, String lastName, Date dob,
 			String password, String favoriteColor, String city, String relationshipStatus, String gender, String bio,
-			String picture, String occupation) {
+			String photo, String occupation) {
 		super();
 		this.username = username;
 		this.email = email;
@@ -89,7 +89,7 @@ public class Profile {
 		this.relationshipStatus = relationshipStatus;
 		this.gender = gender;
 		this.bio = bio;
-		this.picture = picture;
+		this.photo = photo;
 		this.occupation = occupation;
 	}
 
@@ -199,12 +199,12 @@ public class Profile {
         this.bio = bio;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getOccupation() {
@@ -220,9 +220,8 @@ public class Profile {
 		return "Profile [user_id=" + user_id + ", username=" + username + ", email=" + email + ", firstName="
 				+ firstName + ", middleName=" + middleName + ", lastName=" + lastName + ", dob=" + dob + ", password="
 				+ password + ", favoriteColor=" + favoriteColor + ", city=" + city + ", relationshipStatus="
-				+ relationshipStatus + ", gender=" + gender + ", bio=" + bio + ", picture=" + picture + ", occupation="
+				+ relationshipStatus + ", gender=" + gender + ", bio=" + bio + ", photo=" + photo + ", occupation="
 				+ occupation + "]";
 	}
 
-    
 }

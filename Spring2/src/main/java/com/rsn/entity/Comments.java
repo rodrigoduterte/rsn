@@ -3,6 +3,7 @@ package com.rsn.entity;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,36 +15,38 @@ import javax.persistence.SequenceGenerator;
  * @author vorga
  */
 @Entity
-public class Comment {
+public class Comments {
 
     @Id
     @GeneratedValue(generator = "comment_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "comment_id_seq", sequenceName = "comment_id_seq")
     private Long comment_id;
 
-    @Basic(optional = false)
-    private Date date;
+    @Basic
+    @Column(nullable = false)
+    private Date comment_date;
 
-    @Basic(optional = false)
-    private String body;
+    @Basic
+    @Column(nullable = false)
+    private String post_body;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Profile profile;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Post post;
+    private Posts posts;
 
-    public Comment() {
+    public Comments() {
     }
-    
-    
 
-    public Comment(Date date, String body, Profile profile, Post post) {
+    
+    
+    public Comments(Date comment_date, String post_body, Profile profile, Posts posts) {
 		super();
-		this.date = date;
-		this.body = body;
+		this.comment_date = comment_date;
+		this.post_body = post_body;
 		this.profile = profile;
-		this.post = post;
+		this.posts = posts;
 	}
 
 
@@ -56,20 +59,20 @@ public class Comment {
         this.comment_id = comment_id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getComment_date() {
+        return comment_date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setComment_date(Date comment_date) {
+        this.comment_date = comment_date;
     }
 
-    public String getBody() {
-        return body;
+    public String getPost_body() {
+        return post_body;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setPost_body(String post_body) {
+        this.post_body = post_body;
     }
 
     public Profile getProfile() {
@@ -80,12 +83,12 @@ public class Comment {
         this.profile = profile;
     }
 
-    public Post getPost() {
-        return post;
+    public Posts getPosts() {
+        return posts;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setPosts(Posts posts) {
+        this.posts = posts;
     }
 
 }

@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.rsn.entity.Post;
+import com.rsn.entity.Posts;
 import com.rsn.entity.PostLikes;
 
 @Repository("postRepo")
@@ -21,37 +21,30 @@ public class PostRepo {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void clear() {
-		sessionFactory.getCurrentSession().clear();
-	}
-	
-	public void close() {
-		sessionFactory.getCurrentSession().close();
-	}
-	
-	public void evict(Post post) {
-		sessionFactory.getCurrentSession().evict(post);
-	}
-	
-	public long insert(Post post) {
+	public long insert(Posts post) {
 		return (long) sessionFactory.getCurrentSession().save(post);
 	}
 	
-	public void update(Post post) {
+	public void update(Posts post) {
 		sessionFactory.getCurrentSession().update(post);
 	}
 	
-	public void delete(Post post) {
+	public void delete(Posts post) {
 		sessionFactory.getCurrentSession().delete(post);
 	}
 	
-	public Post selectById(long id) {
-		return sessionFactory.getCurrentSession().get(Post.class, id);
+	public Posts selectById(long id) {
+		return sessionFactory.getCurrentSession().get(Posts.class, id);
 	}
 	
-	public List<Post> selectAll() {
-		return sessionFactory.getCurrentSession().createQuery("from Post", Post.class).list();
+	public List<Posts> selectAll() {
+		return sessionFactory.getCurrentSession().createQuery("from Posts", Posts.class).list();
 	}
 	
-	
+	public List<Posts> selectByProfileId(long id) {
+		return sessionFactory.getCurrentSession()
+				.createQuery("from Posts p where p.profile.user_id = :id")
+				.setParameter("id", id)
+				.list();
+	}
 }
