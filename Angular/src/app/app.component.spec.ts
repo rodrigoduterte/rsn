@@ -25,7 +25,7 @@ describe('AppComponent', () => {
   it(`should have as title 'Project2SocialNetwork'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('spring-angular');
+    expect(app.title).toEqual('Project2SocialNetwork');
   });
 
   it('should render title', () => {
