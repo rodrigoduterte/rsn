@@ -15,24 +15,28 @@ import javax.persistence.SequenceGenerator;
 public class PostLikes {
 
     @Id
-    @GeneratedValue(generator = "like_id_seq", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "like_id_seq", sequenceName = "like_id_seq")
+    @GeneratedValue(generator = "postlike_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "postlike_id_seq", sequenceName = "postlike_id_seq")
     private Long like_id;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Profile profile;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Post post;
+    private Posts posts;
 
     public PostLikes() {
     }
+
     
-    public PostLikes(Profile profile, Post post) {
+    
+    public PostLikes(Profile profile, Posts posts) {
 		super();
 		this.profile = profile;
-		this.post = post;
+		this.posts = posts;
 	}
+
+
 
 	public Long getLike_id() {
         return like_id;
@@ -50,12 +54,12 @@ public class PostLikes {
         this.profile = profile;
     }
 
-    public Post getPost() {
-        return post;
+    public Posts getPosts() {
+        return posts;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setPosts(Posts posts) {
+        this.posts = posts;
     }
 
 }
