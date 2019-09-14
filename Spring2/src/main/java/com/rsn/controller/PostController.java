@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rsn.entity.Post;
+import com.rsn.entity.Posts;
 import com.rsn.repository.PostRepo;
 import com.rsn.service.S3Service;
 
@@ -17,7 +17,7 @@ public class PostController {
 	private PostRepo postRepo;
 
 	@PostMapping(value = "/post/new")
-	public void insert(Post post) {
+	public void insert(Posts post) {
 		postRepo.insert(post);
 	}
 

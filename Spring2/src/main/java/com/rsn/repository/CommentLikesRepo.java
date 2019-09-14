@@ -20,18 +20,6 @@ public class CommentLikesRepo {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void clear() {
-		sessionFactory.getCurrentSession().clear();
-	}
-	
-	public void close() {
-		sessionFactory.getCurrentSession().close();
-	}
-	
-	public void evict(CommentLikes like) {
-		sessionFactory.getCurrentSession().evict(like);
-	}
-	
 	public void insert(CommentLikes like) {
 		sessionFactory.getCurrentSession().save(like);
 	}
@@ -49,8 +37,13 @@ public class CommentLikesRepo {
 	}
 	
 	public List<CommentLikes> selectAll() {
-		return sessionFactory.getCurrentSession().createQuery("from Like", CommentLikes.class).list();
+		return sessionFactory.getCurrentSession().createQuery("from CommentLikes", CommentLikes.class).list();
 	}
 	
-	
+	public List<CommentLikes> selectByProfileId(int id) {
+		return sessionFactory.getCurrentSession()
+				.createQuery("from CommentLikes cl where cl.profile.user_id = :id")
+				.setParameter("id", id)
+				.list();
+	}
 }

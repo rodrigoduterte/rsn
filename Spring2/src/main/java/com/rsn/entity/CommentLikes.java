@@ -17,26 +17,24 @@ import javax.persistence.Table;
 public class CommentLikes {
 
     @Id
-    @GeneratedValue(generator = "like_id_seq", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "like_id_seq", sequenceName = "like_id_seq")
+    @GeneratedValue(generator = "comlike_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "comlike_id_seq", sequenceName = "comlike_id_seq")
     private Long like_id;
-    
+
     @ManyToOne(cascade = CascadeType.ALL)
     private Profile profile;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private Comment comment;
+    private Comments comments;
 
     public CommentLikes() {
     }
 
-    public CommentLikes(Profile profile, Comment comment) {
+    public CommentLikes(Profile profile, Comments comments) {
 		super();
 		this.profile = profile;
-		this.comment = comment;
+		this.comments = comments;
 	}
-
-
 
 	public Long getLike_id() {
         return like_id;
@@ -54,12 +52,12 @@ public class CommentLikes {
         this.profile = profile;
     }
 
-    public Comment getComment() {
-        return comment;
+    public Comments getComments() {
+        return comments;
     }
 
-    public void setComment(Comment comment) {
-        this.comment = comment;
+    public void setComments(Comments comments) {
+        this.comments = comments;
     }
 
 }

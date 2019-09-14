@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rsn.entity.Comment;
+import com.rsn.entity.Comments;
 import com.rsn.repository.CommentRepo;
 import com.rsn.service.S3Service;
 
@@ -19,12 +19,12 @@ public class CommentController {
 	private CommentRepo commentRepo;
 
 	@PostMapping(value = "/com/new")
-	public void insert(@RequestBody Comment comment) {
+	public void insert(@RequestBody Comments comment) {
 		commentRepo.insert(comment);
 	}
 
 	@PostMapping(value = "/com/delete")
-	public void delete(@RequestBody Comment comment) {
+	public void delete(@RequestBody Comments comment) {
 		commentRepo.delete(comment);
 	}
 
