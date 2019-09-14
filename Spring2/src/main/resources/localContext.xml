@@ -30,6 +30,10 @@
 		base-package="com.rsn.repository" />
 	<context:component-scan
 		base-package="com.rsn.entity" />
+		<context:component-scan
+		base-package="com.rsn.controller" />
+		<context:component-scan
+		base-package="com.rsn.service" />
 	
 
 	<!-- allows @transactional and other transaction rela -->

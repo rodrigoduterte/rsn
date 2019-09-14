@@ -8,11 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  * @author vorga
  */
 @Entity
+@Table(name="PROFILE")
 public class Profile {
 
     @Id
@@ -20,54 +22,54 @@ public class Profile {
     @SequenceGenerator(name = "user_seq_id", sequenceName = "user_seq_id")
     private int user_id;
 
-    @Basic
+    //@Basic
     @Column(unique = true)
     private String username;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(nullable = false)
     private String email;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(nullable = false)
     private String firstName;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     private String middleName;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(nullable = false)
     private String lastName;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(nullable = false)
     private Date dob;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(nullable = false)
     private String password;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     private String favoriteColor;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     private String city;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     private String relationshipStatus;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(nullable = false)
     private String gender;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(nullable = false)
     private String bio;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     private String picture;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     private String occupation;
 
     public Profile() {

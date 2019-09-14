@@ -7,24 +7,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * @author vorga
  */
 @Entity
+@Table(name="POST")
 public class Post {
 
     @Id
     @GeneratedValue
     private Long post_id;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     private Date date;
 
-    @Basic
+    //@Basic
     private String photo;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     private String body;
 
     @ManyToOne(cascade = CascadeType.ALL)

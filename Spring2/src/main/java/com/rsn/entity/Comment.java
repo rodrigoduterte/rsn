@@ -9,11 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 /**
  * @author vorga
  */
 @Entity
+@Table(name="COMMENT")
 public class Comment {
 
     @Id
@@ -21,10 +23,10 @@ public class Comment {
     @SequenceGenerator(name = "comment_id_seq", sequenceName = "comment_id_seq")
     private Long comment_id;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     private Date date;
 
-    @Basic(optional = false)
+    //@Basic(optional = false)
     private String body;
 
     @ManyToOne(cascade = CascadeType.ALL)

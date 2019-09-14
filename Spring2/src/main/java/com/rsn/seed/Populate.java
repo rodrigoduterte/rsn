@@ -12,5 +12,6 @@ public class Populate {
 	public static void main(String[] args) throws ParseException {
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("localContext.xml");
 		MakeUsers.run(appContext);
+		
 	}
 }
