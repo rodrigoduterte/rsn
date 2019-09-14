@@ -2,11 +2,13 @@ package com.rsn.controller;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,35 +35,46 @@ public class ProfileController {
 	
 	
 	@GetMapping(value="/user/all")
-	public List<Profile> getAllProfiles(){
-		System.out.println(System.getenv("db_url"));
-		System.out.println(profileRepo.selectAll());
-		return profileRepo.selectAll();
+	public List<Profile> getAllProfiles(@RequestParam("n") String name){
+		if (name == null || name.equals("")) {
+			return profileRepo.selectAll();
+		} else {
+			return profileRepo.selectAllByName(name);
+		}
+		
 	}
 	
-//	@GetMapping(value="/user/all")    //  /user/all?n=
-//	public List<Profile> getAllProfilesByFirstname(@RequestParam("n") String name){
-//		return profileRepo.selectAllByName(name);
-//	}
-	
-	//@PostMapping(value="/user/new")
 	@RequestMapping(value = "/user/new", 
-			method = RequestMethod.POST,consumes="application/json",
+			method = RequestMethod.POST,consumes="application/x-www-form-urlencoded",   //"application/json
 			headers = "content-type=application/x-www-form-urlencoded")
-	public @ResponseBody boolean insert(@RequestBody Profile user) {
-	//public @ResponseBody String saveProfileJson(HttpServletRequest request){
-		System.out.println(user.getBio());
-//		if (profileRepo.insert(user) != null) {
-//			return true;
-//		} else {
-//			return false;
-//		}
-		return true;
+	public @ResponseBody boolean insert(@ModelAttribute Profile user) {
+		if (profileRepo.insert(user) != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	@PostMapping(value="/user/in")
-	public void login(@RequestBody Profile user) {
-		//return !profileRepo.insert(user).equals("");
+	public @ResponseBody Profile login(HttpServletRequest request){
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		try {
+			if ( profileRepo.selectByUsername(username) == null) {
+				return null;
+			} else {
+				Profile profile = profileRepo.selectByUsername(username);
+				if (profile.getPassword().equals(password)) {
+					return profile;
+				} else {
+					return null;
+				}
+			}
+		} catch (NoResultException e) {
+			return null;
+		}
+		
 	}
 	
 	@PostMapping(value="/user/out")
