@@ -136,11 +136,17 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+=======
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-s3</artifactId>
 			<version>1.11.613</version>
 		</dependency>
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
@@ -151,6 +157,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>5.0.8.RELEASE</version>
 		</dependency>
+<<<<<<< HEAD
+>>>>>>> Gael_Ngouana
+	
+=======
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

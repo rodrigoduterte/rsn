@@ -10,3 +10,10 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> Gael_Ngouana
+=======
+>>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
