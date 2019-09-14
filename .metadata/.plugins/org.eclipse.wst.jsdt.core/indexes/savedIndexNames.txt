@@ -1,3 +1,0 @@
-INDEX VERSION 1.4+C:\Users\vorga\Documents\228\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2756308033.index
-464160487.index
