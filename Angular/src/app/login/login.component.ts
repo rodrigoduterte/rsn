@@ -5,6 +5,7 @@ import { UserProfileBean } from 'src/UserProfileBean';
 import { SessionStorage } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { RegistrationService } from '../registration.service';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +24,9 @@ export class LoginComponent implements OnInit {
 // @SessionStorage('user')
 // username = this.Profile.username()
 
-  profile: any
-  constructor(private fb: FormBuilder, private _http: HttpClient,private router:Router, private authService: AuthService) { }
+  profile: any;
+  userProfile: any;
+  constructor(private fb: FormBuilder, private _http: HttpClient,private router:Router, private authService: AuthService, private _httpService: RegistrationService) { }
 
   ngOnInit() {
   }
@@ -37,19 +39,20 @@ APP_URL: any = 'http://localhost:9005/Springmvcangular';
   loginForm = this.fb.group({
     username: ['username'],
     password: ['password',]
-  })
+  });
+  username: any;
 
-
+  
 
   login(){
-      console.log(this.loginForm.value);
-      this._http.post(this.APP_URL + '/user/in' , this.loginForm.value)
+      console.log(this.loginForm.value.username);
+      this._httpService.login(this.loginForm.value)
       .subscribe(
         response => console.log('success' ,  this.profile=response),
         error => console.log('error', error)
-        
       );
-    console.log(this.profile);
+    //console.log(this.profile);
+    this.getUser()
   }
   
   // loginValidate(){
@@ -58,6 +61,13 @@ APP_URL: any = 'http://localhost:9005/Springmvcangular';
   //   }
   // }
 
+  getUser(){
+     this._httpService.getUserProfile(this.loginForm.value.username)
+     .subscribe(
+       response=> this.userProfile=response,
+       error=> error);
+       console.log(this.userProfile);
+  }
 
 
   onLogin(){
