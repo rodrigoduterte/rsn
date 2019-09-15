@@ -6,9 +6,11 @@ import { UserProfileBean } from 'src/UserProfileBean';
   templateUrl: './profile-card.component.html',
   styleUrls: ['./profile-card.component.css']
 })
-export class ProfileCardComponent implements OnInit {
+export class ProfileCardComponent {
 
-  constructor(){}
+ 
+  
+  
 @Input()
 profile: UserProfileBean;
   ngOnInit() {

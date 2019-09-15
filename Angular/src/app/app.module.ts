@@ -1,19 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
+
 import { HttpClientModule } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule
-=======
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -23,6 +11,9 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { PostCardComponent } from './post-card/post-card.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ReactiveFormsModule}  from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,13 +24,21 @@ import { PostCardComponent } from './post-card/post-card.component';
     RegisterComponent,
     LoginComponent,
     ProfileCardComponent,
-    PostCardComponent
+    PostCardComponent,
+    EditProfileComponent,
+    
   ],
+  
   imports: [
     BrowserModule,
-    AppRoutingModule
->>>>>>> bfe0fda3e0268c4b89b8cbbc7721f921f6329aed
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
+     
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
