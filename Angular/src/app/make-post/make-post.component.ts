@@ -12,7 +12,7 @@ import { UserProfileBean } from 'src/UserProfileBean';
 export class MakePostComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private _http: HttpClient, private session: SessionStorageService) { }
-  APP_URL = 'http://localhost:9005/STSProjectName';
+  APP_URL = 'http://localhost:9005/Spring2';
   //newPost = new PostBean();
 
 
@@ -25,7 +25,7 @@ retrieveSessionUser(){
 }
 
   newPost = this.fb.group({
-    firstName: 'firstname' ,  //the goal is to fill in names and subtext amd profile picture via the session
+    firstName: 'firstame' ,  //the goal is to fill in names and subtext amd profile picture via the session
     lastName: 'lastname' ,
     subTitle: 'subtitle',
     bodyText: 'bodytext',
@@ -50,7 +50,7 @@ retrieveSessionUser(){
 
   addPost(){
     console.log(this.newPost);
-    this._http.post<any>(this.APP_URL, this.newPost)
+    this._http.post<any>(this.APP_URL + '/post/new', this.newPost)
     .subscribe(
       response => console.log('success' , response),
       error => console.log('error', error)

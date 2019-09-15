@@ -13,12 +13,17 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-@Input()
-@SessionStorage('user') 
-Profile: UserProfileBean
 
 
 
+// @Input()
+// Profile: UserProfileBean
+
+
+// @SessionStorage('user')
+// username = this.Profile.username()
+
+  profile: any
   constructor(private fb: FormBuilder, private _http: HttpClient,private router:Router, private authService: AuthService) { }
 
   ngOnInit() {
@@ -26,25 +31,32 @@ Profile: UserProfileBean
 
 
 
-  _midURL: any = 'https://f8164a28-ad7a-49a8-873a-3928781ecee1.mock.pstmn.io/user/in';
-     //END POINT REQUIRED TO CALL LOGIN METHOD FROM JAVA
+APP_URL: any = 'http://localhost:9005/Springmvcangular';
+     
 
   loginForm = this.fb.group({
-    username:'Username',
-    password: 'Password',
+    username: ['username'],
+    password: ['password',]
   })
 
 
 
   login(){
       console.log(this.loginForm.value);
-      this._http.post(this._midURL, this.loginForm.value)
+      this._http.post(this.APP_URL + '/user/in' , this.loginForm.value)
       .subscribe(
-        response => console.log('success' , this.Profile=response),
+        response => console.log('success' ,  this.profile=response),
         error => console.log('error', error)
+        
       );
+    console.log(this.profile);
   }
   
+  // loginValidate(){
+  //   if((this.Profile._username === this.loginForm.value[1]) && (this.Profile._username === this.loginForm.value[2])){
+  //     this.login();
+  //   }
+  // }
 
 
 

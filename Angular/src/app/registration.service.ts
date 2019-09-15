@@ -7,13 +7,13 @@ import { registerLocaleData } from '@angular/common';
 })
 export class RegistrationService {
 
-_url = 'http://localhost:9005/STSProjectName' //need valid project name
+_url = 'http://localhost:9005/Spring2' //need valid project name
 
   constructor(private _http: HttpClient) { }
 
 
 register(userData){
- return this._http.post<any>(this._url, userData);
+ return this._http.post<any>(this._url + '/user/new', userData);
 }
 
 

@@ -1,22 +1,23 @@
 export class UserProfileBean{
 
-    constructor(private _username?: string,
-       private _password?: string,
-        private _firstName?: string,
-        private _lastName?: string,
-        private _email?: string,
-        private _phoneNumber?: string,
-      private _middleName?: string,
-       private _occupation?: string,
-        private _dob?: string,
-         private _favoriteColor?: string,
-      private _city?: string,
-       private _relationshipStatus?: string,
-        private _gender?: string,
-         private _bio?: string,
-          private _profilePic?: any,
-      private _Posts?: any[],
-       private _Likes?: any[] ) { }
+    constructor(
+       public _username?: any,
+       public _password?: any,
+        public _firstName?: any,
+        public _lastName?: any,
+        public _email?: any,
+        public _phoneNumber?: any,
+      public _middleName?: any,
+       public _occupation?: any,
+        public _dob?: any,
+         public _favoriteColor?: any,
+      public _city?: any,
+       public _relationshipStatus?: any,
+        public _gender?: any,
+         public _bio?: any,
+          public _profilePic?: any,
+      public _Posts?: any[],
+       public _Likes?: any[] ) { }
   
     // userName: string;
     // password: string;
@@ -37,54 +38,104 @@ export class UserProfileBean{
 
    //  getters causes errors when assigning Object to Session
 
-   // get username(): string{
-   //    return this._username;
-   // }
+   get username(): any{
+      return this._username;
+   }
 
-   // get email(): string{
-   //    return this._email;
-   // }
+   get email(): any{
+      return this._email;
+   }
 
-   // get phonenumber(): string{
-   //    return this._phoneNumber;
-   // }
+   get phonenumber(): any{
+      return this._phoneNumber;
+   }
 
 
-   // get profilePic(): any{       
-   //    return this._profilePic;
-   // }
+   get profilePic(): any{       
+      return this._profilePic;
+   }
 
-   // get firstName(): string{
-   //    return this._firstName;
-   // }
+   get firstName(): any{
+      return this._firstName;
+   }
 
-   // get lastName(): string{
-   //    return this._lastName;
-   // }
+   get lastName(): any{
+      return this._lastName;
+   }
 
-   // get middleName(): string{
-   //    return this._middleName;
-   // }
+   get middleName(): any{
+      return this._middleName;
+   }
 
-   // get occupation(): string{
-   //    return this._occupation;
-   // }
+   get occupation(): any{
+      return this._occupation;
+   }
 
-   // get dob(): string{
-   //    return this._dob;
-   // }
+   get dob(): any{
+      return this._dob;
+   }
 
-   // get favoriteColor(): string{
-   //    return this._favoriteColor;
-   // }
+   get favoriteColor(): any{
+      return this._favoriteColor;
+   }
 
-   // get city(): string{
-   //    return this._city;
-   // }
+   get city(): any{
+      return this._city;
+   }
 
-   // get relationshipStatus(): string{
-   //    return this._relationshipStatus;
-   // }
+   get relationshipStatus(): any{
+      return this._relationshipStatus;
+   }
+
+   get gender(): any{
+      return this._gender;
+   }
+
+   get bio():any{
+      return this._bio;
+   }
+
+
+
+
+
+
+
+   set username(username:any){
+   }
+
+   set email(email:any){
+   }
+
+   set phonenumber(phoneNumber: any){
+   }
+
+   set profilePic(profilePic:any){       
+   }
+
+   set firstName(firstName: any){
+   }
+
+   set lastName(lastName:any){
+   }
+
+   set middleName(middleName:any){
+   }
+
+   set occupation(occupation:any){
+   }
+
+   set dob(dob:any){
+   }
+
+   set favoriteColor(favoriteColor:any){
+   }
+
+   set city(city:any){
+   }
+
+   set relationshipStatus(relationshipStatus :any){
+   }
 
 
 
