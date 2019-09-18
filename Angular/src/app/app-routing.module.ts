@@ -4,16 +4,15 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { FeedComponent } from './feed/feed.component';
 import { LoginComponent } from './login/login.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-gaurd.service';
 
 
 const routes: Routes = [
-  {path: 'profile', component: ProfileComponent},
+  {path: 'profile', canActivate: [AuthGuard], component: ProfileComponent},
+  {path: 'feed', canActivate: [AuthGuard], component: FeedComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'feed', component: FeedComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'editProfile', component: EditProfileComponent},
+  {path: '', component: LoginComponent}, //login Page
   
   
 ];

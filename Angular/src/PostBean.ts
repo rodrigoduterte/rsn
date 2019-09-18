@@ -1,30 +1,30 @@
 export class PostBean{
 
-    constructor(profilePic: any,
-        firstName: string,
-        lastName: string,
-        subtitle: string,
-        bodyText: string,
-        bodyImage: string,
-        Likes: object[],
-        Comments: object[]){
+    constructor(_profilePic?: any,
+        _firstName?: string,
+        _lastName?: string,
+        _subtitle?: string,
+        _bodyText?: string,
+        _bodyImage?: string,
+        _Likes?: object[],
+        _Comments?: object[]){
 
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.subtitle = subtitle;
-            this.bodyText = bodyText;
-            this.bodyImage = bodyImage;
-            this.Likes = Likes;
-            this.Comments = Comments;
+            this._firstName = _firstName;
+            this._lastName = _lastName;
+            this._subtitle = _subtitle;
+            this._bodyText = _bodyText;
+            this._bodyImage = _bodyImage;
+            this._Likes = _Likes;
+            this._Comments = _Comments;
 
     }
 
-    profilePic: any;
-    firstName: string;
-    lastName: string;
-    subtitle: string;
-    bodyText: string;
-    bodyImage: string;
-    Likes: object[];
-    Comments: object[];
+    _profilePic: any;
+    _firstName: string;
+    _lastName: string;
+    _subtitle: string;
+    _bodyText: string;
+    _bodyImage: string;
+    _Likes: object[];
+    _Comments: object[];
 }

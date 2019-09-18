@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { HttpClientModule } from '@angular/common/http';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -11,9 +13,10 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { PostCardComponent } from './post-card/post-card.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { ReactiveFormsModule}  from '@angular/forms';
-import { FormsModule} from '@angular/forms';
+import { RegistrationService } from './registration.service';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-gaurd.service';
+import { MakePostComponent } from './make-post/make-post.component';
 
 @NgModule({
   declarations: [
@@ -25,21 +28,18 @@ import { FormsModule} from '@angular/forms';
     LoginComponent,
     ProfileCardComponent,
     PostCardComponent,
-    EditProfileComponent,
+    MakePostComponent,
     
   ],
-  
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
-     
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxWebstorageModule.forRoot(),
   ],
-
-  providers: [],
+  providers: [RegistrationService, AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

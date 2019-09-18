@@ -36,7 +36,7 @@ export class EditProfileComponent implements OnInit {
   submitEdit(){
     this.editProfileForm.setValue;
     console.log(this.editProfileForm.value);
-    this._registrationService.register(this.editProfileForm.value).subscribe(
+    this._registrationService.editProfile(this.editProfileForm.value).subscribe(
       response => console.log('SUCCESS!!!!', response),
       error => console.error('Error...')
     )
