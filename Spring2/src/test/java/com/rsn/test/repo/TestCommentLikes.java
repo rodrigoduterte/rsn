@@ -14,7 +14,7 @@ import com.rsn.repository.CommentLikesRepo;
 import com.rsn.repository.CommentRepo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:localContext.xml")
+@ContextConfiguration(locations = "classpath:db.xml")
 @Transactional
 public class TestCommentLikes {
 

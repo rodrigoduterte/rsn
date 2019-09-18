@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rsn.entity.Comments;
 import com.rsn.repository.CommentRepo;
-import com.rsn.service.S3Service;
 
 @RestController
 @CrossOrigin

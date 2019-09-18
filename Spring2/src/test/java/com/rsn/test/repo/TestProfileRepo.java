@@ -27,7 +27,7 @@ public class TestProfileRepo {
 	
 	@Test
 	public void recordCount() {
-		assertEquals(profileRepo.selectAll().size(),30);
+		assertEquals(profileRepo.selectAll().size(),31);
 	}
 	
 	@Test
@@ -37,10 +37,8 @@ public class TestProfileRepo {
 
 	@Test
 	public void selectedAllByName() {
-		assertEquals(profileRepo.selectAllByName("Ellsworth").size(),2);
+		assertEquals(profileRepo.selectAllByName("Ells").size(),2);
 	}
-	
-	////DUC operations to follow
 	
 	@Test
 	public void createdProfile() throws ParseException {

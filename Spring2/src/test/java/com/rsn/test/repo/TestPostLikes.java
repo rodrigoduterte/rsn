@@ -15,7 +15,7 @@ import com.rsn.repository.PostLikesRepo;
 import com.rsn.repository.PostRepo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:localContext.xml")
+@ContextConfiguration(locations = "classpath:db.xml")
 @Transactional
 public class TestPostLikes {
 

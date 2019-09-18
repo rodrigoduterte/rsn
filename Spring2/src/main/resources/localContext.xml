@@ -25,73 +25,10 @@
 		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-	<context:annotation-config />
 	<context:component-scan
 		base-package="com.rsn.repository" />
 	<context:component-scan
 		base-package="com.rsn.entity" />
-		<context:component-scan
-		base-package="com.rsn.controller" />
-		<context:component-scan
-		base-package="com.rsn.service" />
-	
 
-	<!-- allows @transactional and other transaction rela -->
-	<!-- <tx:annotation-driven /> -->
-	<!-- replaces two annotations @Configuration @EnableWebMvc. this tag sets 
-		your spring context to allow for dispatching request to controllers -->
-	<!-- <mvc:annotation-driven /> -->
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="url"
-			value="#{T(java.lang.System).getenv('db_url')}" />
-		<property name="username"
-			value="#{T(java.lang.System).getenv('db_username')}" />
-		<property name="password"
-			value="#{T(java.lang.System).getenv('db_password')}" />
-	</bean>
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.rsn.entity" />
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">#{T(java.lang.System).getenv('db_dialect')}</prop>
-				<prop key="hibernate.show_sql">false</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-			</props>
-		</property>
-	</bean>
-
-	<bean id="credential"
-		class="com.amazonaws.auth.BasicAWSCredentials">
-		<constructor-arg name="accessKey"
-			value="#{T(java.lang.System).getenv('s3_accesskey')}" />
-		<constructor-arg name="secretKey"
-			value="#{T(java.lang.System).getenv('s3_secretkey')}" />
-	</bean>
-
-	<!-- <bean id="s3client" class="com.rsn.service.S3Service"> -->
-	<!-- <property name="URL" value="#{T(java.lang.System).getenv('s3_bucket_url')}"/> -->
-	<!-- <property name="bucketName" value="#{T(java.lang.System).getenv('s3_bucket_name')}"/> -->
-	<!-- <property name="clientRegion" value="#{T(com.amazonaws.regions.Regions).US_EAST_2}"/> -->
-	<!-- <constructor-arg ref="credential" /> -->
-	<!-- </bean> -->
-	
-
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<tx:annotation-driven
-		transaction-manager="transactionManager" />
-		
-	<!-- List of DAOs to be tested -->
-	<bean id="profileRepo" class="com.rsn.repository.ProfileRepo"/>
-	<bean id="postRepo" class="com.rsn.repository.PostRepo"/>
-	<bean id="postLikesRepo" class="com.rsn.repository.PostLikesRepo"/>
-	<bean id="commentRepo" class="com.rsn.repository.CommentRepo"/>
-	<bean id="commentLikesRepo" class="com.rsn.repository.CommentLikesRepo"/>
-	
-	
+	<import resource="db.xml"/>	
 </beans>

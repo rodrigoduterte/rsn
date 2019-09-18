@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.rsn.repository.PostRepo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:localContext.xml")
+@ContextConfiguration(locations = "classpath:db.xml")
 @Transactional
 public class TestPostRepo {
 

@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<display-name>Spring Mvc Angular example</display-name>
+	<display-name></display-name>
 
 	<servlet>
 		<servlet-name>Dispatcher</servlet-name>
