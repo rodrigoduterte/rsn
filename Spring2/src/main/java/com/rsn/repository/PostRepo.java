@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -46,5 +47,19 @@ public class PostRepo {
 				.createQuery("from Posts p where p.profile.user_id = :id")
 				.setParameter("id", id)
 				.list();
+	}
+	
+	public String createPhotoName() {
+		String photo;
+		do {
+			photo = RandomStringUtils.random(15, true, true);
+		} while ( photoExists(photo) );
+		return photo;
+	}
+	
+	public boolean photoExists(String photo) {
+		return sessionFactory.getCurrentSession()
+				.createQuery("from Posts where photo = '" + photo + "'")
+				.setMaxResults(1).uniqueResult() != null;
 	}
 }

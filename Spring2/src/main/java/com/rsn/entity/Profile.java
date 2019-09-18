@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author vorga
@@ -42,6 +44,7 @@ public class Profile {
 
     @Basic
     @Column(nullable = false)
+    @JsonFormat(pattern = "MMM dd yyyy")
     private Date dob;
 
     @Basic
@@ -153,6 +156,7 @@ public class Profile {
         this.dob = dob;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }

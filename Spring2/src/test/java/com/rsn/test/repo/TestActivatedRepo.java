@@ -10,26 +10,20 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.rsn.repository.CommentRepo;
+import com.rsn.repository.ActivatedProfileRepo;
+import com.rsn.repository.CommentLikesRepo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:db.xml")
 @Transactional
-public class TestCommentRepo {
+public class TestActivatedRepo {
 
-	@Resource(name = "commentRepo")
-    private CommentRepo commentRepo;
+	@Resource(name = "activatedRepo")
+    private ActivatedProfileRepo activatedRepo;
 	
 	@Test
-	public void recordCount() {
-		assertEquals(commentRepo.selectAll().size(), 5);
+	public void exists() {
+		assertEquals(activatedRepo.exists("abcdefg"), false);
 	}
-	
-	@Test
-	public void getPostById() {
-		assertEquals((long) commentRepo.selectById(1).getComment_id(), (long) 1);
-	}
-
-	////DUC operations to follow
 
 }

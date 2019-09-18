@@ -4,14 +4,17 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.rsn.entity.Profile;
 
 @Repository("profileRepo")
 @Transactional
+
 public class ProfileRepo {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -32,6 +35,31 @@ public class ProfileRepo {
 		sessionFactory.getCurrentSession().delete(profile);
 	}
 	
+	
+	public String savePhoto(String username) {
+		Profile profile = selectByUsername(username);
+		String photo;
+		do {
+			photo = RandomStringUtils.random(15, true, true);
+		} while ( photoExists(photo) );
+		
+		profile.setPhoto(photo);
+		return photo;
+	}
+	
+	public boolean photoExists(String photo) {
+		return sessionFactory.getCurrentSession()
+				.createQuery("from Profile where photo = '" + photo + "'")
+				.setMaxResults(1).uniqueResult() != null;
+	}
+	
+	public String getPhoto(String username) {
+		Profile profile = selectByUsername(username);
+		
+		return profile.getPhoto();
+	}
+	
+	
 	public Profile selectByUsername(String username) {
 		return (Profile) sessionFactory
 				.getCurrentSession()
@@ -43,11 +71,11 @@ public class ProfileRepo {
 	public List<Profile> selectAllByName(String name) {
 		return sessionFactory.getCurrentSession()
 				.createQuery
-				("from Profile p where (lower(p.firstName) like lower(:n) "
-						+ "OR lower(p.middleName) like lower(:n) "
-						+ "OR lower(p.lastName) like lower(:n))", 
+				("from Profile p where (lower(p.firstName) like :n "
+						+ "OR lower(p.middleName) like :n "
+						+ "OR lower(p.lastName) like :n)", 
 				Profile.class)
-				.setParameter("n", name)
+				.setParameter("n", name.toLowerCase() + "%")
 				.list();
 	}
 	
