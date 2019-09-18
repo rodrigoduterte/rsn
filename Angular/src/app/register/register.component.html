@@ -8,7 +8,7 @@
             <div class="label">
                 <input [class.is-invalid]="registrationForm.get('username').invalid &&
                                             registrationForm.get('username').touched" 
-                                            formControlName="username" type="text" name="username"  />
+                                            formControlName="username" type="text" name="username" placeholder="User Name" required  />
                 
                     <div *ngIf="registrationForm.get('username').invalid && registrationForm.get('username').touched">
                             <small *ngIf="registrationForm.get('username').errors?.required" class="text-danger">Required Field</small>
@@ -18,7 +18,7 @@
                 <br>
                 <input [class.is-invalid]="registrationForm.get('password').invalid &&
                                              registrationForm.get('password').touched" 
-                                             formControlName="password" type="text" name="password"  />
+                                             formControlName="password" type="text" name="password"  placeholder="Password" required />
 
                     <div *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched">
                         <small *ngIf="registrationForm.get('password').errors?.required" class="text-danger">Required Field</small>
@@ -26,14 +26,14 @@
                     </div>
                 <br>
 
-                <input [class.is-invalid]="registrationForm.errors?.misMatch" formControlName="confirmPassword" type="text" name="confirmPassword"  />
+                <input [class.is-invalid]="registrationForm.errors?.misMatch" formControlName="confirmPassword" type="text" name="confirmPassword"  placeholder="Confirm Password" required />
                         <div>
                     <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords Do Not Match</small>
                 </div>
                 
                 <input [class.is-invalid]="registrationForm.get('firstName').invalid &&
                                         registrationForm.get('firstName').touched" 
-                                        formControlName="firstName" type="text" name="firstname"  />
+                                        formControlName="firstName" type="text" name="firstname"  placeholder="First Name" required />
 
                                         <div *ngIf="registrationForm.get('firstName').invalid && registrationForm.get('firstName').touched">
                                                 <small *ngIf="registrationForm.get('firstName').errors?.required" class="text-danger">Required Field</small>
@@ -41,7 +41,7 @@
                 <br>
                 <input [class.is-invalid]="registrationForm.get('lastName').invalid &&
                                             registrationForm.get('lastName').touched" 
-                                            formControlName="lastName" type="text" name="lastname"  />
+                                            formControlName="lastName" type="text" name="lastname"   placeholder="Last Name" required/>
 
                     <div *ngIf="registrationForm.get('lastName').invalid && registrationForm.get('lastName').touched">
                             <small *ngIf="registrationForm.get('lastName').errors?.required" class="text-danger">Required Field</small>
@@ -49,7 +49,7 @@
                 <br>
                 <input [class.is-invalid]="registrationForm.get('email').invalid &&
                                             registrationForm.get('email').touched"
-                                            formControlName="email" type="email" name="email"   />
+                                            formControlName="email" type="email" name="email"   placeholder="Email" required />
 
                                             <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">
                                                     <small *ngIf="registrationForm.get('email').errors?.required" class="text-danger">Required Field</small>

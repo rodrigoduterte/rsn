@@ -7,9 +7,9 @@
         <form [formGroup]="newPost" (click)="addPost()">
            <p>Write Your Post Here:
                <br>
-               <input type="text" name="bodyText" formControlName="bodytext">
+               <input type="text" name="bodyText" formControlName="bodytext"placeholder="Text">
             </p>
-        <p><input type="text" name="image" formControlName="image"></p>
+        <p><input type="text" name="image" formControlName="image" placeholder="PIC"></p>
             
             <button class="submit" value="Post!">Submit Post!</button>
         </form>
