@@ -65,8 +65,8 @@ public class Posts {
         this.post_date = post_date;
     }
 
-    public Optional<String> getPhoto() {
-        return Optional.ofNullable(photo);
+    public String getPhoto() {
+        return this.photo;
     }
 
     public void setPhoto(String photo) {

@@ -5,7 +5,7 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -20,6 +20,9 @@ public class EmailContentMaker {
 	private String middlename;
 	private String lastname;
 	private String activateName;
+	
+	private String server = "http://ec2-18-188-105-4.us-east-2.compute.amazonaws.com:8080/rsn";
+	
 	
 	public EmailContentMaker(String emailToRecipient, String username, String firstname, String middlename, String lastname,
 			String activateName) {
@@ -47,7 +50,9 @@ public class EmailContentMaker {
 		templateData.put("middlename", this.middlename);
 		templateData.put("lastname", this.lastname);
 		templateData.put("activateName", this.activateName);
-
+		templateData.put("server", this.server);
+		
+		
 		try (StringWriter out = new StringWriter()) {
 
 			template.process(templateData, out);

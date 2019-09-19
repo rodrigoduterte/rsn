@@ -1,10 +1,6 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -14,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { PostCardComponent } from './post-card/post-card.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,27 +22,14 @@ import { PostCardComponent } from './post-card/post-card.component';
     RegisterComponent,
     LoginComponent,
     ProfileCardComponent,
-    PostCardComponent
+    PostCardComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-<<<<<<< HEAD
-=======
-import { HttpClientModule } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule
->>>>>>> Gael_Ngouana
-=======
->>>>>>> d9296d760cbbd49d4e7000258e2489d7fd58631d
+    AppRoutingModule,
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

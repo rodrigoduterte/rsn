@@ -44,6 +44,7 @@ public class ProfileRepo {
 		} while ( photoExists(photo) );
 		
 		profile.setPhoto(photo);
+		update(profile);
 		return photo;
 	}
 	
@@ -65,6 +66,15 @@ public class ProfileRepo {
 				.getCurrentSession()
 				.createQuery("from Profile p where p.username = :un")
 				.setParameter("un", username)
+				.getSingleResult(); //uniqueResult()
+	}
+	
+	///added after EC2 deploy
+	public Profile selectByEmail(String email) {
+		return (Profile) sessionFactory
+				.getCurrentSession()
+				.createQuery("from Profile p where p.email = :em")
+				.setParameter("em", email)
 				.getSingleResult(); //uniqueResult()
 	}
 	

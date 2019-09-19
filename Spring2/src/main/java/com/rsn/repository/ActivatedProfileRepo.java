@@ -28,6 +28,13 @@ public class ActivatedProfileRepo {
 				.setMaxResults(1).uniqueResult() != null;
 	}
 
+	public boolean isActivated(String username) {
+		return sessionFactory.getCurrentSession()
+				.createQuery("from ActivatedProfile a where a.profile.username = '" + username 
+						+ "' and activated = true")
+				.setMaxResults(1).uniqueResult() != null;
+	}
+	
 	public String createNotExists(Profile user, Boolean activated) {
 		String word = "";
 
@@ -35,9 +42,19 @@ public class ActivatedProfileRepo {
 			word = RandomStringUtils.random(10, true, true);
 		} while ( exists(word) );
 
-		
 		sessionFactory.getCurrentSession().save(new ActivatedProfile(word, activated, user));
 		return word;
 
+	}
+	
+	public void update(ActivatedProfile activeProfile) {
+		sessionFactory.getCurrentSession().update(activeProfile);
+	}
+	
+	public void activate(String activeId) {
+		ActivatedProfile activeProfile = sessionFactory.getCurrentSession()
+				.find(ActivatedProfile.class, activeId);
+		activeProfile.setActivated(true);
+		update(activeProfile);
 	}
 }

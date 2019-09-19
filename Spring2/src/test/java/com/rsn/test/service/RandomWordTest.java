@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class RandomWordTest {
 
-	@Test
+	//@Test
 	public void test() {
 		assertEquals(
 				RandomStringUtils.random(10,true,true)
@@ -15,8 +15,8 @@ public class RandomWordTest {
 	}
 	
 	public static void main(String[] args) {
-		for (int x=0; x < 28; x++) {
-			System.out.println(RandomStringUtils.random(15,true,true));
+		for (int x=0; x < 5; x++) {
+			System.out.println(RandomStringUtils.random(20,true,true));
 		}
 	}
 
