@@ -19,6 +19,9 @@ export class ProfileComponent implements OnInit {
 
   APP_URL = 'http://localhost:9005/STSProject';
 
+
+  
+
   constructor(private _http: HttpClient) { }
 
   ngOnInit() {

@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RegistrationService } from '../registration.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-
+import { Router } from '@angular/router';
 
 
 
@@ -17,7 +17,7 @@ export class EditProfileComponent implements OnInit {
 
   
 
-  constructor(private fb: FormBuilder, private _registrationService: RegistrationService){}
+  constructor(private fb: FormBuilder, private _registrationService: RegistrationService, private router:Router){}
 
 
   editProfileForm = this.fb.group({
@@ -34,6 +34,7 @@ export class EditProfileComponent implements OnInit {
   })
   
   submitEdit(){
+    this.router.navigateByUrl('/profile');
     this.editProfileForm.setValue;
     console.log(this.editProfileForm.value);
     this._registrationService.editProfile(this.editProfileForm.value).subscribe(

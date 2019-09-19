@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { SessionStorageService } from 'ngx-webstorage';
 import { UserProfileBean } from 'src/UserProfileBean';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-make-post',
@@ -11,7 +12,7 @@ import { UserProfileBean } from 'src/UserProfileBean';
 })
 export class MakePostComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private _http: HttpClient, private session: SessionStorageService) { }
+  constructor(private fb: FormBuilder, private _http: HttpClient, private session: SessionStorageService,private router:Router) { }
   APP_URL = 'http://localhost:9005/Spring2';
   //newPost = new PostBean();
 
@@ -28,7 +29,7 @@ retrieveSessionUser(){
     firstName: 'firstame' ,  //the goal is to fill in names and subtext amd profile picture via the session
     lastName: 'lastname' ,
     subTitle: 'subtitle',
-    bodyText: 'bodytext',
+    bodyText: '',
     bodyImage: 'image',
     
   });
@@ -49,6 +50,7 @@ retrieveSessionUser(){
   }
 
   addPost(){
+    this.router.navigateByUrl('/profile');
     console.log(this.newPost);
     this._http.post<any>(this.APP_URL + '/post/new', this.newPost)
     .subscribe(
