@@ -1,5 +1,6 @@
 package com.rsn.controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 
@@ -156,12 +157,22 @@ public class ProfileController {
 	}
 
 	@PostMapping(value = "/user/in")
-	public String login(Model model, HttpServletRequest request) {
-		// public @ResponseBody Profile login(@ModelAttribute("user") Profile profile){
-
+	//public String login(HttpServletRequest request) throws IOException {
+	// public @ResponseBody Profile login(@ModelAttribute("user") Profile profile){
+	public String login(@RequestBody HttpServletRequest request) throws IOException {
+		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
+		
+		System.out.println(username);
+		System.out.println(username);
+		
+//		BufferedReader br = request.getReader();
+//		String str = "";
+//		while ((str = br.readLine()) != null) {
+//			str += str;
+//		}
+//		System.out.println(str);
 		try {
 			if(activatedRepo.isActivated(username)) {
 				if (profileRepo.selectByUsername(username) == null) {
@@ -170,7 +181,6 @@ public class ProfileController {
 					Profile profile = profileRepo.selectByUsername(username);
 
 					if (aes.decrypt(profile.getPassword()).equals(password)) {
-						model.addAttribute("username", username);
 						return "User found";
 					} else {
 						return "Password Invalid";
