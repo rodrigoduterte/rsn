@@ -15,7 +15,7 @@
     <table style="width: 272px; height: 108px;" border="1">
       <tbody>
         <tr>
-          <td style="margin-left: 34px; width: 88px;"><span style="font-family: Microsoft JhengHei;">Username</span></td>
+          <td style="margin-left: 34px; width: 88px;"><span style="font-family: Microsoft JhengHei;">${username}</span></td>
           <td>&nbsp;&nbsp;&nbsp;&nbsp; </td>
         </tr>
         <tr>
@@ -42,7 +42,10 @@
     </table>
     <p> &nbsp;&nbsp;&nbsp; <b style="font-family: Ebrima;">Click the link below
         to activate your account</b></p> 
-    <p><b style="font-family: Ebrima;">&nbsp;&nbsp; <a href="">http://localhost:9009/user/activate/${activateName}</a><br>
+    <p><b style="font-family: Ebrima;">&nbsp;&nbsp; 
+    <a href="${server}/user/activate/${activateName}">
+    ${server}/activate/${activateName}
+    </a><br>
       </b></p>
   </body>
 </html>

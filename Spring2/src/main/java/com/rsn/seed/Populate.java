@@ -9,6 +9,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 ////Go to the Run Configurations and add a java config for RevatureSocialNetwork2
 ////Copy Apache's RevatureSocialNetwork config to RevatureSocialNetwork2 
 public class Populate {
+	///// DO NOT RUN!!!!!!!!!!!!!!!
+	///// DO NOT RUN!!!!!!!!!!!!!!!
 	public static void main(String[] args) throws ParseException {
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("localContext.xml");
 		MakeUsers.run(appContext);

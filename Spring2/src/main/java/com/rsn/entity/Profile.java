@@ -27,6 +27,7 @@ public class Profile {
     @Column(unique = true, nullable = false)
     private String username;
 
+    // needs to be unique
     @Basic
     @Column(nullable = false)
     private String email;

@@ -42,7 +42,7 @@ public class PostRepo {
 		return sessionFactory.getCurrentSession().createQuery("from Posts", Posts.class).list();
 	}
 	
-	public List<Posts> selectByProfileId(long id) {
+	public List<Posts> selectByProfileId(int id) {
 		return sessionFactory.getCurrentSession()
 				.createQuery("from Posts p where p.profile.user_id = :id")
 				.setParameter("id", id)
@@ -52,7 +52,7 @@ public class PostRepo {
 	public String createPhotoName() {
 		String photo;
 		do {
-			photo = RandomStringUtils.random(15, true, true);
+			photo = RandomStringUtils.random(20, true, true);
 		} while ( photoExists(photo) );
 		return photo;
 	}
@@ -62,4 +62,13 @@ public class PostRepo {
 				.createQuery("from Posts where photo = '" + photo + "'")
 				.setMaxResults(1).uniqueResult() != null;
 	}
+	
+	public List<Posts> selectLatestPosts(Long postId) {
+		return sessionFactory.getCurrentSession()
+				.createQuery("from Posts p where p.post_id > :postId")
+				.setParameter("postId", postId)
+				.list();
+	}
+	
+	
 }

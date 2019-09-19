@@ -1,17 +1,17 @@
 package com.rsn.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.HttpMethod;
-import com.rsn.entity.PostLikes;
 import com.rsn.entity.Posts;
 import com.rsn.entity.Profile;
 import com.rsn.repository.PostRepo;
@@ -40,7 +40,7 @@ public class PostController {
 		
 		String fileName = postRepo.createPhotoName();
 		
-		String signedUrl = s3Util.createSignedUrl(fileName, HttpMethod.PUT);
+		String signedUrl = s3Util.createSignedPutUrl(fileName);
 		
 		if (!signedUrl.equals("")) {
 			Posts post = new Posts(new Date(), fileName, body, profile);
@@ -49,9 +49,54 @@ public class PostController {
 		}
 		
 		// returns placeholder image
-		return "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png";
+		return "";
 	}
 
+	@GetMapping(value = "/post/all")
+	public List<Posts> getAll() {
+		List<Posts> posts = postRepo.selectAll();
+		for(Posts post: posts) {
+
+			String fileName = post.getPhoto();
+			String usernameOfPost = post.getProfile().getUsername();
+			
+			String signedUrl = s3Util.createSignedGetUrl(fileName);
+			post.setPhoto(signedUrl);
+		}
+		
+		return posts;
+	}
+	
+	@GetMapping(value = "/post/{username}")
+	public List<Posts> getPostsByUsername(@PathVariable("username") String username) {
+		int profileId = profileRepo.selectByUsername(username).getUser_id();
+		
+		List<Posts> posts = postRepo.selectByProfileId(profileId);
+		for(Posts post: posts) {
+
+			String fileName = post.getPhoto();
+			String usernameOfPost = post.getProfile().getUsername();
+			
+			String signedUrl = s3Util.createSignedGetUrl(fileName);
+			post.setPhoto(signedUrl);
+		}
+		
+		return posts;
+	}
 	
 	
+	@GetMapping(value = "/post/after/{postId}")
+	public List<Posts> getLatest(@PathVariable(name="postId") Long postId) {
+		List<Posts> posts = postRepo.selectLatestPosts(postId);
+		for(Posts post: posts) {
+
+			String fileName = post.getPhoto();
+			String usernameOfPost = post.getProfile().getUsername();
+			
+			String signedUrl = s3Util.createSignedGetUrl(fileName);
+			post.setPhoto(signedUrl);
+		}
+		
+		return posts;
+	}
 }
