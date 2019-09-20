@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { UserProfileBean } from 'src/UserProfileBean';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { SessionStorageService } from 'ngx-webstorage';
 
 @Component({
@@ -8,18 +7,31 @@ import { SessionStorageService } from 'ngx-webstorage';
   styleUrls: ['./profile-card.component.css']
 })
 export class ProfileCardComponent implements OnInit {
- 
-@Input()
-profile: UserProfileBean;
+ //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  @Input()
+  userProfile:any;
+  isEdit: any;
+
+
+  @Output()
+  public editEvent = new EventEmitter();
+
+
+  onEditEvent(){
+    this.editEvent.emit();
+      }
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+ profile: any;
 
 constructor(private session:SessionStorageService){}
 
-  
+
 
   ngOnInit() {
-    this.retrieveSessionUser(); 
-    
+    this.retrieveSessionUser();     
   }
+
 
   retrieveSessionUser(){
     this.profile = this.session.retrieve('user');

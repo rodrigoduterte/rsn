@@ -13,22 +13,23 @@ export class RegisterComponent implements OnInit {
 
   // @Input()
   // Profile: UserProfileBean;
-
+response: any;
  
 
   constructor(private router:Router,private fb: FormBuilder, private _registrationService: RegistrationService) { }
   
   registrationForm = this.fb.group({
-  username: ['', [Validators.required, Validators.minLength(4)]],
-  password: ['', [Validators.required, Validators.minLength(4)]],
-  confirmPassword: ['', [Validators.required, Validators.minLength(4)]],
-  firstName: ['', Validators.required],
-  lastName: ['',Validators.required ],
-  email: ['',Validators.required]
+  username: ['Username', [Validators.required, Validators.minLength(4)]],
+  password: ['Password', [Validators.required, Validators.minLength(4)]],
+  confirmPassword: ['Confirm Password', [Validators.required, Validators.minLength(4)]],
+  firstName: ['First Name', Validators.required],
+  lastName: ['Last Name',Validators.required ],
+  email: ['Email',Validators.required]
 }, {validator: passwordMatchValidator});
 
 onSubmit(){
   console.log(this.registrationForm.value);
+  this.registrationForm.setValue;
   this._registrationService.register(this.registrationForm.value)
   .subscribe(
     response => console.log('success' , response),
@@ -36,6 +37,7 @@ onSubmit(){
   );
   this.router.navigateByUrl('/')
 }
+
 
   //newProfile = new UserProfileBean("Username", "Password", "First Name", "Last Name", "Email");
 

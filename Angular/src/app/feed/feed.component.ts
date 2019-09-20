@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PostBean } from 'src/PostBean';
-import { SessionStorageService } from 'ngx-webstorage';
-import { UserProfileBean } from 'src/UserProfileBean';
+import { SessionStorageService, SessionStorage } from 'ngx-webstorage';
 import { HttpClient } from '@angular/common/http';
+import { RegistrationService } from '../registration.service';
 
 @Component({
   selector: 'app-feed',
@@ -11,19 +10,23 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FeedComponent implements OnInit {
 
-APP_URL = 'END POINT FOR GETALLPOSTS'
+@SessionStorage('user')
+userProfile: any;
+
+
 feedPosts: any;
 
 
-  @Input()
-  currentUser : UserProfileBean;
+
 
 
   
-  newPost = new PostBean();
+  
   //newPost = new PostBean(this.currentUser.profilePic, this.currentUser.firstName, this.currentUser.lastName);   //this is a post Object for creating new posts 
 
-  constructor(private _http: HttpClient, private session:SessionStorageService) { }
+  constructor(private _http: RegistrationService, private session:SessionStorageService) {
+    this.getAllPosts();
+   }
 
   ngOnInit() {   
     this.retrieveSessionUser();
@@ -31,7 +34,7 @@ feedPosts: any;
   }     
   
   retrieveSessionUser(){
-    this.currentUser = this.session.retrieve('user');
+    this.userProfile = this.session.retrieve('user');
   }
 
 // addPost(post: PostBean){            this was being used for dummy Data in an Array from a service. Wont need once we get Database info
@@ -41,7 +44,7 @@ feedPosts: any;
 // }
 
 getAllPosts(){
-  this._http.get(this.APP_URL + '/getAllPosts').subscribe(  //Need to match endpoint with Gabe on the Java End
+  this._http.getAllPosts().subscribe( 
     data => {
       this.feedPosts = data;
     },

@@ -17,6 +17,7 @@ import { RegistrationService } from './registration.service';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-gaurd.service';
 import { MakePostComponent } from './make-post/make-post.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MakePostComponent } from './make-post/make-post.component';
     ProfileCardComponent,
     PostCardComponent,
     MakePostComponent,
+    EditProfileComponent
     
   ],
   imports: [

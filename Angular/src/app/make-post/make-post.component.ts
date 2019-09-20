@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { SessionStorageService } from 'ngx-webstorage';
-import { UserProfileBean } from 'src/UserProfileBean';
+import { SessionStorageService, SessionStorage } from 'ngx-webstorage';
+import { RegistrationService } from '../registration.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-make-post',
@@ -11,50 +13,49 @@ import { UserProfileBean } from 'src/UserProfileBean';
 })
 export class MakePostComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private _http: HttpClient, private session: SessionStorageService) { }
-  APP_URL = 'http://localhost:9005/Spring2';
-  //newPost = new PostBean();
+  constructor(private fb: FormBuilder, private session: SessionStorageService,private _http: RegistrationService, private router:Router) {
+    this.retrieveSessionUser();
+  }
 
+    @SessionStorage('user')
+    profile: any;
 
-  @Input()
-profile: UserProfileBean;
+    
+newPostObject: any;
 
-
-retrieveSessionUser(){
-  this.profile = this.session.retrieve('user');
-}
 
   newPost = this.fb.group({
-    firstName: 'firstame' ,  //the goal is to fill in names and subtext amd profile picture via the session
-    lastName: 'lastname' ,
-    subTitle: 'subtitle',
-    bodyText: 'bodytext',
-    bodyImage: 'image',
+    post_body: 'Your Text Here',
+    photo: 'image',
     
   });
 
-  // newPost = this.fb.group({          //Need getters in BEAN but this causes Session error Need to Solve
-  //   firstName: this.profile._firstName,
-  //   lastName: this.profile._lastName ,
-  //   subTitle: this.profile._occupation,
-  //   bodyText: 'bodytext',
-  //   bodyImage: 'image',
-    
-  // });
-
-
+ makePostObject(){   //this method assigns the necesary values neede from the userProfile and the forms i the HTML to submit a new post to the Database.
+  this.newPostObject ={
+    photo: this.newPost.value.photo,
+    post_body: this.newPost.value.post_body,
+    profile: this.profile
+  }
+   this.addPost(this.newPostObject);
+ }
 
   ngOnInit() {
     this.retrieveSessionUser()
   }
 
-  addPost(){
-    console.log(this.newPost);
-    this._http.post<any>(this.APP_URL + '/post/new', this.newPost)
+  retrieveSessionUser(){
+    this.profile = this.session.retrieve('user');
+  }
+
+  addPost(object: any){
+    console.log(object);
+    this._http.newPost(object)
+    //this._http.post<any>(this.APP_URL + '/post/new', this.postObject)
     .subscribe(
       response => console.log('success' , response),
       error => console.log('error', error)
     );
+    this.router.navigateByUrl('/feed');
 
 }
 }

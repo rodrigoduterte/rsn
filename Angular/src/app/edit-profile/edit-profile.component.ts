@@ -1,7 +1,8 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RegistrationService } from '../registration.service';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { Router } from '@angular/router';
+import { SessionStorageService, SessionStorage } from 'ngx-webstorage';
 
 
 
@@ -14,10 +15,14 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
 })
 export class EditProfileComponent implements OnInit {
 
-
   
 
-  constructor(private fb: FormBuilder, private _registrationService: RegistrationService){}
+  @SessionStorage()
+  userProfile:any;
+
+
+
+  constructor(private session:SessionStorageService, private fb: FormBuilder, private _registrationService: RegistrationService,private router:Router){}
 
 
   editProfileForm = this.fb.group({
@@ -39,11 +44,17 @@ export class EditProfileComponent implements OnInit {
     this._registrationService.editProfile(this.editProfileForm.value).subscribe(
       response => console.log('SUCCESS!!!!', response),
       error => console.error('Error...')
-    )
+    );
+    this.router.navigateByUrl('/profile');
 
   }
 
+  retrieveSessionUser(){
+    this.userProfile = this.session.retrieve('user');
+  }
+
   ngOnInit() {
+    this.retrieveSessionUser()
   }
 
 }

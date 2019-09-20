@@ -1,21 +1,53 @@
 
-<div class="card basicCenter" style="width: 18rem;">
-        <img class="defaultProPic" src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg" class="card-img-top" alt="...">
+<div class="card basicCenter" >
+        <img class="card-img-top " [src]="profile.photo"  alt="...">
         <!--Make sure to property bind the SRC for the image for a loaded profile picture --> 
        <div class="card-body">
           <h5 class="card-title"> {{profile.firstName}} {{profile.middleName}} {{profile.lastName}}</h5>
           <p class="card-text">{{profile.bio}}</p>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">{{profile.dob}}</li>
-          <li class="list-group-item">{{profile.gender}}</li>
-          <li class="list-group-item">{{profile.relationshipStatus}}</li>
-          <li class="list-group-item">{{profile.favoriteColor}}</li>
-          <li class="list-group-item">{{profile.city}}</li>
-          <li class="list-group-item">{{profile.occupation}}</li>
-        </ul>
+        <div>
+            <table class="table table-borderless" style=" background-color: white; text-align: left">
+                <tbody>
+                  <tr>
+                    <td><small >Birthday:</small></td>
+                    <td>{{profile.dob}}</td>
+                  </tr>
+                  <tr>
+                      <td><small>Gender:</small></td>
+                      <td>{{profile.gender}}</td>
+                    </tr>
+                    <tr>
+                        <td><small>RelationShip:</small></td>
+                        <td>{{profile.relationshipStatus}}</td>
+                      </tr>
+                      <tr>
+                          <td><small>Favorite Color:</small></td>
+                          <td>{{profile.favoriteColor}}</td>
+                        </tr>
+                        <tr>
+                            <td><small>City:</small></td>
+                            <td>{{profile.city}}</td>
+                          </tr>
+                          <tr>
+                              <td><small>Occupation:</small></td>
+                              <td>{{profile.occupation}}</td>
+                            </tr>
+                </tbody>
+              </table>
+        </div>
+        <!-- <ul class="list-group list-group-flush" style="text-align: left">
+          <li class="list-group-item"><small >Birthday:</small> {{profile.dob}}</li>
+          <li class="list-group-item"><small>Gender:</small> {{profile.gender}}</li>
+          <li class="list-group-item"><small>RelationShip:</small> {{profile.relationshipStatus}}</li>
+          <li class="list-group-item"><small>Favorite Color:</small> {{profile.favoriteColor}}</li>
+          <li class="list-group-item"><small>City:</small> {{profile.city}}</li>
+          <li class="list-group-item"><small>Occupation:</small> {{profile.occupation}}</li>
+        </ul> -->
         <div class="card-body">
-          <a (click)="editProfile()" href="#" class="card-link">Edit Profile</a>
+          <button (click)="isEdit()"  >Edit Profile</button>
           <a href="#" class="card-link">See Your Posts</a>
         </div>
       </div>
+
+      

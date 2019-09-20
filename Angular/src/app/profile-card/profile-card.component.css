@@ -2,13 +2,18 @@
     background-color: lightgray;
     padding: 10px;
     text-align: center;
-    width: 33%;
+    width: 45%;
     margin: 0 auto;
     
 }
 
 .defaultProPic{
-    width:100px;
-    height: 100px;
+    width:50%;
+    height: 50%;
     margin: 15px;
+    border-radius: 100px;
+}
+
+small{
+    color:rgb(201, 201, 201)
 }

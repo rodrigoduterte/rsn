@@ -1,12 +1,18 @@
 <div>
 
-    <div class="padContainer">
-        <app-profile-card [profile]="profile"></app-profile-card>  <!-- the [profile] = "profile" loads the profile card with the passed in profile object in the TS-->
+    <div *ngIf="editMode == false" class="padContainer">
+        <app-profile-card (childEvent)="editSwitchOn()" [userProfile]="userProfile"></app-profile-card>  <!-- the [profile] = "profile" loads the profile card with the passed in profile object in the TS-->
+        <button (click)="editSwitchOn()"  >Edit Profile</button>
+    </div>
+    <div *ngIf="editMode == true">
+        <app-edit-profile (childEvent)="editSwitchOff()" ></app-edit-profile>
+        <button (click)="editSwitchOff()"  >Edit Profile</button>
     </div>
 
 <app-post></app-post>
 
 <div>
+
 <div *ngFor="let post of userPosts">
         <app-post-card [post]="post"></app-post-card>
     </div>

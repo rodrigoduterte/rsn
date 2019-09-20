@@ -11,7 +11,8 @@ export class PostCardComponent implements OnInit {
   constructor() { }
 
   @Input()
-  post: PostBean;
+  post: any;
+  
   
   
 

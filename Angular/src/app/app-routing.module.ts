@@ -6,6 +6,7 @@ import { FeedComponent } from './feed/feed.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-gaurd.service';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'feed', canActivate: [AuthGuard], component: FeedComponent},
   {path: 'register', component: RegisterComponent},
   {path: '', component: LoginComponent}, //login Page
+  {path: 'editProfile',canActivate: [AuthGuard], component: EditProfileComponent}
   
   
 ];

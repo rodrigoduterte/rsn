@@ -1,19 +1,33 @@
 
 
 <div>
+    
 
     <div class="basicCenter">
         <div class="card spacing">
-        <form [formGroup]="newPost" (click)="addPost()">
+           
+                <div>
+                        <img class="postPic"  [src]="profile.photo" alt="ProfilePicture" style="padding:5px" srcset="">
+                       <h5  class="card-title" >{{profile.firstName}} {{profile.lastName}}</h5>
+                       <h6  class="card-subtitle mb-2 text-muted">{{profile.occupation}}</h6>
+                   </div>
+
+        <form [formGroup]="newPost" >
            <p>Write Your Post Here:
                <br>
-               <input type="text" name="bodyText" formControlName="bodytext"placeholder="Text">
+               <input type="text" name="bodyText" formControlName="post_body">
             </p>
-        <p><input type="text" name="image" formControlName="image" placeholder="PIC"></p>
+        
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose an image file "Birds with Arms are nice!</label>
+              </div>
             
-            <button class="submit" value="Post!">Submit Post!</button>
-        </form>
+            <button type="submit" (click)="makePostObject()" value="Post!">Submit Post!</button>
+            
+       </form>
     </div>
+    
     </div>
     
 
