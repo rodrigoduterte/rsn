@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserProfileBean } from 'src/UserProfileBean';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { passwordMatchValidator } from '../shared/password.validator';
 import { RegistrationService } from '../registration.service';
 import { Router } from '@angular/router';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -19,12 +19,15 @@ response: any;
   constructor(private router:Router,private fb: FormBuilder, private _registrationService: RegistrationService) { }
   
   registrationForm = this.fb.group({
-  username: ['Username', [Validators.required, Validators.minLength(4)]],
-  password: ['Password', [Validators.required, Validators.minLength(4)]],
-  confirmPassword: ['Confirm Password', [Validators.required, Validators.minLength(4)]],
-  firstName: ['First Name', Validators.required],
-  lastName: ['Last Name',Validators.required ],
-  email: ['Email',Validators.required]
+  username: ['', [Validators.required, Validators.minLength(4)]],
+  password: ['', [Validators.required, Validators.minLength(4)]],
+  //confirmPassword: ['', [Validators.required, Validators.minLength(4)]],
+  firstName: ['', Validators.required],
+  lastName: ['',Validators.required],
+  dob: ['',Validators.required],
+  gender: ['',Validators.required],
+  bio: ['',Validators.required],
+  email: ['',Validators.required]
 }, {validator: passwordMatchValidator});
 
 onSubmit(){

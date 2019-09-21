@@ -28,7 +28,9 @@ feedPosts: any;
     this.getAllPosts();
    }
 
-  ngOnInit() {   
+  ngOnInit() {  
+    
+      document.body.classList.add('bg-img');
     this.retrieveSessionUser();
 
   }     

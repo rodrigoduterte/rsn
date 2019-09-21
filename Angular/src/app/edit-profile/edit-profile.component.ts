@@ -35,7 +35,8 @@ export class EditProfileComponent implements OnInit {
       relationshipStatus: [''],
       favoriteColor: [''],
       city: [''],
-      occupation: ['']
+      occupation: [''],
+      email:['']
   })
   
   submitEdit(){

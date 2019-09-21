@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,11 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-gaurd.service';
 import { MakePostComponent } from './make-post/make-post.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ForgotComponent } from './forgot/forgot.component';
+
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,10 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     ProfileCardComponent,
     PostCardComponent,
     MakePostComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ForgotComponent,
+    DatePickerComponent,
+    
     
   ],
   imports: [
@@ -40,6 +49,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgxWebstorageModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [RegistrationService, AuthService,AuthGuard],
   bootstrap: [AppComponent]

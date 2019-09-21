@@ -1,5 +1,5 @@
 <div>
-<div *ngIf="!isValid">
+<div >
   <ul class="nav">
       <li class="nav-item">
           <a class="nav-link active" routerLink="/">Log In</a>
@@ -12,10 +12,10 @@
 
 
 
-<div *ngIf="isValid">
+<div >
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-item" (click)="logOut()" routerLink="/">Logout</a>
+      <a class="nav-link" (click)="logOut()" routerLink="/">Logout</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="profile">Profile</a>

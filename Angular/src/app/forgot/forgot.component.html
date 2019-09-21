@@ -1,0 +1,20 @@
+<div class="loginCard">
+    
+        <img  width="175px" height="150px" 
+        style="margin-bottom: 10px"  src="https://bucketgame.s3.us-east-2.amazonaws.com/_coolaborate.png">
+        
+        <form  [formGroup]="resetPassword" (ngSubmit)="submitRequest()" >
+            <p><input formControlName="username" type="text" name="username" value="" placeholder="User Name" required></p>
+            <p><input formControlName="email" type="email" name="email" value="" placeholder="Email" required ></p>
+            <p><input type="submit" value="Reset Password" ></p>
+            
+            <!--p><input type="submit" value="Login" (click)="getUser()"></p> -->
+    
+       {{loginForm.value.password | json}}
+          <!--  
+            <button class="btn btn-primary" (click)="onLogin()" >Login</button>
+            <button class="btn btn-primary" (click)="onLogout()">Logout</button>
+       -->
+    
+        </form>
+    </div>

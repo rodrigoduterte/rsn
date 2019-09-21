@@ -8,7 +8,7 @@
             <div class="label">
                 <input [class.is-invalid]="registrationForm.get('username').invalid &&
                                             registrationForm.get('username').touched" 
-                                            formControlName="username" type="text" name="username"  />
+                                            formControlName="username" type="text" name="username" placeholder="Username" />
                 
                     <div *ngIf="registrationForm.get('username').invalid && registrationForm.get('username').touched">
                             <small *ngIf="registrationForm.get('username').errors?.required" class="text-danger">Required Field</small>
@@ -18,7 +18,7 @@
                 <br>
                 <input [class.is-invalid]="registrationForm.get('password').invalid &&
                                              registrationForm.get('password').touched" 
-                                             formControlName="password" type="text" name="password"  />
+                                             formControlName="password" type="text" name="password" placeholder="Password" />
 
                     <div *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched">
                         <small *ngIf="registrationForm.get('password').errors?.required" class="text-danger">Required Field</small>
@@ -26,14 +26,16 @@
                     </div>
                 <br>
 
-                <input [class.is-invalid]="registrationForm.errors?.misMatch" formControlName="confirmPassword" type="text" name="confirmPassword"  />
+                <!-- <input [class.is-invalid]="registrationForm.errors?.misMatch" formControlName="password" type="text" name="confirmPassword" placeholder="Confirm Password"  />
                         <div>
                     <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords Do Not Match</small>
-                </div>
+                </div> -->
+
+            
                 
-                <input [class.is-invalid]="registrationForm.get('firstName').invalid &&
+                <input [class]="registrationForm.get('firstName').invalid &&
                                         registrationForm.get('firstName').touched" 
-                                        formControlName="firstName" type="text" name="firstname"  />
+                                        formControlName="firstName" type="text" name="firstname" placeholder="First Name" />
 
                                         <div *ngIf="registrationForm.get('firstName').invalid && registrationForm.get('firstName').touched">
                                                 <small *ngIf="registrationForm.get('firstName').errors?.required" class="text-danger">Required Field</small>
@@ -41,15 +43,66 @@
                 <br>
                 <input [class.is-invalid]="registrationForm.get('lastName').invalid &&
                                             registrationForm.get('lastName').touched" 
-                                            formControlName="lastName" type="text" name="lastname"  />
+                                            formControlName="lastName" type="text" name="lastname" placeholder="Last Name" />
 
                     <div *ngIf="registrationForm.get('lastName').invalid && registrationForm.get('lastName').touched">
                             <small *ngIf="registrationForm.get('lastName').errors?.required" class="text-danger">Required Field</small>
                         </div>  
+                        <br>
+
+
+
+                        <!-- <input [matDatepicker]="myDatepicker">
+<mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+<mat-datepicker #myDatepicker></mat-datepicker> -->
+                        
+                        
+ 
+                
+                 <input matInput [class.is-invalid]="registrationForm.get('dob').invalid &&
+                                            registrationForm.get('dob').touched" 
+                                            [matDatepicker]="myDatepicker"
+                                            formControlName="birthday" type="text" name="birthday" placeholder="DOB YYYY-MM-D" size="14" />
+                                            <mat-datepicker-toggle [for]="myDatepicker" ></mat-datepicker-toggle>
+                                            <mat-datepicker #myDatepicker style="position:fixed;"></mat-datepicker>
+    
+                    <div *ngIf="registrationForm.get('dob').invalid && registrationForm.get('dob').touched">
+                            <small *ngIf="registrationForm.get('dob').errors?.required" class="text-danger">Required Field</small>
+                            </div>
+                        
+                            <br>
+                            
+                            <input [class.is-invalid]="registrationForm.get('gender').invalid &&
+                            registrationForm.get('gender').touched" 
+                            formControlName="gender" type="text" name="gender" placeholder="Gender" />
+    
+                            <div *ngIf="registrationForm.get('gender').invalid && registrationForm.get('gender').touched">
+                                    <small *ngIf="registrationForm.get('gender').errors?.required" class="text-danger">Required Field</small>
+                                </div>
+    
+                                <br>
+                            
+                            <input [class.is-invalid]="registrationForm.get('bio').invalid &&
+                            registrationForm.get('bio').touched" 
+                            formControlName="bio" type="text" name="Bio" placeholder="Bio" />
+    
+                            <div *ngIf="registrationForm.get('bio').invalid && registrationForm.get('bio').touched">
+                                    <small *ngIf="registrationForm.get('bio').errors?.required" class="text-danger">Required Field</small>
+                                </div>
+
+ 
+
+
+
+
+
+
+
+
                 <br>
                 <input [class.is-invalid]="registrationForm.get('email').invalid &&
                                             registrationForm.get('email').touched"
-                                            formControlName="email" type="email" name="email"   />
+                                            formControlName="email" type="email" name="email" placeholder="Email"  />
 
                                             <div *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">
                                                     <small *ngIf="registrationForm.get('email').errors?.required" class="text-danger">Required Field</small>
