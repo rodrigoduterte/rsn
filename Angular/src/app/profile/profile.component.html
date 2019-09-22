@@ -1,13 +1,19 @@
 <div>
 
-    <div *ngIf="editMode == false" class="padContainer">
+    <div *ngIf="!editMode" class="padContainer">
         <app-profile-card (childEvent)="editSwitchOn()" [userProfile]="userProfile"></app-profile-card>  <!-- the [profile] = "profile" loads the profile card with the passed in profile object in the TS-->
-        <button (click)="editSwitchOn()"  >Edit Profile</button>
+        <div class="centerButton">
+        <button class="centerButton" (click)="editSwitchOn()"  >Edit Profile</button>
     </div>
-    <div *ngIf="editMode == true">
+    </div>
+    <div *ngIf="editMode">
         <app-edit-profile (childEvent)="editSwitchOff()" ></app-edit-profile>
-        <button (click)="editSwitchOff()"  >Edit Profile</button>
+        <div class="centerButton">
+        <button  (click)="editSwitchOff()"  >View Profile</button>
     </div>
+    </div>
+
+<!-- <button type="button" (click)="printPosts()">Click Me</button> -->
 
 <app-post></app-post>
 
@@ -18,6 +24,6 @@
     </div>
 </div>
 
-
+<!-- {{userPosts | json}} -->
 
 </div>

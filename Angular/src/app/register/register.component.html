@@ -1,8 +1,9 @@
 <div class="registerationCard">
         <img class="defaultProPic" src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg">
-    
-        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" >
-              <!-- {{registrationForm.value | json}}-->
+       <br>
+        {{registrationForm.value | json}}
+        <form [formGroup]="registrationForm"   >
+               
                 
             <h3>Registration</h3>
             <div class="label">
@@ -62,9 +63,9 @@
                  <input matInput [class.is-invalid]="registrationForm.get('dob').invalid &&
                                             registrationForm.get('dob').touched" 
                                             [matDatepicker]="myDatepicker"
-                                            formControlName="birthday" type="text" name="birthday" placeholder="DOB YYYY-MM-D" size="14" />
-                                            <mat-datepicker-toggle [for]="myDatepicker" ></mat-datepicker-toggle>
-                                            <mat-datepicker #myDatepicker style="position:fixed;"></mat-datepicker>
+                                            formControlName="dob" type="text" name="birthday" placeholder="DOB YYYY-MM-D" size="14" />
+                                            <mat-datepicker-toggle type="button" [for]="myDatepicker" ></mat-datepicker-toggle>
+                                            <mat-datepicker type="button" #myDatepicker style="position:fixed;"></mat-datepicker>
     
                     <div *ngIf="registrationForm.get('dob').invalid && registrationForm.get('dob').touched">
                             <small *ngIf="registrationForm.get('dob').errors?.required" class="text-danger">Required Field</small>
@@ -109,7 +110,7 @@
                                                 </div>  
                                             <br>
             </div>
-            <button (click)="onSubmit()" [disabled]="!registrationForm.valid || !registrationForm.get('email').touched" type="submit" value="Register" >Register</button>
+            <button (click)="onSubmit()" [disabled]="!registrationForm.valid || !registrationForm.get('email').touched" type="button" value="Register" >Register</button>
         </form>
     </div>
 

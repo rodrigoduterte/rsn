@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { passwordMatchValidator } from '../shared/password.validator';
+
 import { RegistrationService } from '../registration.service';
 import { Router } from '@angular/router';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -28,7 +28,7 @@ response: any;
   gender: ['',Validators.required],
   bio: ['',Validators.required],
   email: ['',Validators.required]
-}, {validator: passwordMatchValidator});
+},);
 
 onSubmit(){
   console.log(this.registrationForm.value);

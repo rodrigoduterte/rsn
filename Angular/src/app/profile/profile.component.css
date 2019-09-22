@@ -1,3 +1,10 @@
 .padContainer {
     padding: 5px;
 }
+
+.centerButton{
+    
+    text-align: center;
+    margin: 0 auto;
+    
+}

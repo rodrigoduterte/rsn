@@ -25,16 +25,15 @@ newPostObject: any;
 
 
   newPost = this.fb.group({
-    post_body: 'Your Text Here',
+    body: 'Your Text Here',
     photo: 'image',
     
   });
 
- makePostObject(){   //this method assigns the necesary values neede from the userProfile and the forms i the HTML to submit a new post to the Database.
+ makePostObject(){   //this method assigns the necesary values needed from the userProfile and the forms i the HTML to submit a new post to the Database.
   this.newPostObject ={
     photo: this.newPost.value.photo,
-    post_body: this.newPost.value.post_body,
-    profile: this.profile
+    body: this.newPost.value.body,
   }
    this.addPost(this.newPostObject);
  }
@@ -49,13 +48,40 @@ newPostObject: any;
 
   addPost(object: any){
     console.log(object);
-    this._http.newPost(object)
-    //this._http.post<any>(this.APP_URL + '/post/new', this.postObject)
+    this._http.newPost(object,this.profile.username)
     .subscribe(
       response => console.log('success' , response),
       error => console.log('error', error)
     );
     this.router.navigateByUrl('/feed');
 
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Photo Upload~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+async uploadPostPhoto(event) {
+  let file = event.target.files[0];
+  console.log(file);
+​
+​
+  let urlResponse = await fetch('http://ec2-18-188-105-4.us-east-2.compute.amazonaws.com:8080/rsn/post/photo/' + this.profile.username, {
+    method: 'PUT'
+  });
+  let signedUrl = await urlResponse.json();
+  
+  console.log(signedUrl);
+​
+  let s3Response = await fetch(signedUrl.postPhoto, {
+    method: 'PUT',
+    body: file
+  })
+​
+  let urlResponse2 = await fetch('http://ec2-18-188-105-4.us-east-2.compute.amazonaws.com:8080/rsn/post/photo/' + this.profile.username +'?posti=' + signedUrl.postId, {
+    method: 'GET'
+  });
+  let signedUrl2 = await urlResponse2.text();
+
+  // let image = document.getElementById('file-img');
+  // image.src = signedUrl2;
 }
 }

@@ -15,12 +15,18 @@
         <form [formGroup]="newPost" >
            <p>Write Your Post Here:
                <br>
-               <input type="text" name="bodyText" formControlName="post_body">
+               <input type="text" name="bodyText" formControlName="body">
             </p>
         
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile">
-                <label class="custom-file-label" for="customFile">Choose an image file "Birds with Arms are nice!</label>
+                    Upload Post Photo: 
+                    <br>
+                    <input type="file" id="fileUpload" onchange="uploadPostPhoto(event)">
+                    <form >
+                        </form>
+                        <br>
+                <!-- <input type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose an image file "Birds with Arms are nice!</label> -->
               </div>
             
             <button type="submit" (click)="makePostObject()" value="Post!">Submit Post!</button>

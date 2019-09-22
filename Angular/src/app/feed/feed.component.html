@@ -10,7 +10,7 @@
 <div *ngFor="let post of feedPosts">
     <app-post-card [post]="post"></app-post-card>
 </div>
-
+<button (click)="printFeed()" type="button">Press Me!</button>
 <div><app-post></app-post></div> <!--This is just for visual, will be deleted Later-->
 
 

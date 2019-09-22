@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { SessionStorageService } from 'ngx-webstorage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-card',
@@ -24,7 +25,7 @@ export class ProfileCardComponent implements OnInit {
   
  profile: any;
 
-constructor(private session:SessionStorageService){}
+constructor(private session:SessionStorageService, private router:Router){}
 
 
 
@@ -35,6 +36,11 @@ constructor(private session:SessionStorageService){}
 
   retrieveSessionUser(){
     this.profile = this.session.retrieve('user');
+  }
+
+
+  redirectToEdit(){
+    this.router.navigateByUrl('/editProfile');
   }
 
 }

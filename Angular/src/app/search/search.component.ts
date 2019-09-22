@@ -1,54 +1,15 @@
-import { Component,OnInit } from '@angular/core';
-import { AuthService } from './auth.service';
-import { SessionStorageService, SessionStorage } from 'ngx-webstorage';
-
-
+import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class AppComponent {
-  title = 'Project2SocialNetwork';
-
-  constructor(private _authService: AuthService,private session:SessionStorageService
-    
-    ,private modalService: NgbModal, 
-    private formBuilder: FormBuilder, 
-    private _http: HttpClient
-    ){
-
-      this.searchForm  =  this.formBuilder.group({
-        name: [''],
-      });
-    }
-
-  isValid:any = this._authService.loggedIn;
-  
-  @SessionStorage('logStatus')
-  
-
-
-  logOut(){
-    this.clearItem();
-    this._authService.logoutFlag();
-    return console.log(this.isValid);
-  }
-
-  clearItem() {
-    this.session.clear('user');
-  }
-
-
-
-
-
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~Search Feature~~~~~~~~~~~~~~~~~~~~~~~
-
+export class SearchComponent implements OnInit {
   closeResult: string;
   people: any;
   searchForm: FormGroup;
@@ -56,16 +17,17 @@ export class AppComponent {
 
   APP_URL = 'http://ec2-18-188-105-4.us-east-2.compute.amazonaws.com:8080/rsn';
 
-  
-  
+  constructor(private modalService: NgbModal, 
+    private formBuilder: FormBuilder, 
+    private _http: HttpClient) {
       
-    
+    }
 
-  // ngOnInit() {
-  //   this.searchForm  =  this.formBuilder.group({
-  //     name: [''],
-  //   });
-  // }
+  ngOnInit() {
+    this.searchForm  =  this.formBuilder.group({
+      name: [''],
+    });
+  }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -101,7 +63,3 @@ export class AppComponent {
     })
   }
 }
-
-  //~~~~~~~~~~~~~~~~~~~~~~~~~Search Feature~~~~~~~~~~~~~~~~~~~~~~~
-
-

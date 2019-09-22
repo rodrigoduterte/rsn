@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +26,8 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { SearchComponent } from './search/search.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     EditProfileComponent,
     ForgotComponent,
     DatePickerComponent,
+    SearchComponent,
+    SearchResultsComponent
     
     
   ],
@@ -51,7 +57,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule,
+    NgbModule
   ],
   providers: [RegistrationService, AuthService,AuthGuard],
   bootstrap: [AppComponent]

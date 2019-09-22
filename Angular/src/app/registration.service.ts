@@ -11,7 +11,7 @@ _url = 'http://ec2-18-188-105-4.us-east-2.compute.amazonaws.com:8080/rsn'
 
   constructor(private _http: HttpClient) { }
 
-//CdY5mgnaJMpU
+//TAlpsX8
 register(userData){
  return this._http.post<any>(this._url + '/user/new', userData);
 }
@@ -24,15 +24,15 @@ login(loginForm){
 }
 
 getUserProfile(username){
-  return this._http.get<any>(this._url + '/user/'+ username);
+  return this._http.get<any>(this._url + '/user/info/'+ username);
 }
 
-editProfile(userData){
-  return this._http.post<any>(this._url + '/user/edit', userData);
+editProfile(userData, username){
+  return this._http.post<any>(this._url + '/user/edit/' + username, userData);
  }
 
- newPost(postObject){
-  return this._http.post<any>(this._url + '/post/new', postObject);
+ newPost(postObject, username){
+  return this._http.post<any>(this._url + '/post/new/' + username, postObject);
  }
 
  getUserPosts(username){
@@ -41,6 +41,10 @@ editProfile(userData){
 
  getAllPosts(){
   return this._http.get<any>(this._url + '/post/all');
+ }
+
+ resetPassword(username){
+   return this._http.get<any>(this._url + '/user/forgot/' + username)
  }
 
 }

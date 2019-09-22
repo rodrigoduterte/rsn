@@ -1,11 +1,20 @@
 <div class="card basicCenter" >
-        <img class="defaultProPic" [src]="userProfile.photo" class="card-img-top" alt="...">
+        <img class="defaultProPic" id ="file-img"  [src]="userProfile.photo" class="card-img-top" alt="...">
+
+        <p class="center">Upload Profile Photo:
+          <br>
+           <input class="center" type="file" id="fileUpload" onchange="uploadProfilePhoto(event)">
+            <br>
+           <img  class="center" alt="not yet loaded" id="file-img" />
+        </p>
+      
+
     
     <div class = "edit-profile-div">
 
 
             <div>
-                    <form [formGroup]="editProfileForm" (ngSubmit)="submitEdit()">
+                    <form [formGroup]="editProfileForm" >
                     <table class="table table-borderless" style=" background-color: white; text-align: left">
                             <tbody>
                               <tr>
@@ -13,13 +22,13 @@
                                 <td><input [class.is-invalid]= 
                                     "editProfileForm.get('firstName').invalid && 
                                     editProfileForm.get('firstName').touched" 
-                                    formControlName="firstName" type="text" name="firstName" placeholder="First Name" required/>
+                                    formControlName="firstName" type="text" name="firstName" [value]="userProfile.firstName" required/>
                                 </td>
                               </tr>
 
                               <tr>
                                     <td><small>Middle Name:</small></td>
-                                    <td><input formControlName="middleName"type="text" name="middleName" placeholder="Middle Name"/></td>
+                                    <td><input formControlName="middleName"type="text" name="middleName" [value]="userProfile.middleName"/></td>
                                   </tr>
 
                                   <tr>
@@ -27,43 +36,43 @@
                                         <td><input [class.is-invalid]= 
                                             "editProfileForm.get('firstName').invalid && 
                                             editProfileForm.get('firstName').touched" 
-                                            formControlName="lastName"type="text" name="lastName" placeholder="Last Name" required/></td>
+                                            formControlName="lastName"type="text" name="lastName" [value]="userProfile.lastName" required/></td>
                                       </tr>
 
                                       <tr>
                                             <td><small>Bio:</small></td>
-                                            <td><input formControlName="bio"type="text" name="bio" placeholder="Bio"/></td>
+                                            <td><input formControlName="bio"type="text" name="bio" [value]="userProfile.bio"/></td>
                                           </tr>
 
                                           <tr>
                                                 <td><small>Birthday:</small></td>
-                                                <td><input formControlName="dob"type="text" name="dob" placeholder="DOB"/></td>
+                                                <td><input formControlName="dob"type="text" name="dob" [value]="userProfile.dob"/></td>
                                               </tr>
 
                               <tr>
                                   <td><small>Gender:</small></td>
-                                  <td><input formControlName="gender"type="text" name="gender" placeholder="Gender"/></td>
+                                  <td><input formControlName="gender" type="text" name="gender" [value]="userProfile.gender"/></td>
                                 </tr>
 
                                 <tr>
                                     <td><small>RelationShip:</small></td>
-                                    <td><input formControlName="relationshipStatus"type="text" name="relationshipStatus" placeholder="RelationshipStatus" /></td>
+                                    <td><input formControlName="relationshipStatus"type="text" name="relationshipStatus" [value]="userProfile.relationshipStatus" /></td>
                                   </tr>
                                   <tr>
                                       <td><small>Favorite Color:</small></td>
-                                      <td><input formControlName="favoriteColor"type="text" name="favoriteColor" placeholder="FavoriteColor"/></td>
+                                      <td><input formControlName="favoriteColor"type="text" name="favoriteColor" [value]="userProfile.favoriteColor"/></td>
                                     </tr>
                                     <tr>
                                         <td><small>City:</small></td>
-                                        <td><input formControlName="city"type="text" name="city" placeholder="City" /></td>
+                                        <td><input formControlName="city"type="text" name="city" [value]="userProfile.city" /></td>
                                       </tr>
                                       <tr>
                                           <td><small>Occupation:</small></td>
-                                          <td><input formControlName="occupation"type="text" name="occupation" placeholder="Occupation"/></td>
+                                          <td><input formControlName="occupation"type="text" name="occupation" [value]="userProfile.occupation"/></td>
                                         </tr>
                                         <tr>
                                                 <td><small>Email:</small></td>
-                                                <td><input formControlName="email"type="text" name="email" placeholder="Email"></td>
+                                                <td><input formControlName="email"type="text" name="email" [value]="userProfile.email"></td>
                             </tbody>
                           </table>
                           <button (click) = "submitEdit()" type="button" >Submit</button>
@@ -103,6 +112,6 @@
                 
         </form>
     -->
-        {{editProfileForm.value | json}}
+        <!-- {{editProfileForm.value | json}} -->
   </div>
     </div>

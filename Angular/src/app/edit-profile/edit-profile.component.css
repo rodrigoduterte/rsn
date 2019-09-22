@@ -15,3 +15,7 @@
 [required]::-ms-input-placeholder { /* WebKit browsers */
     color:    red;
 }
+
+.center{
+    text-align: center;
+}

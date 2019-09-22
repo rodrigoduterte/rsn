@@ -8,6 +8,8 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-gaurd.service';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ForgotComponent } from './forgot/forgot.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -16,7 +18,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: '', component: LoginComponent}, //login Page
   {path: 'editProfile',canActivate: [AuthGuard], component: EditProfileComponent},
-  {path: 'forgot', component: ForgotComponent}
+  {path: 'forgot', component: ForgotComponent},
+  {path: 'search', canActivate: [AuthGuard], component: SearchComponent}
   
   
 ];

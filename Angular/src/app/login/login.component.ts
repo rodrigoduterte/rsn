@@ -54,7 +54,15 @@ profile: any;
         error => console.log('error', error)
       );
     console.log("DataFound: " + found);
-    this.loginValidate(found);
+    //this.loginValidate(found);
+
+    //~~~~~~~~~~~~~~~~~~~~~~
+    setTimeout(function() {
+      console.log("DataFound: " + found);
+      this.loginValidate(found);
+  }, 2000);
+  console.log("DataFound: " + found);
+  return console.log(found);
     
   }
   

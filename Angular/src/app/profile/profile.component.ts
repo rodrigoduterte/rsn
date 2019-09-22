@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SessionStorageService, SessionStorage } from 'ngx-webstorage';
 import { RegistrationService } from '../registration.service';
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
+import { Router } from '@angular/router';
 
 
 
@@ -20,12 +22,11 @@ editMode: boolean = false;
 
 editSwitchOn(){
   this.ngOnInit()
-  this.editMode == true;
-  console.log(this.editMode)
+  this.editMode = true;
   }
 
   editSwitchOff(){
-    this.editMode == false;
+    this.editMode = false;
   }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -38,9 +39,12 @@ userProfile:any;
 
   post:any;
 
+  printPosts(){
+    console.log(this.userPosts);
+  }
 
 
-  constructor(private _http: RegistrationService,private session:SessionStorageService) {
+  constructor(private router:Router,private _http: RegistrationService,private session:SessionStorageService) {
     this.retrieveSessionUser();
     this.getUserPosts();
    }
@@ -63,7 +67,10 @@ getUserPosts() {
     error => {console.log('Error occured', error);
     })
     console.log(this.userPosts);
-  
+}
+
+redirectToEdit(){
+  this.router.navigateByUrl('/editProfile');
 }
 
 }

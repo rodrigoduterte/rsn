@@ -9,14 +9,19 @@
 
           
         <div style="height: 50%">
-            <img class="postPic"  [src]="post.profile.photo" alt="ProfilePicture" style="padding:5px" srcset="">
+            <img class="postPic"  src="{{post.profile.photo}}" alt="ProfilePicture" style="padding:5px" srcset="">
           <h5 class="card-title">{{post.profile.firstName}} {{post.profile.lastName}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{post.profile.occupation}}</h6>
         </div>
         
         
         <div style="height: 50%">
-       <img  [src]="post.photo" style="width: 66%; height: 66%">  
+            <p class="card-text">{{post.post_body}}</p>
+            <br>
+            <br>
+
+       <img  [src]="post.photo" style="width: 66%; height: 66%">
+       <br>  
           <p class="card-text">{{post.post_body}}</p>
         </div>
 

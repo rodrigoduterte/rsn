@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SessionStorageService, SessionStorage } from 'ngx-webstorage';
 import { HttpClient } from '@angular/common/http';
 import { RegistrationService } from '../registration.service';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-feed',
@@ -18,7 +19,9 @@ feedPosts: any;
 
 
 
-
+printFeed(){
+  console.log(this.feedPosts);
+}
 
   
   
@@ -46,6 +49,7 @@ feedPosts: any;
 // }
 
 getAllPosts(){
+  
   this._http.getAllPosts().subscribe( 
     data => {
       this.feedPosts = data;

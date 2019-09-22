@@ -1,0 +1,28 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Search for Profiles</h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="searchForm" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label for="searchname">Name</label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Name" formControlName="name">
+          </div>
+        </div>
+        <input type="submit" class="btn btn-outline-dark" value="Search">
+      </form>
+      <!-- this is where the search results go -->
+      <app-search-results [people2]=people ></app-search-results>
+  
+    </div>
+    <br> 
+  </ng-template>
+  
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Search for People</button>
+  
+  <hr>
+  <pre>
+    {{searchForm.value | json}}
+  </pre>
+  <pre>{{closeResult}}</pre>
