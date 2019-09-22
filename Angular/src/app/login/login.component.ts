@@ -39,49 +39,50 @@ profile: any;
     password: ['']
   });
 
+  loginObject ={
+    username:  this.loginForm.value.username,
+    password: this.loginForm.value.password,
+  }
+
   username: any;
 
-  
+  found: any;
+
+
+  convertFormToObject(){
+    this.loginObject.username = this.loginForm.value.username;
+    this.loginObject.password = this.loginForm.value.password;
+    this.login()
+;  }
 
   login(){
-
-    let found: any;
-      console.log(this.loginForm.value);
-      this.loginForm.setValue;
-      this._httpService.login(this.loginForm.value)
+      console.log(this.loginObject);
+      this._httpService.login(this.loginObject)
       .subscribe(
-        response => console.log('successful connection:' , found = response),
+        response => console.log( response)),
         error => console.log('error', error)
-      );
-    console.log("DataFound: " + found);
-    //this.loginValidate(found);
+      this.loginValidate()
 
-    //~~~~~~~~~~~~~~~~~~~~~~
-    setTimeout(function() {
-      console.log("DataFound: " + found);
-      this.loginValidate(found);
-  }, 2000);
-  console.log("DataFound: " + found);
-  return console.log(found);
     
   }
   
   
   
-  loginValidate(userData){
-    console.log(userData.username);
-    console.log(this.loginForm.value.username);
+  loginValidate(){
+    
+    
     console.log("Before Validate: " + this.userProfile);
     
-        if(userData == "User found"){
+    
+        if(this.found == "User found"){
           console.log("credentials are good");
           this.getUser();
-    }else if(userData =="Password Invalid"){
+    }else if(this.found =="Password Invalid"){
       //Make an Alrt Box pop up to tell user password is invalid
       console.log("Login Failed");
-    }else if(userData == "User not Activated"){
+    }else if(this.found == "User not Activated"){
       //make an alert telling user to activate account vie email
-    }else if(userData == "User Not Found"){
+    }else if(this.found == "User Not Found"){
       //make an alert suggesting that the user should create an account
     }
     }
@@ -96,7 +97,7 @@ profile: any;
       console.log("From Database: " + this.userProfile);
       this.saveValue()
       this.onLogin();
-      this.router.navigateByUrl('/feed');
+      this.router.navigateByUrl('/profile');
       // this.onLogin() //Temperary, this will be moved later. We want to use this method in the loginValidate Method
   }
 
@@ -112,8 +113,6 @@ profile: any;
     this.authService.logoutFlag();
   }
 
-  testLogin(){
-
-  }
+ 
 
 }

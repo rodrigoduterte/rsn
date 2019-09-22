@@ -9,9 +9,14 @@
 
           
         <div style="height: 50%">
-            <img class="postPic"  src="{{post.profile.photo}}" alt="ProfilePicture" style="padding:5px" srcset="">
-          <h5 class="card-title">{{post.profile.firstName}} {{post.profile.lastName}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{post.profile.occupation}}</h6>
+          <div *ngIf='post.profileView.photo'>
+              <img class="postPic"  src="{{post.profileView.photo}}" alt="ProfilePicture" style="padding:5px" srcset="">
+          </div>
+          <div *ngIf="!post.profileView.photo">
+            <img class="postPic"  src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg" alt="ProfilePicture" style="padding:5px" srcset="">
+          </div>
+          <h5 class="card-title">{{post.profileView.firstName}} {{post.profileView.lastName}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{post.profileView.occupation}}</h6>
         </div>
         
         
@@ -19,16 +24,19 @@
             <p class="card-text">{{post.post_body}}</p>
             <br>
             <br>
-
+            <div class="boxImage">
+<div *ngIf='post.photo'>
        <img  [src]="post.photo" style="width: 66%; height: 66%">
+      </div>
+    </div>
        <br>  
           <p class="card-text">{{post.post_body}}</p>
         </div>
 
 
         <div>
-          <a href="#" class="card-link">Like!</a><!--Make this a like Button-->
-          <a href="#" class="card-link">Comment</a><!--Make this a comment option-->
+          <button (click)="likePost()">Like!</button>
+         
         </div>
 
         </div>

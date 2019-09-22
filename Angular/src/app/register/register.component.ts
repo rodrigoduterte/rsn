@@ -20,14 +20,14 @@ response: any;
   
   registrationForm = this.fb.group({
   username: ['', [Validators.required, Validators.minLength(4)]],
-  password: ['', [Validators.required, Validators.minLength(4)]],
+  password: ['', [Validators.required, Validators.minLength(8)]],
   //confirmPassword: ['', [Validators.required, Validators.minLength(4)]],
   firstName: ['', Validators.required],
   lastName: ['',Validators.required],
   dob: ['',Validators.required],
   gender: ['',Validators.required],
   bio: ['',Validators.required],
-  email: ['',Validators.required]
+  email: ['',Validators.required, Validators.email]
 },);
 
 onSubmit(){

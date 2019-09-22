@@ -5,14 +5,16 @@
     <img  width="175px" height="150px" 
     style="margin-bottom: 10px"  src="https://bucketgame.s3.us-east-2.amazonaws.com/_coolaborate.png">
     
-    <form  [formGroup]="loginForm" (ngSubmit)="getUser()" >
+    <!-- <form  [formGroup]="loginForm" (ngSubmit)="convertFormToObject()" > -->
+            <form  [formGroup]="loginForm" (ngSubmit)="getUser()" >
         <p><input formControlName="username" type="text" name="username" value="" placeholder="User Name" required></p>
         <p><input formControlName="password" type="password" name="password" value="" placeholder="Password" required ></p>
         <p><input type="submit" value="Login" ></p>
         <p><a href="/forgot">Forgot Password?</a></p>
         <!--p><input type="submit" value="Login" (click)="getUser()"></p> -->
 
-   {{loginForm.value.password | json}}
+   {{loginForm.value | json}}
+  
       <!--  
         <button class="btn btn-primary" (click)="onLogin()" >Login</button>
         <button class="btn btn-primary" (click)="onLogout()">Logout</button>

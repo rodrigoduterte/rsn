@@ -1,15 +1,15 @@
 <!-- <ng-template *ngFor="let person of people2"> -->
-<mat-card *ngFor="let person of people2" class="example-card" (click)="populateProfile()">
+<mat-card *ngFor="let person of people2" class="example-card" >
   <mat-card-header>
     <div class="example-header-image">
     <!-- <div mat-card-avatar class="example-header-image"> -->
       <!-- https://randomuser.me/api/portraits/men/43.jpg -->
-      <img mat-card-image src="{{person.photo}}" alt="Avatar Photo">
+      <img mat-card-image src="{{person.photo}}" alt="Avatar Photo" style="width:100px; height: 100px;">
     </div>
-    <mat-card-title>{{person.firstName}} {{person.middleName}} {{person.lastName}}</mat-card-title>
-    <!-- 
-      <mat-card-title><a (click)="loadSearchedProfile()" ><form [formGroup]="searchedProfileForm">{{person.firstName}} {{person.middleName}} {{person.lastName}}</form></a></mat-card-title>
-     -->
+    <!-- <mat-card-title>{{person.firstName}} {{person.middleName}} {{person.lastName}}</mat-card-title> -->
+    <mat-card-title><a (click)="loadSearchedProfile(person.username)" >{{person.firstName}} {{person.middleName}} {{person.lastName}}</a></mat-card-title>
+      <!-- <mat-card-title><a (click)="loadSearchedProfile(person.username)" ><form [formGroup]="searchedProfileForm">{{person.firstName}} {{person.middleName}} {{person.lastName}}</form></a></mat-card-title> -->
+    
   </mat-card-header>
 </mat-card>
 

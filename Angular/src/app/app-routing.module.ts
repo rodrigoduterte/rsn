@@ -10,6 +10,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchComponent } from './search/search.component';
+import { OtherProfilePageComponent } from './other-profile-page/other-profile-page.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,9 @@ const routes: Routes = [
   {path: '', component: LoginComponent}, //login Page
   {path: 'editProfile',canActivate: [AuthGuard], component: EditProfileComponent},
   {path: 'forgot', component: ForgotComponent},
-  {path: 'search', canActivate: [AuthGuard], component: SearchComponent}
+  {path: 'search', canActivate: [AuthGuard], component: SearchComponent},
+  {path: 'search-result', canActivate: [AuthGuard], component: SearchResultsComponent},
+  {path: 'otherProfile', canActivate: [AuthGuard], component: OtherProfilePageComponent},
   
   
 ];

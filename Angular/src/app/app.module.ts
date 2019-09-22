@@ -28,6 +28,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { SearchComponent } from './search/search.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { OtherProfilePageComponent } from './other-profile-page/other-profile-page.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     ForgotComponent,
     DatePickerComponent,
     SearchComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    OtherProfilePageComponent
     
     
   ],

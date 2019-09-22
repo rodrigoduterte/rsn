@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PostBean } from 'src/PostBean';
+import { RegistrationService } from '../registration.service';
 
 @Component({
   selector: 'app-post-card',
@@ -8,11 +9,12 @@ import { PostBean } from 'src/PostBean';
 })
 export class PostCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:RegistrationService) { }
 
   @Input()
   post: any;
-  
+  @Input()
+  userProfile: any;
   
   
 
@@ -21,6 +23,13 @@ export class PostCardComponent implements OnInit {
   
   ngOnInit() {
   
+  }
+
+  likePost(){
+    this.http.likePost(this.userProfile.username, this.post.post_id)
+    .subscribe(
+      response => response,
+      error => error)
   }
 
 }

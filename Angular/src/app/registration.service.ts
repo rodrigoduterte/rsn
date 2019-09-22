@@ -17,10 +17,11 @@ register(userData){
 }
 
 login(loginForm){
-  let options = {
-    headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
- };
-  return this._http.post<any>(this._url + '/user/in',JSON.stringify(loginForm),options);
+  // let options = {
+  //   headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+//  };
+// return this._http.post<any>(this._url + '/user/in',JSON.stringify(loginForm),options);
+  return this._http.post<any>(this._url + '/user/in',loginForm);
 }
 
 getUserProfile(username){
@@ -45,6 +46,10 @@ editProfile(userData, username){
 
  resetPassword(username){
    return this._http.get<any>(this._url + '/user/forgot/' + username)
+ }
+
+ likePost(username, postId){
+   return this._http.get<any>(this._url + '/like/new/' + username + '/' + postId);
  }
 
 }

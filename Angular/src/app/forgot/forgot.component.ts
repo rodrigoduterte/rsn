@@ -16,8 +16,9 @@ export class ForgotComponent implements OnInit {
 
   resetPassword = this.fb.group({
     username: [''],
-    //email: ['']
+    
   });
+
 
 
 
@@ -27,8 +28,9 @@ stuff: any;
 
   resetPasswordFunc(){
     console.log("Hit the Button!");
+    console.log(this.resetPassword.value.username);
 
-  this._httpService.getUserProfile(this.resetPassword.value.username)
+  this._httpService.resetPassword(this.resetPassword.value.username)
   .subscribe(
     response=> this.stuff = response,
     error=> console.log(error));

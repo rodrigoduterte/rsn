@@ -7,7 +7,13 @@
         <div class="card spacing">
            
                 <div>
-                        <img class="postPic"  [src]="profile.photo" alt="ProfilePicture" style="padding:5px" srcset="">
+                        <div *ngIf='profile.photo'>
+                                <img class="postPic"  [src]="profile.photo" alt="ProfilePicture" style="padding:5px" srcset="">
+                            </div>
+                            <div *ngIf="!profile.photo">
+                              <img class="postPic"  src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg" alt="ProfilePicture" style="padding:5px" srcset="">
+                            </div>
+                       
                        <h5  class="card-title" >{{profile.firstName}} {{profile.lastName}}</h5>
                        <h6  class="card-subtitle mb-2 text-muted">{{profile.occupation}}</h6>
                    </div>

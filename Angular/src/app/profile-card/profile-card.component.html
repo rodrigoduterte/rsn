@@ -1,51 +1,51 @@
 
 <div class="card basicCenter" >
-        <img class="card-img-top " [src]="profile.photo"  alt="...">
-        <!--Make sure to property bind the SRC for the image for a loaded profile picture --> 
+        <img class="card-img-top " [src]="userProfile.photo"  alt="...">
+        <!--Make sure to property bind the SRC for the image for a loaded userProfile picture --> 
        <div class="card-body">
-          <h5 class="card-title"> {{profile.firstName}} {{profile.middleName}} {{profile.lastName}}</h5>
-          <p class="card-text">{{profile.bio}}</p>
+          <h5 class="card-title"> {{userProfile.firstName}} {{userProfile.middleName}} {{userProfile.lastName}}</h5>
+          <p class="card-text">{{userProfile.bio}}</p>
         </div>
         <div>
             <table class="table table-borderless" style=" background-color: white; text-align: left">
                 <tbody>
                   <tr>
                     <td><small >Birthday:</small></td>
-                    <td>{{profile.dob}}</td>
+                    <td>{{userProfile.dob}}</td>
                   </tr>
                   <tr>
                       <td><small>Gender:</small></td>
-                      <td>{{profile.gender}}</td>
+                      <td>{{userProfile.gender}}</td>
                     </tr>
                     <tr>
                         <td><small>RelationShip:</small></td>
-                        <td>{{profile.relationshipStatus}}</td>
+                        <td>{{userProfile.relationshipStatus}}</td>
                       </tr>
                       <tr>
                           <td><small>Favorite Color:</small></td>
-                          <td>{{profile.favoriteColor}}</td>
+                          <td>{{userProfile.favoriteColor}}</td>
                         </tr>
                         <tr>
                             <td><small>City:</small></td>
-                            <td>{{profile.city}}</td>
+                            <td>{{userProfile.city}}</td>
                           </tr>
                           <tr>
                               <td><small>Occupation:</small></td>
-                              <td>{{profile.occupation}}</td>
+                              <td>{{userProfile.occupation}}</td>
                             </tr>
                 </tbody>
               </table>
         </div>
         <!-- <ul class="list-group list-group-flush" style="text-align: left">
-          <li class="list-group-item"><small >Birthday:</small> {{profile.dob}}</li>
-          <li class="list-group-item"><small>Gender:</small> {{profile.gender}}</li>
-          <li class="list-group-item"><small>RelationShip:</small> {{profile.relationshipStatus}}</li>
-          <li class="list-group-item"><small>Favorite Color:</small> {{profile.favoriteColor}}</li>
-          <li class="list-group-item"><small>City:</small> {{profile.city}}</li>
-          <li class="list-group-item"><small>Occupation:</small> {{profile.occupation}}</li>
+          <li class="list-group-item"><small >Birthday:</small> {{userProfile.dob}}</li>
+          <li class="list-group-item"><small>Gender:</small> {{userProfile.gender}}</li>
+          <li class="list-group-item"><small>RelationShip:</small> {{userProfile.relationshipStatus}}</li>
+          <li class="list-group-item"><small>Favorite Color:</small> {{userProfile.favoriteColor}}</li>
+          <li class="list-group-item"><small>City:</small> {{userProfile.city}}</li>
+          <li class="list-group-item"><small>Occupation:</small> {{userProfile.occupation}}</li>
         </ul> -->
         <div class="card-body">
-          <!-- <button (click)="redirectToEdit()"  >Edit Profile</button>
+          <!-- <button (click)="redirectToEdit()"  >Edit userProfile</button>
           <a href="#" class="card-link">See Your Posts</a> -->
         </div>
       </div>

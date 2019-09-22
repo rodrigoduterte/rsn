@@ -4,9 +4,10 @@
         style="margin-bottom: 10px"  src="https://bucketgame.s3.us-east-2.amazonaws.com/_coolaborate.png">
         
         <form  [formGroup]="resetPassword"  >
-            <p><input formControlName="username" type="text" name="username" value="" placeholder="User Name" required></p>
+          <label>Enter Username to Reset Password</label>
+            <p><input formControlName="username" type="text" name="username" value="" placeholder="Username" required></p>
             <!-- <p><input formControlName="email" type="email" name="email" value="" placeholder="Email" required ></p> -->
-            <p><button type="button" (click)="resetPasswordFunc()" value="Reset Password" >Reset Password</button></p>
+            
             
             <!--p><input type="submit" value="Login" (click)="getUser()"></p> -->
     

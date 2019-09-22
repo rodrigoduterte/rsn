@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
 })
 export class ProfileCardComponent implements OnInit {
  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  @Input()
-  userProfile:any;
+  @Input()otherProfile: any;
+  @Input()userProfile:any;
   isEdit: any;
+  
 
 
   @Output()
