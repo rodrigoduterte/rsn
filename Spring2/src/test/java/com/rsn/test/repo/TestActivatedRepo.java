@@ -18,12 +18,12 @@ import com.rsn.repository.CommentLikesRepo;
 @Transactional
 public class TestActivatedRepo {
 
-	@Resource(name = "activatedRepo")
-    private ActivatedProfileRepo activatedRepo;
+	@Resource(name = "activatedProfileRepo")
+    private ActivatedProfileRepo activatedProfileRepo;
 	
 	@Test
 	public void exists() {
-		assertEquals(activatedRepo.exists("abcdefg"), false);
+		assertEquals(activatedProfileRepo.exists("abcdefg"), false);
 	}
 
 }

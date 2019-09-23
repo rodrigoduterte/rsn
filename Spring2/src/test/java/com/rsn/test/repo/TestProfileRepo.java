@@ -40,21 +40,21 @@ public class TestProfileRepo {
 		assertEquals(profileRepo.selectAllByName("Ells").size(),2);
 	}
 	
-	@Test
-	public void createdProfile() throws ParseException {
-		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy"); 
-		Profile profile = new Profile("gabeferr","gabrielferrergtf@gmail.com","Gabriel","Tapawan","Ferrer",
-				formatter.parse("6/16/1989"),"abcde1234","Red","Orlando","Never Married","Male",
-				"Secured fault-tolerant groupware","","Software Developer");
-		assertEquals(profileRepo.insert(profile) instanceof Integer, true);
-	}
+//	@Test
+//	public void createdProfile() throws ParseException {
+//		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy"); 
+//		Profile profile = new Profile("gabeferr","gabrielferrergtf@gmail.com","Gabriel","Tapawan","Ferrer",
+//				formatter.parse("6/16/1989"),"abcde1234","Red","Orlando","Never Married","Male",
+//				"Secured fault-tolerant groupware","","Software Developer");
+//		assertEquals(profileRepo.insert(profile) instanceof Integer, true);
+//	}
 	
-	@Test
-	public void deletedProfile() {
-		Profile bweyt = profileRepo.selectByUsername("bweyt");
-		profileRepo.delete(bweyt);
-		assertEquals(profileRepo.selectAll().size() < 30, true);
-	}
+//	@Test
+//	public void deletedProfile() {
+//		Profile bweyt = profileRepo.selectByUsername("bweyt");
+//		profileRepo.delete(bweyt);
+//		assertEquals(profileRepo.selectAll().size() < 30, true);
+//	}
 	
 	@Test
 	public void updatedProfile() {

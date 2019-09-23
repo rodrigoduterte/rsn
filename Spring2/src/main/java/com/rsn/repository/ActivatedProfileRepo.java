@@ -3,8 +3,6 @@ package com.rsn.repository;
 import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -12,14 +10,13 @@ import org.apache.commons.lang3.RandomStringUtils;
 import com.rsn.entity.ActivatedProfile;
 import com.rsn.entity.Profile;
 
-@Repository("activatedRepo")
+@Repository("activatedProfileRepo")
 @Transactional
 public class ActivatedProfileRepo {
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	public ActivatedProfileRepo() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public boolean exists(String word) {
@@ -47,13 +44,17 @@ public class ActivatedProfileRepo {
 
 	}
 	
-	public void update(ActivatedProfile activeProfile) {
-		sessionFactory.getCurrentSession().update(activeProfile);
+	public void update(ActivatedProfile activedProfile) {
+		sessionFactory.getCurrentSession().update(activedProfile);
 	}
 	
 	public void activate(String activeId) {
-		ActivatedProfile activeProfile = sessionFactory.getCurrentSession()
-				.find(ActivatedProfile.class, activeId);
+		ActivatedProfile activeProfile = 
+				sessionFactory.getCurrentSession()
+				.createQuery
+				("from ActivatedProfile where activeId = '" + activeId + "'", 
+						ActivatedProfile.class)
+				.getSingleResult();
 		activeProfile.setActivated(true);
 		update(activeProfile);
 	}

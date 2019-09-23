@@ -138,7 +138,7 @@
         <tr>
           <td>
             <div style="overflow:hidden;display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial;maxheight:0px;max-width:0px;opacity:0;">
-              Welcome to MDB! </div>
+              Welcome to CooLaborate! </div>
           </td>
         </tr>
       </tbody>
@@ -150,11 +150,11 @@
         <tr>
           <td align="center">
             <table class="container590" cellspacing="0" cellpadding="0" border="0"
-
               align="center" width="590">
               <tbody>
                 <tr>
-                  <td style="font-size: 25px; line-height: 25px;" height="25"> </td>
+                  <td style="font-size: 25px; line-height: 25px;" height="25"><br />
+                  </td>
                 </tr>
                 <tr>
                   <td align="center">
@@ -173,7 +173,8 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="font-size: 25px; line-height: 25px;" height="25"> </td>
+                  <td style="font-size: 25px; line-height: 25px;" height="25"><br />
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -184,55 +185,55 @@
     <!-- end header -->
     <!-- big image section -->
     <table class="bg_color" cellspacing="0" cellpadding="0" border="0" bgcolor="ffffff"
-
       width="100%">
       <tbody>
         <tr>
           <td align="center">
             <table class="container590" cellspacing="0" cellpadding="0" border="0"
-
               align="center" width="590">
               <tbody>
                 <tr>
                   <td style="color: #343434; font-size: 24px; font-family: Quicksand, Calibri, sans-serif; font-weight:700;letter-spacing: 3px; line-height: 35px;"
-
                     class="main-header" align="center">
                     <!-- section text ======-->
-                    <div style="line-height: 35px"> Welcome New Member<span style="color: #5caad2;"></span></div>
+                    <div style="line-height: 35px">Welcome New Member<span style="color: #5caad2;"></span></div>
                   </td>
                 </tr>
                 <tr>
-                  <td style="font-size: 10px; line-height: 10px;" height="10"> </td>
+                  <td style="font-size: 10px; line-height: 10px;" height="10"><br />
+                  </td>
                 </tr>
                 <tr>
                   <td align="center">
                     <table cellspacing="0" cellpadding="0" border="0" bgcolor="eeeeee"
-
                       align="center" width="40">
                       <tbody>
                         <tr>
-                          <td style="font-size: 2px; line-height: 2px;" height="2"> </td>
+                          <td style="font-size: 2px; line-height: 2px;" height="2"><br />
+                          </td>
                         </tr>
                       </tbody>
                     </table>
                   </td>
                 </tr>
                 <tr>
-                  <td style="font-size: 20px; line-height: 20px;" height="20"> </td>
+                  <td style="font-size: 20px; line-height: 20px;" height="20"><br />
+                  </td>
                 </tr>
                 <tr>
                   <td align="left">
                     <table class="container590" cellspacing="0" cellpadding="0"
-
                       border="0" align="center" width="590">
                       <tbody>
                         <tr>
-                          <td style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;"
-
+                          <td style="color: #888888; font-size: 16px; 
+                            font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;"
                             align="left">
                             <!-- section text ======-->
-                            <p style="line-height: 24px; margin-bottom:15px;">
-                              ${firstname}, </p>
+                            <p style="line-height: 24px; margin-bottom:15px;">${today}
+                            </p>
+                            <p style="line-height: 24px; margin-bottom:15px;">${firstname},
+                              </p>
                             <p style="line-height: 24px;margin-bottom:15px;"> We
                               appreciate you becoming a part of us. You are one
                               step away of becoming a full pledged member of
@@ -241,30 +242,24 @@
                               Please click the button below to activate your
                               account... </p>
                             <table style="margin-bottom: 20px; width: 296px; height: 92px;"
-
                               cellspacing="0" cellpadding="0" border="0" bgcolor="5caad2"
-
                               align="center">
                               <tbody>
                                 <tr>
                                   <td style="font-size: 10px; line-height: 10px;"
-
-                                    height="10"> </td>
+                                    height="10"><br />
+                                  </td>
                                 </tr>
                                 <tr>
-                                  <td style="color: white; font-size: 14px; font-family: &quot;Work Sans&quot;,Calibri,sans-serif; line-height: 22px; letter-spacing: 2px; margin-left: 42px;"
-
-                                    align="center">
-                                    <!-- main section button --><a href="${activateURL}/${activateId}"></a>
-                                    <div style="line-height: 22px; margin-left: -53px;">         
-                                      <a href="" style="color: #ffffff; text-decoration: none;">Activate
-                                        My Account</a> </div>
+                                  <td style="color: white; font-size: 14px; font-family: &quot;Work Sans&quot;,
+                                  Calibri,sans-serif; line-height: 22px; letter-spacing: 2px; margin-left: 42px;"
+                                    align="center"><div style="line-height: 22px; margin-left: -53px;"><a href="${url}/${uri}" style="color:#ffffff; text-decoration: none;">Activate My Account</a></div>
                                   </td>
                                 </tr>
                                 <tr>
                                   <td style="font-size: 10px; line-height: 10px;"
-
-                                    height="10"> </td>
+                                    height="10"><br/>
+                                  </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -281,158 +276,33 @@
           </td>
         </tr>
         <tr>
-          <td style="font-size: 40px; line-height: 40px;" height="40"> </td>
-        </tr>
-      </tbody>
-    </table>
-    <!-- end section -->
-    <!-- main section -->
-    <table cellspacing="0" cellpadding="0" border="0" bgcolor="2a2e36" width="100%">
-      <tbody>
-        <tr>
-          <td style="background-image: url(https://mdbootstrap.com/img/Photos/Others/slide.jpg); background-size: cover; background-position: top center; background-repeat: no-repeat;"
-
-            background="https://mdbootstrap.com/img/Photos/Others/slide.jpg" align="center">
-            <table class="container590" cellspacing="0" cellpadding="0" border="0"
-
-              align="center" width="590">
-              <tbody>
-                <tr>
-                  <td style="font-size: 50px; line-height: 50px;" height="50"> </td>
-                </tr>
-                <tr>
-                  <td align="center">
-                    <table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
-
-                      class="container590" cellspacing="0" cellpadding="0" border="0"
-
-                      align="center" width="380">
-                      <tbody>
-                        <tr>
-                          <td align="center"><br />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-                <tr>
-                  <td align="center"><br />
-                  </td>
-                </tr>
-                <tr>
-                  <td style="font-size: 50px; line-height: 50px;" height="50"> </td>
-                </tr>
-              </tbody>
-            </table>
+          <td style="font-size: 40px; line-height: 40px;" height="40"><br />
           </td>
         </tr>
       </tbody>
     </table>
     <!-- end section -->
+    <!-- main section --><!-- end section -->
     <!-- contact section -->
     <table class="bg_color" cellspacing="0" cellpadding="0" border="0" bgcolor="ffffff"
-
       width="100%">
       <tbody>
         <tr>
-          <td style="font-size: 60px; line-height: 60px;" height="60"> </td>
-        </tr>
-        <tr>
           <td align="center">
             <table class="container590 bg_color" cellspacing="0" cellpadding="0"
-
               border="0" align="center" width="590">
               <tbody>
                 <tr>
-                  <td align="center">
-                    <table class="container590 bg_color" cellspacing="0" cellpadding="0"
-
-                      border="0" align="center" width="590">
-                      <tbody>
-                        <tr>
-                          <td><br />
-                            <table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
-
-                              class="container590" cellspacing="0" cellpadding="0"
-
-                              border="0" align="left" width="2">
-                              <tbody>
-                                <tr>
-                                  <td style="font-size: 10px; line-height: 10px;"
-
-                                    height="10" width="2"><br />
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <br />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <td><br />
                   </td>
                 </tr>
               </tbody>
             </table>
           </td>
-        </tr>
-        <tr>
-          <td style="font-size: 60px; line-height: 60px;" height="60"> </td>
         </tr>
       </tbody>
     </table>
     <!-- end section -->
-    <!-- footer ====== -->
-    <table cellspacing="0" cellpadding="0" border="0" bgcolor="f4f4f4" width="100%">
-      <tbody>
-        <tr>
-          <td style="font-size: 25px; line-height: 25px;" height="25"> </td>
-        </tr>
-        <tr>
-          <td align="center">
-            <table class="container590" cellspacing="0" cellpadding="0" border="0"
-
-              align="center" width="590">
-              <tbody>
-                <tr>
-                  <td><br />
-                    <table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
-
-                      class="container590" cellspacing="0" cellpadding="0" border="0"
-
-                      align="left" width="5">
-                      <tbody>
-                        <tr>
-                          <td style="font-size: 20px; line-height: 20px;" height="20"
-
-                            width="5"> </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"
-
-                      class="container590" cellspacing="0" cellpadding="0" border="0"
-
-                      align="right">
-                      <tbody>
-                        <tr>
-                          <td align="center"><br />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td style="font-size: 25px; line-height: 25px;" height="25"> </td>
-        </tr>
-      </tbody>
-    </table>
-    <!-- end footer ====== -->
+    <!-- footer ====== --><!-- end footer ====== -->
   </body>
 </html>

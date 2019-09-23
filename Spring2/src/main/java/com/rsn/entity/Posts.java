@@ -1,7 +1,8 @@
 package com.rsn.entity;
 
 import java.util.Date;
-import java.util.Optional;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,11 +12,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.rsn.service.TimestampDeserializer;
+import com.rsn.service.TimestampSerializer;
+import com.rsn.view.ProfileView;
 
 /**
  * @author vorga
  */
 @Entity
+@Table(name="POSTS")
 public class Posts {
 
     @Id
@@ -25,6 +36,8 @@ public class Posts {
 
     @Basic
     @Column(nullable = false)
+    @JsonSerialize(using = TimestampSerializer.class)
+    @JsonDeserialize(using = TimestampDeserializer.class)
     private Date post_date;
 
     @Basic
@@ -36,6 +49,12 @@ public class Posts {
     @ManyToOne(cascade = CascadeType.ALL)
     private Profile profile;
 
+    @Transient
+    private ProfileView profileView;
+    
+    @Transient
+    List<PostLikes> likes; 
+    
     public Posts() {
     }
 
@@ -46,8 +65,6 @@ public class Posts {
 		this.post_body = post_body;
 		this.profile = profile;
 	}
-
-
 
 	public Long getPost_id() {
         return post_id;
@@ -80,7 +97,8 @@ public class Posts {
     public void setPost_body(String post_body) {
         this.post_body = post_body;
     }
-
+    
+    @JsonIgnore
     public Profile getProfile() {
         return profile;
     }
@@ -89,4 +107,27 @@ public class Posts {
         this.profile = profile;
     }
 
+    public ProfileView getProfileView() {
+    	return profileView;
+    }
+    
+    public void setProfileView(Profile profile) {
+    	this.profileView = new ProfileView(
+			profile.getUsername(),
+			profile.getFirstName(),
+			profile.getLastName(),
+			profile.getOccupation(),
+			profile.getPhoto()
+    	);
+    }
+    
+	public List<PostLikes> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(List<PostLikes> likes) {
+		this.likes = likes;
+	}
+	
+	
 }

@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * @author vorga
  */
 @Entity
-
+@Table(name="COMMENTS")
 public class Comments {
 
     @Id

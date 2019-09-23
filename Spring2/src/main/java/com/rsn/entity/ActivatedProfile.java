@@ -5,15 +5,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 
 /**
  * @author vorga
  */
 @Entity
+@Table(name="ACTIVATEDPROFILE")
 public class ActivatedProfile {
 
     @Id
-    @Column(nullable = false)
     private String activeId;
 
     @Basic
@@ -45,7 +47,7 @@ public class ActivatedProfile {
         return activated;
     }
 
-    public void setActivated(Boolean activated) {
+    public void setActivated(boolean activated) {
         this.activated = activated;
     }
 

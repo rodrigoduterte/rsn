@@ -1,6 +1,9 @@
 package com.rsn.entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.sql.Timestamp;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,15 +12,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.rsn.dto.EditProfile;
+import com.rsn.service.*;
 
 /**
  * @author vorga
  */
 @Entity
-public class Profile {
-
+@Table(name="PROFILE")
+public class Profile { 
+	
     @Id
     @GeneratedValue(generator = "user_seq_id", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "user_seq_id", sequenceName = "user_seq_id")
@@ -29,7 +42,7 @@ public class Profile {
 
     // needs to be unique
     @Basic
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Basic
@@ -43,13 +56,16 @@ public class Profile {
     @Column(nullable = false)
     private String lastName;
 
-    @Basic
+    
     @Column(nullable = false)
-    @JsonFormat(pattern = "MMM dd yyyy")
-    private Date dob;
+    @Basic
+    @JsonSerialize(using = TimestampSerializer.class)
+    @JsonDeserialize(using = TimestampDeserializer.class)
+    private Timestamp dob;
 
     @Basic
     @Column(nullable = false)
+    @JsonProperty(access = Access.WRITE_ONLY)
     private String password;
 
     @Basic
@@ -73,16 +89,17 @@ public class Profile {
     private String photo;
 
     @Basic
-
     private String occupation;
 
     public Profile() {
     }
     
-    public Profile(String username, String email, String firstName, String middleName, String lastName, Date dob,
-			String password, String favoriteColor, String city, String relationshipStatus, String gender, String bio,
-			String photo, String occupation) {
-		super();
+    public Profile(String username, String email, String firstName, 
+    		String middleName, String lastName, Timestamp dob,
+			String password, String favoriteColor, String city, 
+			String relationshipStatus, String gender, String bio,
+			String photo, String occupation) throws ParseException {
+
 		this.username = username;
 		this.email = email;
 		this.firstName = firstName;
@@ -98,8 +115,6 @@ public class Profile {
 		this.photo = photo;
 		this.occupation = occupation;
 	}
-
-
 
 	public int getUser_id() {
         return user_id;
@@ -153,11 +168,11 @@ public class Profile {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(Timestamp dob) {
         this.dob = dob;
     }
 
-    @JsonIgnore
+    
     public String getPassword() {
         return password;
     }
@@ -222,6 +237,25 @@ public class Profile {
         this.occupation = occupation;
     }
 
+    public void setProfile(EditProfile ep) {
+    	this.username = ep.getUsername();
+    	System.out.println(ep.getUsername());
+    	System.out.println(ep.getFirstName());
+        this.email = ep.getEmail();
+        this.firstName = ep.getFirstName();
+        System.out.println(ep.getUsername());
+        this.middleName = ep.getMiddleName();
+        this.lastName = ep.getLastName();
+        this.dob = ep.getDob();
+        this.favoriteColor = ep.getFavoriteColor();
+        this.city = ep.getCity();
+        this.relationshipStatus = ep.getRelationshipStatus();
+        this.gender = ep.getGender();
+        this.bio = ep.getBio();
+        this.occupation = ep.getOccupation();
+    }
+    
+    
 	@Override
 	public String toString() {
 		return "Profile [user_id=" + user_id + ", username=" + username + ", email=" + email + ", firstName="

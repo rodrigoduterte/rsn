@@ -8,14 +8,32 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<context:annotation-config />
+	<!-- <bean id="dataSource" -->
+	<!-- class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+	<!-- <property name="url" -->
+	<!-- value="#{T(java.lang.System).getenv('db_url')}" /> -->
+	<!-- <property name="username" -->
+	<!-- value="#{T(java.lang.System).getenv('db_username')}" /> -->
+	<!-- <property name="password" -->
+	<!-- value="#{T(java.lang.System).getenv('db_password')}" /> -->
+	<!-- </bean> -->
+<!-- 	<bean id="dataSource" -->
+<!-- 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+<!-- 		<property name="driverClassName" value="${db_driver}" /> -->
+<!-- 		<property name="url" value="${db_url}" /> -->
+<!-- 		<property name="username" value="${db_username}" /> -->
+<!-- 		<property name="password" value="${db_password}" /> -->
+<!-- 	</bean> -->
+
+
 	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url"
-			value="#{T(java.lang.System).getenv('db_url')}" />
-		<property name="username"
-			value="#{T(java.lang.System).getenv('db_username')}" />
-		<property name="password"
-			value="#{T(java.lang.System).getenv('db_password')}" />
+			value="jdbc:oracle:thin:@gabriel.cbvpgyiaxyiq.us-east-2.rds.amazonaws.com:1521/gabriel" />
+		<property name="username" value="rsn" />
+		<property name="password" value="gjhrd253" />
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
@@ -23,7 +41,7 @@
 		<property name="packagesToScan" value="com.rsn.entity" />
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">#{T(java.lang.System).getenv('db_dialect')}</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
 				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
@@ -32,9 +50,18 @@
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />
+
+	<bean id="profileRepo" class="com.rsn.repository.ProfileRepo" />
+	<bean id="postRepo" class="com.rsn.repository.PostRepo" />
+	<bean id="postLikesRepo" class="com.rsn.repository.PostLikesRepo" />
+	<bean id="commentRepo" class="com.rsn.repository.CommentRepo" />
+	<bean id="commentLikesRepo"
+		class="com.rsn.repository.CommentLikesRepo" />
+	<bean id="activatedProfileRepo"
+		class="com.rsn.repository.ActivatedProfileRepo" />
 </beans>

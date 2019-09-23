@@ -1,10 +1,12 @@
 package com.rsn.service;
 
+import java.io.InputStream;
 import java.net.URL;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -13,25 +15,30 @@ import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 
+/**
+ * S3Util 
+ * Communicates with S3 to get a signed url from S3
+ * 
+ *
+ * @author  Gabriel Ferrer
+ * @version 1.0
+ */
 @Component
-//@PropertySource(value = {"classpath:app.properties"})
 public class S3Util implements InitializingBean {
-
-	//@Value("#{T(java.lang.System).getenv('s3_bucket_name')}")
 	@Value("${s3_bucket_name}")
 	private String bucketName;
 
-	//@Value("#{T(java.lang.System).getenv('s3_accesskey')}")  //s3_accesskey
 	@Value("${s3_accesskey}")
 	private String accessKey;
 
-	//@Value("#{T(java.lang.System).getenv('s3_secretkey')}")
 	@Value("${s3_secretkey}")
 	private String secretAccessKey;
 
-	//@Value("#{T(java.lang.System).getenv('s3_region')}")
 	@Value("${s3_region}")
 	private String region;
 
@@ -55,10 +62,16 @@ public class S3Util implements InitializingBean {
 		GeneratePresignedUrlRequest generatePresignedUrlRequest = new GeneratePresignedUrlRequest(bucketName, fileName)
 				.withMethod(method);  //.withExpiration(expiration);
 		URL url = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
-
+		
 		return url.toString();
 	}
 
+	public String uploadFile(String fileName, InputStream content, ObjectMetadata metadata) {
+		s3Client.putObject(bucketName, fileName, content, metadata);
+		return createSignedUrl(fileName, HttpMethod.GET);
+	}
+	
+	
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		awsCreds = new BasicAWSCredentials(accessKey, secretAccessKey);
@@ -67,7 +80,6 @@ public class S3Util implements InitializingBean {
 	}
 	
 	public String createSignedGetUrl(String fileName) {
-		System.out.println(fileName);
 		if (fileName == null) {
 			return "";
 		} else {

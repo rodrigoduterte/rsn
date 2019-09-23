@@ -1,5 +1,6 @@
 package com.rsn.entity;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author vorga
@@ -27,18 +31,19 @@ public class PostLikes {
     @ManyToOne(cascade = CascadeType.ALL)
     private Posts posts;
 
-    public PostLikes() {
-    }
+    @Basic
+    private boolean postLiked;
+    
+    @Transient
+    private String username;
+    
+    public PostLikes() {}   
 
-    
-    
-    public PostLikes(Profile profile, Posts posts) {
-		super();
+	public PostLikes(Profile profile, Posts posts, boolean liked) {
 		this.profile = profile;
 		this.posts = posts;
+		this.postLiked = liked;
 	}
-
-
 
 	public Long getLike_id() {
         return like_id;
@@ -48,6 +53,7 @@ public class PostLikes {
         this.like_id = like_id;
     }
 
+    @JsonIgnore
     public Profile getProfile() {
         return profile;
     }
@@ -56,6 +62,7 @@ public class PostLikes {
         this.profile = profile;
     }
 
+    @JsonIgnore
     public Posts getPosts() {
         return posts;
     }
@@ -64,4 +71,17 @@ public class PostLikes {
         this.posts = posts;
     }
 
+    public String getUsername() {
+    	return this.getProfile().getUsername();
+    }
+
+	public boolean isLiked() {
+		return postLiked;
+	}
+
+	public void setLiked(boolean liked) {
+		this.postLiked = liked;
+	}
+    
+    
 }

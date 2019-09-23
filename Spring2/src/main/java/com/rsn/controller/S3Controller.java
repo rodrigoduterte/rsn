@@ -17,8 +17,6 @@ public class S3Controller {
 	@Autowired
 	private S3Util s3Util;
 	
-	
-
 	@PutMapping("/file")
 	public String createSignedPutUrl(@PathVariable String fileName) {
 		// we would probably want a service layer where would go provide additional

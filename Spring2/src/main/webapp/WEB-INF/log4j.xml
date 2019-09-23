@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" 
+"http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+
+    <appender name="RollingFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${catalina.base}/rsn.log" />  
+        <param name="maxFileSize" value="5000KB" />         
+        <param name="maxBackupIndex" value="40" />     
+        <param name="Threshold" value="DEBUG" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- The default pattern: Date Priority [Category] Message\n -->
+            <param name="ConversionPattern" value="%-5p %d %-5r  (%t:%c):%n      [%l] %n      %m%n%n" />
+        </layout>
+    </appender>    
+
+    <category name="com">
+        <priority value="INFO" />
+    </category>
+
+    <category name="org.springframework">
+        <priority value="INFO" />
+    </category>
+
+    <!-- <category name="org.hibernate">
+        <priority value="INFO" />
+    </category> -->
+
+    <category name="org.springframework.ws.soap.security.wss4j">
+        <priority value="DEBUG" />
+    </category>
+
+    <category
+        name="org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor">
+        <priority value="DEBUG" />
+    </category>
+
+    <category name="org.springframework.security">
+        <priority value="DEBUG" />
+    </category>
+
+    <category name="org.simpliccity.sst">
+        <priority value="DEBUG" />
+    </category>
+
+    <root>
+    	<level value="INFO" />
+        <appender-ref ref="RollingFile" />
+    </root>
+
+</log4j:configuration>

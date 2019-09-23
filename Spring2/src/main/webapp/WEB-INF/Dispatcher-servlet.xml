@@ -25,21 +25,33 @@
 		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-	<context:property-placeholder location="classpath:app.properties" />
+
+	<context:property-placeholder
+		location="classpath:app.properties" />
 	<context:annotation-config />
+	<context:component-scan
+		base-package="com.rsn.aspect" />
 	<context:component-scan
 		base-package="com.rsn.repository" />
 	<context:component-scan
 		base-package="com.rsn.entity" />
-		<context:component-scan
+	<context:component-scan
 		base-package="com.rsn.controller" />
-		<context:component-scan
+	<context:component-scan
 		base-package="com.rsn.service" />
-	
-	<import resource="db.xml"/>	
-	<import resource="email.xml"/>
+	<context:component-scan
+		base-package="com.rsn.view" />
 
+	<import resource="db.xml" />
+	<import resource="email.xml" />
+	<import resource="log4j.xml" />
+	<aop:aspectj-autoproxy />
 	<tx:annotation-driven />
 	<mvc:annotation-driven />
-	
+
+	<aop:aspectj-autoproxy>
+		<aop:include name="aspectRsn" />
+	</aop:aspectj-autoproxy>
+
+	<bean id="aspectRsn" class="com.rsn.aspect.AspectRsn" />
 </beans>

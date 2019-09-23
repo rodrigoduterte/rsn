@@ -14,14 +14,22 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
-@Service
+/**
+ * 
+ * @author Gabriel Ferrer
+ * is a class that performs Encryption and Decryption
+ *
+ */
+
+
+@Service()
 @PropertySource("classpath:app.properties")
 public class AES {
  
     private SecretKeySpec secretKey;
     private byte[] key;
     @Value("${aes_key}")
-    private String secret; // = System.getenv("aes_key");
+    private String secret; 
     
     
     public void setKey(String myKey)

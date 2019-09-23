@@ -16,8 +16,7 @@
 #{T(java.lang.System).getenv('em_password')}
 
  -->
-	
-	
+
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
         <property name="port" value="587" />
