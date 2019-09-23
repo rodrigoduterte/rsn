@@ -3,25 +3,29 @@
 
 <div class="basicCenter">
 <!--Add a Picture to this to see who the post belongs to-->
-<div class="card " style="width: 100%">
-        <div class="card-body">
+<div class="card " style="width: 100%; border-radius: 25px;">
+        <div class="card-body" >
 
 
-          
-        <div style="height: 50%">
+          <div >
+        <div style="height: 60%;">
           <div *ngIf='post.profileView.photo'>
               <img class="postPic"  src="{{post.profileView.photo}}" alt="ProfilePicture" style="padding:5px" srcset="">
           </div>
           <div *ngIf="!post.profileView.photo">
             <img class="postPic"  src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg" alt="ProfilePicture" style="padding:5px" srcset="">
-          </div>
+          </div >
           <h5 class="card-title">{{post.profileView.firstName}} {{post.profileView.lastName}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{post.profileView.occupation}}</h6>
         </div>
+      </div>
+      <br>
+      <hr>
         
         
-        <div style="height: 50%">
-            <p class="card-text">{{post.post_body}}</p>
+        <div style="height: 50%; border: navy; border-width: 1px;">
+
+            <p class="card-text" >{{post.post_body}}</p>
             <br>
             <br>
             <div class="boxImage">
@@ -35,7 +39,7 @@
 
 
         <div>
-          <button (click)="likePost()">Like!</button>
+          <button (click)="likePost()">{{liked}}</button><p>{{post.likes.liked}}</p>
          
         </div>
 

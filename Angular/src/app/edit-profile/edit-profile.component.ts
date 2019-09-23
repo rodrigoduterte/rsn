@@ -26,21 +26,24 @@ export class EditProfileComponent implements OnInit {
 
 
   editProfileForm = this.fb.group({
+      username: ['', Validators.required],
+      email:[''],
       firstName: ['', Validators.required],
       middleName: ['',],
       lastName: ['', Validators.required],
-      bio: [''],
       dob: [''],
-      gender: [''],
-      relationshipStatus: [''],
       favoriteColor: [''],
       city: [''],
+      relationshipStatus: [''],
+      gender: [''],
+      bio: [''],
       occupation: [''],
-      email:['']
+      
   })
 
   createFormFromUser(){
     this.editProfileForm.setValue({
+      username: this.userProfile.username,
       firstName: this.userProfile.firstName,
       middleName: this.userProfile.middleName,
       lastName: this.userProfile.lastName,
@@ -51,7 +54,7 @@ export class EditProfileComponent implements OnInit {
       favoriteColor: this.userProfile.favoriteColor,
       city: this.userProfile.city,
       occupation: this.userProfile.occupation,
-      email:this.userProfile.email
+      email:this.userProfile.email,
     })
     console.log(this.editProfileForm.value);
   }
@@ -96,7 +99,7 @@ export class EditProfileComponent implements OnInit {
     // });
     // let signedUrl2 = await urlResponse2.text();
     // let image = document.getElementById('file-img');
-    //image.src = signedUrl2;
+    // image.src = signedUrl2;
   }
 
   

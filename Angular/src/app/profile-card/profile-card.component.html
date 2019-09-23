@@ -1,6 +1,16 @@
 
 <div class="card basicCenter" >
-        <img class="card-img-top " [src]="userProfile.photo"  alt="...">
+
+    <div *ngIf="!userProfile.photo">
+        <img  class="card-img-top defaultProPic " src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg" alt="ProfilePicture">
+      </div >
+      <div *ngIf="userProfile.photo">
+          <img class=" defaultProPic card-img-top " [src]="userProfile.photo"  alt="...">
+        </div >
+        <!-- <img class="card-img-top " [src]="userProfile.photo"  alt="..."> -->
+
+
+
         <!--Make sure to property bind the SRC for the image for a loaded userProfile picture --> 
        <div class="card-body">
           <h5 class="card-title"> {{userProfile.firstName}} {{userProfile.middleName}} {{userProfile.lastName}}</h5>

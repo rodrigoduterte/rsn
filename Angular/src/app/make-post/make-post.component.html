@@ -21,7 +21,8 @@
         <form [formGroup]="newPost" >
            <p>Write Your Post Here:
                <br>
-               <input type="text" name="bodyText" formControlName="body">
+               <!-- <input type="text" name="bodyText" formControlName="body" size=""> -->
+               <textarea formControlName="body" rows="5" cols="50%" id="" placeHolder="Your Text Here"></textarea>
             </p>
         
             <div class="custom-file">

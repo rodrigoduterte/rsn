@@ -1,5 +1,6 @@
-<div>
-<div >
+ <div>
+
+  <!--  <div style="background-color: #3D96BF">
   <ul class="nav">
       <li class="nav-item">
           <a class="nav-link active" routerLink="/">Log In</a>
@@ -8,11 +9,12 @@
           <a class="nav-link" routerLink="/register">Register</a>
         </li>
   </ul>
-</div>
+</div> -->
 
 
 
-<div >
+<!-- <div *ngIf="isValid"> -->
+    <div style="background-color: #3D96BF">
   <ul class="nav">
     <li class="nav-item">
       <a class="nav-link" (click)="logOut()" routerLink="/">Logout</a>
@@ -27,9 +29,10 @@
       <a class="nav-link active" routerLink="search"   >Search</a>
       <!-- <a class="nav-link active"   (click)="open(content)"><span class="fakeLink" >Search</span></a> -->
     </li>
-    <li class="nav-item">
-        <a class="nav-link" routerLink="editProfile">Edit Profile</a>
+    <li class="nav-item" style="text-align: right">
+        <a class="nav-link" routerLink="/register">Register</a>
       </li>
+    
   </ul>
 </div>
 

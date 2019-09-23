@@ -25,18 +25,22 @@ export class AppComponent {
       this.searchForm  =  this.formBuilder.group({
         name: [''],
       });
+      this.isValid = this._authService.loggedIn;
     }
 
-  isValid:any = this._authService.loggedIn;
+  
   
   @SessionStorage('logStatus')
+  isValid:any;
   
 
 
   logOut(){
     this.clearItem();
     this._authService.logoutFlag();
+    this.isValid = this._authService.loggedIn
     return console.log(this.isValid);
+    
   }
 
   clearItem() {

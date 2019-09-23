@@ -59,9 +59,12 @@ profile: any;
       console.log(this.loginObject);
       this._httpService.login(this.loginObject)
       .subscribe(
-        response => console.log( response)),
-        error => console.log('error', error)
+        response => console.log( response),
+        error => this.found = error.error.text)
+        // error =>  LoginComponent.found=error.error.text)
       this.loginValidate()
+      console.log(this.found)
+      
 
     
   }
@@ -70,7 +73,7 @@ profile: any;
   
   loginValidate(){
     
-    
+    console.log(this.found);
     console.log("Before Validate: " + this.userProfile);
     
     

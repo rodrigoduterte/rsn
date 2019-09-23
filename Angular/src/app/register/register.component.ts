@@ -27,7 +27,7 @@ response: any;
   dob: ['',Validators.required],
   gender: ['',Validators.required],
   bio: ['',Validators.required],
-  email: ['',Validators.required, Validators.email]
+  email: ['',Validators.required]
 },);
 
 onSubmit(){

@@ -1,9 +1,10 @@
 .basicCenter{
-    background-color: lightgray;
+    background-color: #A3CEF1;
     padding: 10px;
     text-align: center;
     width: 45%;
     margin: 0 auto;
+    
     
 }
 [required]::-webkit-input-placeholder { /* WebKit browsers */
@@ -18,4 +19,11 @@
 
 .center{
     text-align: center;
+}
+
+.defaultProPic{
+    width:50%;
+    height: 50%;
+    margin: 15px;
+    
 }

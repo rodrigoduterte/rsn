@@ -25,8 +25,8 @@ newPostObject: any;
 
 
   newPost = this.fb.group({
-    body: 'Your Text Here',
-    photo: 'image',
+    body: '',
+    photo: '',
     
   });
 

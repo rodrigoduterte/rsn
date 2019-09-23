@@ -1,22 +1,44 @@
 <div class="card basicCenter" >
-        <img class="defaultProPic" id ="file-img"  [src]="userProfile.photo" class="card-img-top" alt="...">
+
+    <div *ngIf="!userProfile.photo">
+        
+        <img class="card-img-top defaultProPic" id ="file-img"  src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg"  alt="...">
+      </div >
+      <div *ngIf="userProfile.photo">
+          <img class="card-img-top defaultProPic" id ="file-img"  [src]="userProfile.photo"  alt="...">
+        </div >
+
+
+
+        <!-- <img class="defaultProPic" id ="file-img"  [src]="userProfile.photo" class="card-img-top" alt="..."> -->
 
         <p class="center">Upload Profile Photo:
           <br>
-           <input class="center" type="file" id="fileUpload" onchange="uploadProfilePhoto($event)">
+           <input class="center" type="file" id="fileUpload" (change)="uploadProfilePhoto($event)">
             <br>
            <img  class="center" alt="not yet loaded" id="file-img" />
         </p>
       
 
     
-    <div class = "edit-profile-div">
+    <div class = "edit-profile-div" >
 
 
-            <div>
+            <div >
                     <form [formGroup]="editProfileForm" >
                     <table class="table table-borderless" style=" background-color: white; text-align: left">
-                            <tbody>
+                            <tbody >
+
+                                <tr>
+                                    <td><small >Username:</small></td>
+                                    <td><input [class.is-invalid]= 
+                                        "editProfileForm.get('username').invalid && 
+                                        editProfileForm.get('username').touched" 
+                                        formControlName="username" type="text" name="username" [value]="userProfile.username" required/>
+                                    </td>
+                                  </tr>
+
+
                               <tr>
                                 <td><small >First Name:</small></td>
                                 <td><input [class.is-invalid]= 

@@ -7,7 +7,8 @@ import { registerLocaleData } from '@angular/common';
 })
 export class RegistrationService {
 
-_url = 'http://ec2-18-188-105-4.us-east-2.compute.amazonaws.com:8080/rsn'
+// _url = 'http://ec2-18-188-105-4.us-east-2.compute.amazonaws.com:8080/rsn'
+_url = 'http://ec2-3-16-113-160.us-east-2.compute.amazonaws.com:8080/rsn'
 
   constructor(private _http: HttpClient) { }
 
@@ -49,7 +50,7 @@ editProfile(userData, username){
  }
 
  likePost(username, postId){
-   return this._http.get<any>(this._url + '/like/new/' + username + '/' + postId);
+   return this._http.get<any>(this._url + '/like/create/' + username + '/' + postId);
  }
 
 }

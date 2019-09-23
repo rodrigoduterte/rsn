@@ -1,9 +1,9 @@
 <div class="registerationCard">
         <img class="defaultProPic" src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg">
        <br>
-        {{registrationForm.value | json}}
+        <!-- {{registrationForm.value | json}} -->
         <form [formGroup]="registrationForm"   >
-               
+
                 
             <h3>Registration</h3>
             <div class="label">
@@ -32,8 +32,6 @@
                     <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">Passwords Do Not Match</small>
                 </div> -->
 
-            
-                
                 <input [class]="registrationForm.get('firstName').invalid &&
                                         registrationForm.get('firstName').touched" 
                                         formControlName="firstName" type="text" name="firstname" placeholder="First Name" />
@@ -51,15 +49,10 @@
                         </div>  
                         <br>
 
-
-
                         <!-- <input [matDatepicker]="myDatepicker">
 <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
 <mat-datepicker #myDatepicker></mat-datepicker> -->
                         
-                        
- 
-                
                  <input matInput [class.is-invalid]="registrationForm.get('dob').invalid &&
                                             registrationForm.get('dob').touched" 
                                             [matDatepicker]="myDatepicker"
@@ -91,15 +84,6 @@
                                     <small *ngIf="registrationForm.get('bio').errors?.required" class="text-danger">Required Field</small>
                                 </div>
 
- 
-
-
-
-
-
-
-
-
                 <br>
                 <input [class.is-invalid]="registrationForm.get('email').invalid &&
                                             registrationForm.get('email').touched"
@@ -113,44 +97,4 @@
             <button (click)="onSubmit()" [disabled]="!registrationForm.valid || !registrationForm.get('email').touched" type="button" value="Register" >Register</button>
         </form>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="registerationCard">
-    <img class="defaultProPic" src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg">
-    
-    
-
-    <form #registrationForm="ngForm" action="register.do" method="post">
-            {{registrationForm.value | json}}
-            {{newProfile | json}}
-        <h3>Registration</h3>
-        <input type="text" name="username"   [(ngModel)]="newProfile._username" />
-        <br>
-        <input type="text" name="password"  [(ngModel)]="newProfile._password" />
-        <br>
-        <input type="text" name="firstname"  [(ngModel)]="newProfile._firstName" />
-        <br>
-        <input type="text" name="lastname"  [(ngModel)]="newProfile._lastName" />
-        <br>
-        <input type="email" name="email"  [(ngModel)]="newProfile._email" />
-        <br>
-        <input type="submit" value="Register"/>
-    </form>
-
-
-</div> -->
-
 

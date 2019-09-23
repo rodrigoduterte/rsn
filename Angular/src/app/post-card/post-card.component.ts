@@ -16,20 +16,28 @@ export class PostCardComponent implements OnInit {
   @Input()
   userProfile: any;
   
-  
+  liked: any;
 
   
 
   
   ngOnInit() {
+    this.liked="Like!"
   
   }
 
   likePost(){
     this.http.likePost(this.userProfile.username, this.post.post_id)
     .subscribe(
-      response => response,
-      error => error)
+      response => console.log(response),
+      error => this.liked = error.error.text)
+      this.likeStat()
+     
   }
+
+  likeStat(){
+    console.log(this.liked);
+  }
+
 
 }

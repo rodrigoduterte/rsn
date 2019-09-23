@@ -4,7 +4,14 @@
     <div class="example-header-image">
     <!-- <div mat-card-avatar class="example-header-image"> -->
       <!-- https://randomuser.me/api/portraits/men/43.jpg -->
-      <img mat-card-image src="{{person.photo}}" alt="Avatar Photo" style="width:100px; height: 100px;">
+      <div *ngIf="!person.photo">
+          <img mat-card-image src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg" alt="Avatar Photo" style="width:100px; height: 100px;">
+      </div>
+
+      <div *ngIf="person.photo">
+          <img mat-card-image src="{{person.photo}}" alt="Avatar Photo" style="width:100px; height: 100px;">
+      </div>
+      
     </div>
     <!-- <mat-card-title>{{person.firstName}} {{person.middleName}} {{person.lastName}}</mat-card-title> -->
     <mat-card-title><a (click)="loadSearchedProfile(person.username)" >{{person.firstName}} {{person.middleName}} {{person.lastName}}</a></mat-card-title>

@@ -1,7 +1,7 @@
 import { resolve, reject } from "q";
 ​
 export class AuthService {
-    loggedIn = true;
+    loggedIn = false;
 ​
     isAuthenticated(){
         const promise = new Promise(
