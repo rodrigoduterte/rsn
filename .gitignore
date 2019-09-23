@@ -2,3 +2,4 @@
 /Servers
 *.properties
 /Spring2/src/main/java/com/rsn/seed
+/Spring2/src/main/webapp/WEB-INF/db.xml
