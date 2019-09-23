@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+<!-- #{T(java.lang.System).getenv('db_url')}	
+#{T(java.lang.System).getenv('db_username')}
+#{T(java.lang.System).getenv('db_password')}
+#{T(java.lang.System).getenv('db_dialect')}	
+nn -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db_dialect}" />
+		<property name="url"
+			value="${db_url}" />
+		<property name="username"
+			value="${db_username}" />
+		<property name="password"
+			value="${db_password}" />
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.rsn.entity" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${db_dialect}</prop>
+				<prop key="hibernate.show_sql">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+		
+		
+		<!-- List of DAOs/Repos to be tested -->
+	<bean id="profileRepo" class="com.rsn.repository.ProfileRepo"/>
+	<bean id="postRepo" class="com.rsn.repository.PostRepo"/>
+	<bean id="postLikesRepo" class="com.rsn.repository.PostLikesRepo"/>
+	<bean id="commentRepo" class="com.rsn.repository.CommentRepo"/>
+	<bean id="commentLikesRepo" class="com.rsn.repository.CommentLikesRepo"/>
+	
+
+</beans>

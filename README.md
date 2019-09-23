@@ -1,2 +1,0 @@
-# rsn
-Revature Social Network
