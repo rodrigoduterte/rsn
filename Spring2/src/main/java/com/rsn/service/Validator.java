@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author vorga
+ * @version 1.0
  * Used to validate email and password
  *
  */
@@ -34,10 +35,10 @@ public class Validator {
 	private List<Rule> getRules() {
 		List<Rule> rules = new ArrayList<Rule>();
 		rules.add(lr);
-		//rules.add(ucr);
+		rules.add(ucr);
 		rules.add(lcr);
-		//rules.add(dr);
-		//rules.add(scr);
+		rules.add(dr);
+		rules.add(scr);
 		rules.add(wsr);
 		
 		return rules;

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 /**
  * 
  * @author Gabriel Ferrer
- *	Is a class that makes beans importable as a non bean
+ *	Is a class that makes spring beans importable in a class that is not injectable
  */
 
 @Service

@@ -10,7 +10,13 @@ import org.springframework.stereotype.Repository;
 
 import com.rsn.entity.CommentLikes;
 import com.rsn.entity.PostLikes;
+import com.rsn.entity.Profile;
 
+/**
+ * @author Gabriel Ferrer.
+ * A Repo that accesses methods that modify PostLikesRepo in the database
+ * This Repo can be also accessed by any controllers 
+ */
 @Repository("postLikesRepo")
 @Transactional
 public class PostLikesRepo {
@@ -31,6 +37,14 @@ public class PostLikesRepo {
 	
 	public void delete(PostLikes like) {
 		sessionFactory.getCurrentSession().delete(like);
+	}
+	
+	public void clear() {
+		sessionFactory.getCurrentSession().clear();
+	}
+	
+	public void merge(PostLikes like) {
+		sessionFactory.getCurrentSession().merge(like);
 	}
 	
 	public void evict(PostLikes like) {

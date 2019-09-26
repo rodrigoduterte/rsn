@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 /**
  * 
  * @author Gabriel Ferrer
- * is a class that performs Encryption and Decryption
+ * is a class that performs Encryption and Decryption of passwords
  *
  */
 

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,6 @@ import com.rsn.entity.Profile;
 import com.rsn.repository.PostLikesRepo;
 import com.rsn.repository.PostRepo;
 import com.rsn.repository.ProfileRepo;
-import com.rsn.service.Matches;
 import com.rsn.service.S3Util;
 
 /**
@@ -35,6 +35,7 @@ import com.rsn.service.S3Util;
  * 		GET /post/after/{postId}					: Returns all the posts made after the given postId
  * 		POST /post/new/{username}					: Returns a new post for the given username
  *  	POST /post/new/{username}?posti=postId		: Updates a post for the given username and postId
+ *  	POST /post/edit/{postId}					: Edits an existing post
  */
 @RestController
 @CrossOrigin
@@ -53,8 +54,22 @@ public class PostController {
 	@Autowired
 	private S3Util s3Util;
 	
+	@CrossOrigin
+	@PostMapping(value = "/post/edit/{postId}", consumes = "application/json")
+	public String edit(@RequestBody PostBody body, @PathVariable("postId") String postId) {
+		Long id = Long.parseLong(postId);
+		
+		try {
+			Posts post = postRepo.selectById(id);
+			post.setPost_body(body.getBody());
+			postRepo.update(post);
+		} catch (Exception e) {
+			return "Not added";
+		}
+		return "Added";
+	}
 	
-
+	@CrossOrigin
 	@RequestMapping(value = "/post/new/{username}", 
 			method = RequestMethod.POST, consumes = "application/json",
 			produces = "application/json") 
@@ -82,8 +97,12 @@ public class PostController {
 		return new PostsResponse(postId, "Post added");
 	}
 
+	@CrossOrigin
 	@GetMapping(value = "/post/all")
 	public List<Posts> getAll() {
+		postLikesRepo.clear();
+		profileRepo.clear();
+		postRepo.clear();
 		List<Posts> posts = postRepo.selectAll();
 		for (Posts post : posts) {
 			Profile profile = post.getProfile();
@@ -96,10 +115,15 @@ public class PostController {
 			post.setLikes( postLikes );
 			post.setPhoto( postSignedUrl );
 			post.setProfileView( profile );
+			
 		}
+		postLikesRepo.clear();
+		profileRepo.clear();
+		postRepo.clear();
 		return posts;
 	}
 
+	@CrossOrigin
 	@GetMapping(value = "/post/{username}")
 	public List<Posts> getPostsByUsername(@PathVariable("username") String username) {
 		int profileId = profileRepo.selectByUsername(username).getUser_id();
@@ -121,6 +145,7 @@ public class PostController {
 		return posts;
 	}
 
+	@CrossOrigin
 	@GetMapping(value = "/post/after/{postId}")
 	public List<Posts> getLatest(@PathVariable(name = "postId") Long postId) {
 		List<Posts> posts = postRepo.selectLatestPosts(postId);
@@ -140,5 +165,5 @@ public class PostController {
 		return posts;
 	}
 	
-
+	
 }

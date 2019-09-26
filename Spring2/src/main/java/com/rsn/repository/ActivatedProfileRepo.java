@@ -10,6 +10,11 @@ import org.apache.commons.lang3.RandomStringUtils;
 import com.rsn.entity.ActivatedProfile;
 import com.rsn.entity.Profile;
 
+/**
+ * @author Gabriel Ferrer.
+ * A Repo that accesses methods that modify ActivatedProfile in the database
+ * This Repo can be also accessed by any controllers 
+ */
 @Repository("activatedProfileRepo")
 @Transactional
 public class ActivatedProfileRepo {

@@ -24,10 +24,11 @@ public class ActivateProfileController {
 	@Autowired
 	private ActivatedProfileRepo activatedProfileRepo;
 	
+	@CrossOrigin
 	@GetMapping(value = "/user/activate/{activeId}")
 	public RedirectView activate(@PathVariable("activeId") String activeId) {
 		System.out.println(activeId);
 		activatedProfileRepo.activate(activeId);
-		return new RedirectView("https://www.google.com");
+		return new RedirectView("http://ec2-18-188-105-4.us-east-2.compute.amazonaws.com:8080/rsng/");
 	}
 }

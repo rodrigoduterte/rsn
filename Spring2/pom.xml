@@ -156,7 +156,6 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
 		<!-- Testing -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
@@ -165,9 +164,6 @@
 			<version>5.1.5.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
-
-
-
 	</dependencies>
 	<build>
 		<finalName>Springmvcangular</finalName>

@@ -23,7 +23,10 @@ import com.rsn.service.TimestampSerializer;
 import com.rsn.view.ProfileView;
 
 /**
- * @author vorga
+ * @author Gabriel Ferrer
+ * A persisting model for saving posts
+ * 
+ * 
  */
 @Entity
 @Table(name="POSTS")

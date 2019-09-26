@@ -14,7 +14,7 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * @author vorga
+ * @author Gabriel Ferrer
  */
 @Entity
 @Table(name="POSTLIKES")

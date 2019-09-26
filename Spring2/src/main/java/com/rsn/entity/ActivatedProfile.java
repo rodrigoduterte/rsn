@@ -9,7 +9,9 @@ import javax.persistence.Table;
 
 
 /**
- * @author vorga
+ * @author Gabriel Ferrer
+ * A persisting model for saving activated profile once a customer is registered
+ * changes to activated once the customer press the Activate my account
  */
 @Entity
 @Table(name="ACTIVATEDPROFILE")

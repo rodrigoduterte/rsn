@@ -44,7 +44,6 @@ public class PhotoController {
 	@Autowired
 	private S3Util s3Util;
 	
-	
 	/**
 	 * Is a method responds with a PostResponse that is viewed as a JSON string in the client
 	 * 
@@ -81,8 +80,9 @@ public class PhotoController {
 	 * @param username gets the username from the path
 	 * @param posti gets the postId from the query parameter ?posti=postId          
 	 */
+	@CrossOrigin
 	@PutMapping(value = "/post/photo/{username}", produces = "application/json")
-	public PostsResponse createPhoto(@PathVariable String username,
+	public PostsResponse createPhoto(@PathVariable("username") String username,
 			@RequestParam(name = "posti", defaultValue = "") String posti) {
 		Long postId;
 		
@@ -138,10 +138,12 @@ public class PhotoController {
 	 * @param username gets the username from the path
 	 * @param posti gets the postId from the query parameter ?posti=postId          
 	 */
-	@GetMapping(value = "/post/photo/{postId}")
-	public String getPhoto(@PathVariable String postId) {
+	@CrossOrigin
+	@GetMapping(value = "/post/photo/id/{postId}")
+	public String getPhoto(@PathVariable("postId") String postId) {
 		Long posti = Long.parseLong(postId);
 		String fileName = postRepo.selectById(posti).getPhoto();
 		return s3Util.createSignedGetUrl(fileName);
 	}
+	
 }

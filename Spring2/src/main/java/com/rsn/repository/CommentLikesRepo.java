@@ -10,6 +10,11 @@ import org.springframework.stereotype.Repository;
 
 import com.rsn.entity.CommentLikes;
 
+/**
+ * @author Gabriel Ferrer.
+ * A Repo that accesses methods that modify CommentLikesRepo in the database
+ * This Repo can be also accessed by any controllers 
+ */
 @Repository("commentLikesRepo")
 @Transactional
 public class CommentLikesRepo {

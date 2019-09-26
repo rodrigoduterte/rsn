@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.amazonaws.HttpMethod;
 import com.rsn.service.S3Util;
 
-////Not an official part of controllers only for demo purposes
-
+/**
+ * 
+ * @author Gabriel Ferrer
+ * Not an official part of controllers only for demo purposes
+ */
 @RestController
 public class S3Controller {
 

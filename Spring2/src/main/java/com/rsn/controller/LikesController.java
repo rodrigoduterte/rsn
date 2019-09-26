@@ -40,13 +40,18 @@ public class LikesController {
 	@Autowired
 	private ProfileRepo profileRepo;
 
+	@CrossOrigin
 	@GetMapping(value = "/like/create/{username}/{postId}")
 	public String insertPostLike(@PathVariable String username, @PathVariable String postId) {
+		postLikesRepo.clear();
+		profileRepo.clear();
+		postRepo.clear();
 		Profile user = profileRepo.selectByUsername(username);
 		Posts post = postRepo.selectById(  Long.parseLong(postId)  );
 		PostLikes postLike = null;
 		String liked = "";
 
+		
 		if ( postLikesRepo.exists(username, Long.parseLong(postId)) ) {
 			postLike = postLikesRepo.selectSpecificLike(username, Long.parseLong(postId));
 			liked = postLikesRepo.toggle(postLike);
@@ -56,7 +61,10 @@ public class LikesController {
 			liked = "Liked";
 		}
 		
-		profileRepo.evict(user);
+		
+		postLikesRepo.clear();
+		profileRepo.clear();
+		postRepo.clear();
 		return "Post " + liked;
 	}
 

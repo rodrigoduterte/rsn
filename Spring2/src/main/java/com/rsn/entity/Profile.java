@@ -25,7 +25,10 @@ import com.rsn.dto.EditProfile;
 import com.rsn.service.*;
 
 /**
- * @author vorga
+ * @author Gabriel Ferrer
+ * A persisting model for saving user information
+ * 
+ * 
  */
 @Entity
 @Table(name="PROFILE")
@@ -42,7 +45,7 @@ public class Profile {
 
     // needs to be unique
     @Basic
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String email;
 
     @Basic
@@ -57,7 +60,7 @@ public class Profile {
     private String lastName;
 
     
-    @Column(nullable = false)
+    //@Column(nullable = true)
     @Basic
     @JsonSerialize(using = TimestampSerializer.class)
     @JsonDeserialize(using = TimestampDeserializer.class)

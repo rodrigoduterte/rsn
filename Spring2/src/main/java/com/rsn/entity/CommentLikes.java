@@ -10,7 +10,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
- * @author vorga
+ * @author Gabriel Ferrer
+ * A persisting model for saving likes done on comments
  */
 @Entity
 @Table(name="COMMENTLIKES")

@@ -14,6 +14,11 @@ import com.rsn.entity.Posts;
 import com.rsn.entity.Profile;
 import com.rsn.entity.PostLikes;
 
+/**
+ * @author Gabriel Ferrer.
+ * A Repo that accesses methods that modify PostRepo in the database
+ * This Repo can be also accessed by any controllers 
+ */
 @Repository("postRepo")
 @Transactional
 public class PostRepo {
@@ -38,6 +43,18 @@ public class PostRepo {
 	
 	public Posts selectById(long id) {
 		return sessionFactory.getCurrentSession().get(Posts.class, id);
+	}
+	
+	public void clear() {
+		sessionFactory.getCurrentSession().clear();
+	}
+	
+	public void merge(Posts post) {
+		sessionFactory.getCurrentSession().merge(post);
+	}
+	
+	public void evict(Posts post) {
+		sessionFactory.getCurrentSession().evict(post);
 	}
 	
 //	public boolean exists(Posts post) {

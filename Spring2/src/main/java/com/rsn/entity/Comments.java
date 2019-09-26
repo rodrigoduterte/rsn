@@ -13,7 +13,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
- * @author vorga
+ * @author Gabriel Ferrer
+ * A persisting model for saving comments
  */
 @Entity
 @Table(name="COMMENTS")

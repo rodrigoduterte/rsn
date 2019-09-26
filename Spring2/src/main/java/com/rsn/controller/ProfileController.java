@@ -39,19 +39,21 @@ import com.rsn.dto.EditProfile;
 import freemarker.template.TemplateException;
 
 /**
- * @author Gabriel Ferrer Is a Controller that has REST Endpoints for adding,
- *         editing and viewing profiles. REST Endpoints GET
- *         /user/info/{username} : gets the info of a specific profile(user) GET
- *         /user/all : gets all the info of all profiles(users) GET
- *         /user/all?name=searchKey : gets all the info of matching searchKey
- *         POST /user/new : creates a new profile(user) and sends email to user
- *         email POST /user/edit/{username} : edits the profile of a user POST
- *         /user/in : checks whether the supplied user credentials exist in the
- *         database GET /user/out/{username} : removes the session from the
- *         logged in user GET /user/forgot/{emailOrUsername} : sends user an
- *         email of the new password
- * 
- * 
+ * @author Gabriel Ferrer 
+ * Is a Controller that has REST Endpoints for adding, editing and viewing profiles. 
+ *   REST Endpoints 
+ *   GET
+ *   	/user/info/{username} : gets the info of a specific profile(user)
+ *      /user/all : gets all the info of all profiles(users)
+ *      /user/all?name=searchKey : gets all the info of matching searchKey
+ *      /user/out/{username} : removes the session from the logged in user
+ *      /user/forgot/{emailOrUsername} : sends user an email of the new password
+ *         
+ *   POST 
+ *      /user/new : creates a new profile(user) and sends email to user email 
+ *      /user/edit/{username} : edits the profile of a user
+ *      /user/in : checks whether the supplied user credentials exist in the database 
+ *          
  */
 @RestController
 @CrossOrigin
@@ -86,6 +88,7 @@ public class ProfileController {
 		sender = sent;
 	}
 
+	@CrossOrigin
 	@GetMapping(value = "/user/info/{username}")
 	public Profile getUser(@PathVariable("username") String username) {
 		String signedUrl = s3Util.createSignedGetUrl(profileRepo.getPhoto(username));
@@ -118,39 +121,48 @@ public class ProfileController {
 		return profiles;
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/user/new", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String insert(@RequestBody Profile user) {
 		if (validator.isValidPassword(user.getPassword()) && validator.isEmail(user.getEmail())
 				&& !profileRepo.exists(user.getEmail()) && !profileRepo.exists(user.getUsername())) {
 			user.setPassword(aes.encrypt(user.getPassword())); /// get unencrypted password and save as encrypted
-																/// password
 		} else {
-			return "Invalid registration";
+			return "Password must be 8 - 16 characters in length \r\n"
+					+ "must have at least one Uppercase, Lowercase, Digit and Special character \r\n"
+					+ "Email must be in a valid format \r\n"
+					+ "User must not use an existing username \r\n";
 		}
 
-		if (profileRepo.insert(user) != null) {
+		try {
+			if (profileRepo.insert(user) != null) {
 
-			emailContent("activate", user, "", "Successfully registered",
-					activatedProfileRepo.createNotExists(user, false));
+				emailContent("activate", user, "", "Successfully registered",
+						activatedProfileRepo.createNotExists(user, false));
 
-			return "Registration successful";
-		} else {
-			return "Invalid registration";
+				return "Registration successful";
+			}
+		} catch (Exception e) {
+			return "Registration unsuccessful";
 		}
+		return "Registration unsuccessful";
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/user/edit/{username}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String update(@RequestBody EditProfile userJSON, @PathVariable String username) {
 		Profile userDB = profileRepo.selectByUsername(username);
 
 		if (validator.isEmail(userJSON.getEmail())) {
 			userDB.setProfile(userJSON);
+			profileRepo.update(userDB);
+			return "Edit user success";
 		}
 
-		profileRepo.update(userDB);
-		return "Edit user success";
+		return "USer edit failed";
 	}
 
+	@CrossOrigin
 	@PutMapping(value = "/user/photo/{username}")
 	public String createPhoto(@PathVariable String username) {
 		String fileName = profileRepo.savePhoto(username);
@@ -158,6 +170,7 @@ public class ProfileController {
 		return s3Util.createSignedPutUrl(fileName);
 	}
 
+	@CrossOrigin
 	@GetMapping(value = "/user/photo/{username}")
 	public String getPhoto(@PathVariable String username) {
 		String fileName = profileRepo.getPhoto(username);
@@ -165,7 +178,7 @@ public class ProfileController {
 		return s3Util.createSignedGetUrl(fileName);
 	}
 
-	/// modified after 1st deploy
+	@CrossOrigin
 	@PostMapping(value = "/user/in", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String login(@RequestBody Login login) {
 		String username = login.getUsername();
@@ -174,7 +187,7 @@ public class ProfileController {
 		try {
 			if (activatedProfileRepo.isActivated(username)) {
 				if (profileRepo.selectByUsername(username) == null) {
-					return "User not found";
+					return "User not activated/found";
 				} else {
 					Profile profile = profileRepo.selectByUsername(username);
 
@@ -185,19 +198,21 @@ public class ProfileController {
 					}
 				}
 			} else {
-				return "User not activated";
+				return "User not activated/found";
 			}
 		} catch (Exception e) {
-			return "User not found";
+			return "User not activated/found";
 		}
 
 	}
 
+	@CrossOrigin
 	@GetMapping(value = "/user/out/{username}")
 	public boolean logout(@PathVariable String username) {
 		return true;
 	}
 
+	@CrossOrigin
 	@GetMapping(value = "/user/forgot/{emailOrUsername}")
 	public boolean updatePassword(@PathVariable("emailOrUsername") String emailOrUsername) {
 		String newPassword = validator.generatePassword();
@@ -230,7 +245,7 @@ public class ProfileController {
 				try {
 					MimeMessageHelper mimeMsgHelperObj = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 					mimeMsgHelperObj.setTo(user.getEmail());
-					mimeMsgHelperObj.setFrom(sender); // System.getenv("em_username")
+					mimeMsgHelperObj.setFrom(sender); 
 					mimeMsgHelperObj.setText(emailContentMaker.build(), true);
 					mimeMsgHelperObj.setSubject(subject);
 				} catch (MessagingException | TemplateException | IOException e) {

@@ -14,7 +14,7 @@ import com.rsn.repository.CommentRepo;
 /**
  * @author Gabriel Ferrer.
  * Is a Controller that has endpoints for adding and deleting comments
- * 
+ * Currently endpoints for this class are not used
  */
 @RestController
 @CrossOrigin
@@ -24,11 +24,13 @@ public class CommentController {
 	@Autowired
 	private CommentRepo commentRepo;
 
+	@CrossOrigin
 	@PostMapping(value = "/com/new")
 	public void insert(@RequestBody Comments comment) {
 		commentRepo.insert(comment);
 	}
 
+	@CrossOrigin
 	@PostMapping(value = "/com/delete")
 	public void delete(@RequestBody Comments comment) {
 		commentRepo.delete(comment);

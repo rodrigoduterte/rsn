@@ -10,9 +10,15 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.rsn.entity.Posts;
 import com.rsn.entity.Profile;
 import com.rsn.service.Validator;
 
+/**
+ * @author Gabriel Ferrer.
+ * A Repo that accesses methods that modify ProfileRepo in the database
+ * This Repo can be also accessed by any controllers 
+ */
 @Repository("profileRepo")
 @Transactional
 public class ProfileRepo {
@@ -36,6 +42,14 @@ public class ProfileRepo {
 	
 	public void delete(Profile profile) {
 		sessionFactory.getCurrentSession().delete(profile);
+	}
+	
+	public void clear() {
+		sessionFactory.getCurrentSession().clear();
+	}
+	
+	public void merge(Profile profile) {
+		sessionFactory.getCurrentSession().merge(profile);
 	}
 	
 	public void evict(Profile profile) {
