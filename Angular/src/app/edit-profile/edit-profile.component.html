@@ -1,0 +1,147 @@
+<div class="card basicCenter">
+
+  <div *ngIf="!userProfile.photo">
+
+    <img class="card-img-top defaultProPic" id="file-img"
+      src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg" alt="...">
+  </div>
+  <div *ngIf="userProfile.photo">
+    <img class="card-img-top defaultProPic" id="file-img" [src]="userProfile.photo" alt="...">
+  </div>
+  <p class="center">Upload Profile Photo:
+    <br>
+    <input class="center" type="file" id="fileUpload" (change)="uploadProfilePhoto($event)"
+      class="btn btn-primary btn-lg">
+    <br>
+    <img class="center" alt="not yet loaded" id="file-img" />
+  </p>
+
+
+
+  <div class="edit-profile-div">
+
+
+    <div>
+      <form [formGroup]="editProfileForm">
+        <table class="table table-borderless" style=" background-color: white; text-align: left">
+          <tbody>
+
+            <tr>
+              <td><small class="font-weight-bold">Username:</small></td>
+              <td><input [class.is-invalid]="editProfileForm.get('username').invalid && 
+                  editProfileForm.get('username').touched" formControlName="username" type="text"
+                  class="form-control col-md-6 col-sm offset-3" name="username" [value]="userProfile.username"
+                  required />
+              </td>
+            </tr>
+
+
+            <tr>
+              <td><small class="font-weight-bold">First Name:</small></td>
+              <td><input [class.is-invalid]="editProfileForm.get('firstName').invalid && 
+                 editProfileForm.get('firstName').touched" formControlName="firstName" type="text"
+                  class="form-control col-md-6 col-sm offset-3" name="firstName" [value]="userProfile.firstName"
+                  required />
+              </td>
+            </tr>
+
+            <tr>
+              <td><small class="font-weight-bold">Middle Name:</small></td>
+              <td><input formControlName="middleName" type="text" name="middleName" [value]="userProfile.middleName"
+                  class="form-control col-md-6 col-sm offset-3" />
+              </td>
+            </tr>
+
+            <tr>
+              <td><small class="font-weight-bold">Last Name:</small></td>
+              <td><input [class.is-invalid]="editProfileForm.get('firstName').invalid && 
+                  editProfileForm.get('firstName').touched" formControlName="lastName"
+                  class="form-control col-md-6 col-sm offset-3" type="text" name="lastName"
+                  [value]="userProfile.lastName" required /></td>
+            </tr>
+
+            <tr>
+              <td><small class="font-weight-bold">Bio:</small></td>
+              <td><textarea formControlName="bio" type="text" name="bio" [value]="userProfile.bio" rows="3"
+                  class="form-control col-md-8 col-sm offset-3">
+                </textarea>
+              </td>
+            </tr>
+            <tr>
+              <td><small class="font-weight-bold">Birthday:</small></td>
+              <td><input formControlName="dob" type="text" name="dob" [value]="userProfile.dob"
+                  class="form-control col-md-6 col-sm offset-3" /></td>
+            </tr>
+
+            <tr>
+              <td><small class="font-weight-bold">Gender:</small></td>
+              <td><input formControlName="gender" type="text" name="gender" [value]="userProfile.gender"
+                  class="form-control col-md-6 col-sm offset-3" /></td>
+            </tr>
+
+            <tr>
+              <td><small class="font-weight-bold">RelationShip:</small></td>
+              <td><input formControlName="relationshipStatus" type="text" name="relationshipStatus"
+                  [value]="userProfile.relationshipStatus" class="form-control col-md-6 col-sm offset-3" /></td>
+            </tr>
+            <tr>
+              <td><small class="font-weight-bold">Favorite Color:</small></td>
+              <td><input formControlName="favoriteColor" type="text" name="favoriteColor"
+                  [value]="userProfile.favoriteColor" class="form-control col-md-6 col-sm offset-3" /></td>
+            </tr>
+            <tr>
+              <td><small class="font-weight-bold">City:</small></td>
+              <td><input formControlName="city" type="text" name="city" [value]="userProfile.city"
+                  class="form-control col-md-6 col-sm offset-3" /></td>
+            </tr>
+            <tr>
+              <td><small class="font-weight-bold">Occupation:</small></td>
+              <td><input formControlName="occupation" type="text" name="occupation" [value]="userProfile.occupation"
+                  class="form-control col-md-6 col-sm offset-3" />
+              </td>
+            </tr>
+            <tr>
+              <td><small class="font-weight-bold">Email:</small></td>
+              <td><input formControlName="email" type="text" name="email" [value]="userProfile.email"
+                  class="form-control col-md-6 col-sm offset-3"></td>
+          </tbody>
+        </table>
+        <button (click)="submitEdit()" type="button" class="btn btn-primary btn-lg">Submit</button>
+      </form>
+    </div>
+    <!-- 
+        <form [formGroup]="editProfileForm" (ngSubmit)="submitEdit()">
+
+                <input [class.is-invalid]= 
+                "editProfileForm.get('firstName').invalid && 
+                editProfileForm.get('firstName').touched" 
+                formControlName="firstName" type="text" name="firstName" placeholder="First Name" required/>
+
+                
+
+                <input formControlName="middleName"type="text" name="middleName" placeholder="Middle Name"/>
+
+                <input [class.is-invalid]= 
+                "editProfileForm.get('firstName').invalid && 
+                editProfileForm.get('firstName').touched" 
+                formControlName="lastName"type="text" name="lastName" placeholder="Last Name" required/>
+
+               
+
+                <input formControlName="bio"type="text" name="bio" placeholder="Bio"/>
+                <input formControlName="dob"type="text" name="dob" placeholder="DOB"/>
+                <input formControlName="gender"type="text" name="gender" placeholder="Gender"/>
+                <input formControlName="relationshipStatus"type="text" name="relationshipStatus" placeholder="RelationshipStatus" />
+                <input formControlName="favoriteColor"type="text" name="favoriteColor" placeholder="FavoriteColor"/>
+                <input formControlName="city"type="text" name="city" placeholder="City" />
+                <input formControlName="occupation"type="text" name="occupation" placeholder="Occupation"/>
+                
+            
+                
+                   <button (click) = "submitEdit()" type="button" >Submit</button>
+                
+        </form>
+    -->
+    <!-- {{editProfileForm.value | json}} -->
+  </div>
+</div>

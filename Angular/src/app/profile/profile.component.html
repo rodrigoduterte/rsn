@@ -1,4 +1,21 @@
 <div>
-<app-profile-card></app-profile-card>
-<app-post></app-post>
+    <div *ngIf="!editMode" class="padContainer">
+        <app-profile-card (childEvent)="editSwitchOn()" [userProfile]="userProfile">
+        </app-profile-card>
+    </div>
+    <div *ngIf="editMode">
+        <app-edit-profile (childEvent)="editSwitchOff()"></app-edit-profile>
+        <div class="centerButton">
+            <button (click)="editSwitchOff()" class="btn btn-primary btn-lg">View Profile</button>
+        </div>
+    </div>
+    <div class="centerButton">
+        <button class="centerButton" (click)="editSwitchOn()" class="btn btn-primary btn-lg">Edit
+            Profile</button>
+    </div>
+    <div>
+        <div *ngFor="let post of userPosts">
+            <app-post-card [post]="post"></app-post-card>
+        </div>
+    </div>
 </div>

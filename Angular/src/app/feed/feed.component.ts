@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SessionStorageService, SessionStorage } from 'ngx-webstorage';
+import { HttpClient } from '@angular/common/http';
+import { RegistrationService } from '../registration.service';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-feed',
@@ -7,9 +11,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedComponent implements OnInit {
 
-  constructor() { }
+@SessionStorage('user')
+userProfile: any;
 
-  ngOnInit() {
+
+feedPosts: any;
+
+
+
+printFeed(){
+  console.log(this.feedPosts);
+}
+
+  
+  
+  //newPost = new PostBean(this.currentUser.profilePic, this.currentUser.firstName, this.currentUser.lastName);   //this is a post Object for creating new posts 
+
+  constructor(private _http: RegistrationService, private session:SessionStorageService) {
+    this.getAllPosts();
+   }
+
+  ngOnInit() {  
+    
+      document.body.classList.add('bg-img');
+    this.retrieveSessionUser();
+
+  }     
+  
+  retrieveSessionUser(){
+    this.userProfile = this.session.retrieve('user');
   }
 
+// addPost(post: PostBean){            this was being used for dummy Data in an Array from a service. Wont need once we get Database info
+//   this.feedArray.unshift(post);
+//   this.feedArray = this.feedArray.splice(0);
+//   this.newPost = new PostBean();
+// }
+
+getAllPosts(){
+  
+  this._http.getAllPosts().subscribe( 
+    data => {
+      this.feedPosts = data;
+    },
+    error => {
+      console.log('Error occured', error);
+    }
+  )
+
+}
 }

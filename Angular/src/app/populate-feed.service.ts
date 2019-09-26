@@ -17,5 +17,12 @@ export class PopulateFeedService {
   // }
   
 
+  existingPosts: Array<PostBean> = [
+    new PostBean('1','Dylan' ),
+    new PostBean('2','Dylan' ),
+    new PostBean('3','Dylan' ),
+    new PostBean('4','Dylan' )
+  ]
+
   constructor() { }
 }

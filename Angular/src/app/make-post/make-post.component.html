@@ -1,0 +1,44 @@
+<div>
+
+
+  <div class="basicCenter">
+    <div class="card spacing">
+      <div>
+        <div *ngIf='profile.photo'>
+          <img class="postPic" [src]="profile.photo" alt="ProfilePicture" style="padding:5px" srcset="">
+        </div>
+        <div *ngIf="!profile.photo">
+          <img class="postPic" src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg"
+            alt="ProfilePicture" style="padding:5px" srcset="">
+        </div>
+
+        <h5 class="card-title">{{profile.firstName}} {{profile.lastName}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{profile.occupation}}</h6>
+      </div>
+
+      <form [formGroup]="newPost">
+        <p>Write Your Post Here:
+          <br>
+          <textarea formControlName="body" rows="5" cols="50%" 
+          class="form-control col-md-6 col-sm offset-3"
+          placeHolder="Your Text Here"></textarea>
+        </p>
+        <span id="s1">
+          <button id="s2" type="submit" 
+          (click)="sendPost()" 
+          value="Post!" class="btn btn-primary btn-lg" 
+          [disabled]="newPost.value.body.length < 5">Submit Post!</button>
+          <div class="custom-file" id="s3">
+            <br>
+            <input type="file" id="fileUpload" 
+            (change)="loadPhoto($event)" 
+            [disabled]="newPost.value.body.length < 5"
+            class="btn btn-primary btn-lg">
+            <br>
+          </div>
+        </span>
+      </form>
+
+    </div>
+  </div>
+</div>

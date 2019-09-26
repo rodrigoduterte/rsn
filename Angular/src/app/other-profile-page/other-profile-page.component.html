@@ -1,0 +1,14 @@
+
+<div>
+<!-- <app-profile-card></app-profile-card> -->
+<app-profile-card [userProfile]="otherProfile" ></app-profile-card>
+
+</div>
+
+
+<div>
+    <div *ngFor="let post of userPosts">
+        <app-post-card [post]="post"></app-post-card>
+    </div>
+</div>
+

@@ -1,6 +1,12 @@
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -10,8 +16,19 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { PostCardComponent } from './post-card/post-card.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { RegistrationService } from './registration.service';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-gaurd.service';
+import { MakePostComponent } from './make-post/make-post.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ForgotComponent } from './forgot/forgot.component';
+
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SearchComponent } from './search/search.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { OtherProfilePageComponent } from './other-profile-page/other-profile-page.component';
 
 @NgModule({
   declarations: [
@@ -23,15 +40,30 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     ProfileCardComponent,
     PostCardComponent,
-    SearchBarComponent
+    MakePostComponent,
+    EditProfileComponent,
+    ForgotComponent,
+    DatePickerComponent,
+    SearchComponent,
+    SearchResultsComponent,
+    OtherProfilePageComponent
+    
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
+    NgxWebstorageModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCardModule,
     NgbModule
   ],
-  providers: [],
+  providers: [RegistrationService, AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,13 +1,12 @@
-
-
 <div class="loginCard">
+    <img  width="175px" height="150px" 
+    style="margin-bottom: 10px"  src="https://bucketgame.s3.us-east-2.amazonaws.com/_coolaborate.png">
     
-    <img  width="225px" height="75px" 
-    style="margin-bottom: 10px"  src="http://ww1.prweb.com/prfiles/2012/09/17/9911504/basic%20logo-01.jpg">
-    
-    <form>
-        <p><input type="text" name="username" value="Username"></p>
-        <p><input type="password" name="password" value="Password"></p>
-        <p><input type="submit"></p>
+    <form  [formGroup]="loginForm" (ngSubmit)="convertFormToObject()" >
+        <p><input class="form-control col-md-6 col-sm offset-3" formControlName="username" type="text" name="username" value="" placeholder="User Name" required></p>
+        <p><input class="form-control col-md-6 col-sm offset-3" formControlName="password" type="password" name="password" value="" placeholder="Password" required ></p>
+        <p>{{loginStatus}}</p>
+        <p><input type="submit" value="Login" class="btn btn-primary btn-lg"></p>
+        <p><a routerLink="forgot">Forgot Password?</a></p>
     </form>
 </div>

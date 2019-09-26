@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { UserProfileBean } from 'src/UserProfileBean';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { SessionStorageService } from 'ngx-webstorage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-card',
@@ -7,11 +8,38 @@ import { UserProfileBean } from 'src/UserProfileBean';
   styleUrls: ['./profile-card.component.css']
 })
 export class ProfileCardComponent implements OnInit {
+ //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  @Input()otherProfile: any;
+  @Input()userProfile:any;
+  isEdit: any;
+  
+  @Output()
+  public editEvent = new EventEmitter();
 
-  constructor(){}
-@Input()
-profile: UserProfileBean;
+
+  onEditEvent(){
+    this.editEvent.emit();
+      }
+  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+ profile: any;
+
+constructor(private session:SessionStorageService, private router:Router){}
+
+
+
   ngOnInit() {
+    this.retrieveSessionUser();     
+  }
+
+
+  retrieveSessionUser(){
+    this.profile = this.session.retrieve('user');
+  }
+
+
+  redirectToEdit(){
+    this.router.navigateByUrl('/editProfile');
   }
 
 }

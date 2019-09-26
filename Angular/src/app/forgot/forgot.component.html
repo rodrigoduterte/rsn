@@ -1,0 +1,13 @@
+<div class="loginCard">
+  <img width="175px" height="150px" style="margin-bottom: 10px"
+    src="https://bucketgame.s3.us-east-2.amazonaws.com/_coolaborate.png">
+  <form [formGroup]="resetPassword">
+    <label>Enter Username to Reset Password</label>
+    <p><input formControlName="username" type="text" name="username" value="" 
+      placeholder="Username" required></p>
+  </form>
+  <p><button type="button" (click)="resetPasswordFunc()" value="Reset Password">
+    Reset Password
+  </button>
+  </p>
+</div>

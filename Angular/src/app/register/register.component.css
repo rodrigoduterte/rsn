@@ -1,5 +1,5 @@
 .registerationCard{
-    background-color: lightgray;
+    background-color: #A3CEF1;
     padding: 10px;
     text-align: center;
     width: 33%;
@@ -12,4 +12,8 @@
     height: 100px;
     margin: 15px;
 }
+label{
+    text-align: left;
+}
+
 

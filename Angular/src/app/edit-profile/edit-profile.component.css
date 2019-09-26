@@ -1,0 +1,29 @@
+.basicCenter{
+    background-color: #A3CEF1;
+    padding: 10px;
+    text-align: center;
+    width: 45%;
+    margin: 0 auto;
+    
+    
+}
+[required]::-webkit-input-placeholder { /* WebKit browsers */
+    color:    red;
+}
+[required]::-moz-placeholder { /* WebKit browsers */
+    color:    red;
+}
+[required]::-ms-input-placeholder { /* WebKit browsers */
+    color:    red;
+}
+
+.center{
+    text-align: center;
+}
+
+.defaultProPic{
+    width:50%;
+    height: 50%;
+    margin: 15px;
+    
+}

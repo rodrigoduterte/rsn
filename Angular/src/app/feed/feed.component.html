@@ -1,1 +1,15 @@
-<p>feed works!</p>
+
+
+
+<div >
+    <div>
+            <app-make-post></app-make-post>
+        </div>
+
+<div *ngFor="let post of feedPosts">
+    <app-post-card [post]="post" [userProfile]="userProfile"></app-post-card>
+</div>
+
+
+
+</div>
